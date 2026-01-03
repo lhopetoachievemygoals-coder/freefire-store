@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>متجر جواهر فري فاير</title>
+
+<style>
+body{margin:0;font-family:Arial;background:#f4f4f4}
+header{background:#222;color:#fff;text-align:center;padding:20px;font-size:22px}
+
+.cover-wrapper{position:relative;margin:15px}
+.cover-image{height:220px;border-radius:12px;overflow:hidden;position:relative;background:#ddd}
+.cover-image img{width:100%;height:100%;object-fit:cover}
+
+.cover-btn,.save-btn{
+position:absolute;top:10px;padding:6px 10px;
+border-radius:6px;cursor:pointer;font-size:13px
+}
+.cover-btn{left:10px;background:#0d6efd;color:#fff}
+.save-btn{right:10px;background:#ffc107}
+
+.profile-wrapper{
+position:absolute;bottom:-45px;right:20px;
+width:120px;height:120px;border-radius:50%;
+background:#fff;padding:4px
+}
+.profile-wrapper img{
+width:100%;height:100%;border-radius:50%;
+object-fit:cover
+}
+
+.profile-btn{
+position:absolute;bottom:0;right:0;
+width:32px;height:32px;background:#0d6efd;
+border-radius:50%;display:flex;
+align-items:center;justify-content:center;
+cursor:pointer
+}
+.profile-btn img{width:16px}
+
+.profile-save-btn{
+position:absolute;top:-10px;left:-10px;
+background:#ffc107;padding:4px 8px;
+border-radius:6px;font-size:12px;cursor:pointer
+}
+
+.container{max-width:900px;margin:80px auto 20px;padding:15px}
+.package{background:#fff;padding:15px;border-radius:10px;margin-bottom:15px}
+.package h2{color:#007bff}
+button{background:#28a745;color:#fff;border:none;padding:10px 15px;border-radius:6px;cursor:pointer}
+
+.section{background:#fff;padding:15px;border-radius:10px}
+
+.form-popup{
+display:none;position:fixed;bottom:20px;right:20px;
+width:320px;background:#fff;padding:20px;
+border-radius:10px;box-shadow:0 0 15px rgba(0,0,0,.3)
+}
+</style>
+</head>
+
+<body>
+
+<header>🛒 متجر جواهر فري فاير</header>
+
+<div class="cover-wrapper">
+  <div class="cover-image">
+    <img id="coverPreview" src="https://via.placeholder.com/1200x400">
+    <label class="cover-btn">
+      تغيير الغلاف
+      <input type="file" hidden accept="image/*" onchange="selectCover(event)">
+    </label>
+    <div class="save-btn" onclick="saveCover()">💾 حفظ</div>
+  </div>
+
+  <div class="profile-wrapper">
+    <img id="profilePreview" src="https://via.placeholder.com/500">
+    <label class="profile-btn">
+      <img src="https://cdn-icons-png.flaticon.com/512/685/685655.png">
+      <input type="file" hidden accept="image/*" onchange="selectProfile(event)">
+    </label>
+    <div class="profile-save-btn" onclick="saveProfile()">💾</div>
+  </div>
+</div>
+
+<div class="container">
+
+<div class="package"><h2>100 جوهرة</h2><p>11 درهم</p><button onclick="openForm('100','11')">شراء</button></div>
+<div class="package"><h2>210 جوهرة</h2><p>21 درهم</p><button onclick="openForm('210','21')">شراء</button></div>
+<div class="package"><h2>530 جوهرة</h2><p>51 درهم</p><button onclick="openForm('530','51')">شراء</button></div>
+<div class="package"><h2>1060 جوهرة</h2><p>100 درهم</p><button onclick="openForm('1060','100')">شراء</button></div>
+<div class="package"><h2>2420 جوهرة</h2><p>230 درهم</p><button onclick="openForm('2420','230')">شراء</button></div>
+<div class="package"><h2>2585 جوهرة</h2><p>240 درهم</p><button onclick="openForm('2585','240')">شراء</button></div>
+
+<div class="section">
+<h3>💳 طرق الدفع</h3>
+<ul><li>Cash Plus</li><li>تحويل بنكي</li></ul>
+</div>
+
+</div>
+
+<div class="form-popup" id="purchaseForm">
+<input id="playerId" placeholder="معرف اللاعب"><br><br>
+<button onclick="sendOrder()">إرسال</button>
+<button onclick="closeForm()">إغلاق</button>
+</div>
+
+<script>
+let coverTemp=null, profileTemp=null;
+
+window.onload=()=>{
+if(localStorage.cover)coverPreview.src=localStorage.cover;
+if(localStorage.profile)profilePreview.src=localStorage.profile;
+}
+
+function toBase64(file,cb){
+const r=new FileReader();
+r.onload=()=>cb(r.result);
+r.readAsDataURL(file);
+}
+
+function selectCover(e){
+toBase64(e.target.files[0],res=>{
+coverPreview.src=res; coverTemp=res;
+});
+}
+function saveCover(){
+if(!coverTemp)return alert("اختر صورة أولا");
+localStorage.cover=coverTemp;
+alert("تم حفظ الغلاف ✅");
+}
+
+function selectProfile(e){
+toBase64(e.target.files[0],res=>{
+profilePreview.src=res; profileTemp=res;
+});
+}
+function saveProfile(){
+if(!profileTemp)return alert("اختر صورة أولا");
+localStorage.profile=profileTemp;
+alert("تم حفظ البروفايل ✅");
+}
+
+function openForm(p,pr){
+pkg=p;price=pr;
+purchaseForm.style.display="block";
+}
+function closeForm(){purchaseForm.style.display="none"}
+function sendOrder(){
+if(!playerId.value)return alert("أدخل المعرف");
+window.open(
+"https://wa.me/212657482142?text="+
+encodeURIComponent(`طلب ${pkg} بسعر ${price}`),
+"_blank"
+);
+}
+</script>
+
+</body>
+</html>>
