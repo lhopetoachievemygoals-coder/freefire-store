@@ -6,60 +6,94 @@
 <title>متجر جواهر فري فاير</title>
 
 <style>
-body{margin:0;font-family:Arial;background:#f4f4f4}
-header{background:#222;color:#fff;text-align:center;padding:20px;font-size:22px}
+body{
+    margin:0;
+    font-family:Arial;
+    background:#f4f4f4
+}
+header{
+    background:#222;
+    color:#fff;
+    text-align:center;
+    padding:20px;
+    font-size:22px
+}
 
-.cover-wrapper{position:relative;margin:15px}
-.cover-image{height:220px;border-radius:12px;overflow:hidden;background:#ddd}
-.cover-image img{width:100%;height:100%;object-fit:cover}
+/* ===== الغلاف ===== */
+.cover-wrapper{
+    position:relative;
+    margin:15px
+}
+.cover-image{
+    width:100%;
+    aspect-ratio:5040 / 2460; /* ✅ نسبة الغلاف */
+    border-radius:12px;
+    overflow:hidden;
+    background:#ddd
+}
+.cover-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover
+}
 
+/* ===== البروفايل ===== */
 .profile-wrapper{
-position:absolute;bottom:-45px;right:20px;
-width:120px;height:120px;border-radius:50%;
-background:#fff;padding:4px
+    position:absolute;
+    bottom:-45px;
+    right:20px;
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    background:#fff;
+    padding:4px
 }
 .profile-wrapper img{
-width:100%;height:100%;border-radius:50%;
-object-fit:cover
+    width:100%;
+    height:100%;
+    border-radius:50%;
+    object-fit:cover
 }
 
+/* ===== المتجر ===== */
 .container{
-max-width:900px;
-margin:80px auto 20px;
-padding:15px
+    max-width:900px;
+    margin:80px auto 20px;
+    padding:15px
 }
 .package{
-background:#fff;
-padding:15px;
-border-radius:10px;
-margin-bottom:15px;
-box-shadow:0 2px 6px rgba(0,0,0,.1)
+    background:#fff;
+    padding:15px;
+    border-radius:10px;
+    margin-bottom:15px;
+    box-shadow:0 2px 6px rgba(0,0,0,.1)
 }
 .package h2{color:#007bff}
 button{
-background:#28a745;
-color:#fff;
-border:none;
-padding:10px 15px;
-border-radius:6px;
-cursor:pointer
+    background:#28a745;
+    color:#fff;
+    border:none;
+    padding:10px 15px;
+    border-radius:6px;
+    cursor:pointer
 }
 .section{
-background:#fff;
-padding:15px;
-border-radius:10px
+    background:#fff;
+    padding:15px;
+    border-radius:10px
 }
 
+/* ===== الفورم ===== */
 .form-popup{
-display:none;
-position:fixed;
-bottom:20px;
-right:20px;
-width:320px;
-background:#fff;
-padding:20px;
-border-radius:10px;
-box-shadow:0 0 15px rgba(0,0,0,.3)
+    display:none;
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    width:320px;
+    background:#fff;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 0 15px rgba(0,0,0,.3)
 }
 </style>
 </head>
@@ -68,16 +102,18 @@ box-shadow:0 0 15px rgba(0,0,0,.3)
 
 <header>🛒 متجر جواهر فري فاير</header>
 
-<!-- ===== الغلاف + البروفايل (ثابت) ===== -->
+<!-- ===== الغلاف + البروفايل ===== -->
 <div class="cover-wrapper">
 
-  <div class="cover-image">
-    <img src="cover.jpg" alt="غلاف المتجر">
-  </div>
+    <div class="cover-image">
+        <!-- ضع صورة الغلاف هنا -->
+        <img src="cover.jpg" alt="غلاف المتجر">
+    </div>
 
-  <div class="profile-wrapper">
-    <img src="profile.png" alt="صورة المتجر">
-  </div>
+    <div class="profile-wrapper">
+        <!-- ضع صورة البروفايل هنا -->
+        <img src="profile.png" alt="صورة المتجر">
+    </div>
 
 </div>
 
@@ -130,7 +166,7 @@ box-shadow:0 0 15px rgba(0,0,0,.3)
 
 </div>
 
-<!-- ===== الفورم ===== -->
+<!-- ===== فورم الطلب ===== -->
 <div class="form-popup" id="purchaseForm">
 <input id="playerId" placeholder="معرف اللاعب"><br><br>
 <button onclick="sendOrder()">إرسال</button>
@@ -141,22 +177,22 @@ box-shadow:0 0 15px rgba(0,0,0,.3)
 let pkg="", price="";
 
 function openForm(p,pr){
-pkg=p;price=pr;
-document.getElementById("purchaseForm").style.display="block";
+    pkg=p;price=pr;
+    document.getElementById("purchaseForm").style.display="block";
 }
 function closeForm(){
-document.getElementById("purchaseForm").style.display="none";
+    document.getElementById("purchaseForm").style.display="none";
 }
 function sendOrder(){
-let id=document.getElementById("playerId").value;
-if(!id)return alert("أدخل معرف اللاعب");
-window.open(
-"https://wa.me/212657482142?text="+
-encodeURIComponent(
-`طلب شراء\n📦 ${pkg}\n💰 ${price}\n🆔 ${id}`
-),
-"_blank"
-);
+    let id=document.getElementById("playerId").value;
+    if(!id)return alert("أدخل معرف اللاعب");
+    window.open(
+        "https://wa.me/212657482142?text="+
+        encodeURIComponent(
+            `طلب شراء\n📦 ${pkg}\n💰 ${price}\n🆔 ${id}`
+        ),
+        "_blank"
+    );
 }
 </script>
 
