@@ -114,7 +114,8 @@ button.primary{
   color:var(--subtext);
 }
 
-/* PAYMENT LIST: emoji on the left of each method */
+/* ==== PAYMENT METHODS: add emoji on the left of each method ==== */
+/* remove default list style and make items aligned */
 .payment-list{ list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:10px }
 .payment-list li{
   display:flex;
@@ -122,8 +123,12 @@ button.primary{
   gap:10px;
   color:var(--subtext);
   font-size:16px;
-  direction:ltr; /* ensure emoji sits visually on the left */
 }
+/* To ensure emoji appears visually to the left of the text even with RTL,
+   set the list item to LTR and align content to start. */
+.payment-list li { direction:ltr; }
+
+/* emoji span on the left of the payment text */
 .pay-emoji{
   font-size:20px;
   width:28px;
@@ -131,23 +136,24 @@ button.primary{
   margin-right:6px;
 }
 
-/* CONTACT ROW: single row, email left, whatsapp right, same size */
+/* ==== CONTACT (section) ==== */
+/* The user asked: in the "تواصل معنا" section put WhatsApp on the right and Email on the left, same row and same size relative to payment methods */
 .contact-row{
   display:flex;
-  flex-direction:row;
+  flex-direction:row;           /* single row */
   gap:12px;
-  justify-content:space-between;
+  justify-content:space-between; /* push one to left and one to right */
   align-items:center;
   margin-top:8px;
 }
 
-/* equal-sized buttons */
+/* make both buttons same size (approx half of available width) */
 .contact-btn{
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  gap:12px;
-  flex:0 0 48%;
+  gap:10px;
+  flex:0 0 48%;            /* each takes ~48% so they appear same size in one row */
   padding:12px 14px;
   border-radius:12px;
   font-weight:800;
@@ -158,13 +164,14 @@ button.primary{
   box-shadow:0 8px 18px rgba(0,0,0,0.6);
 }
 
-/* left-side small icon stored as emoji (consistent with apps) */
+/* left-side small icon (we keep it consistent and clear) */
+/* make icon on the left of button text visually even with RTL */
 .contact-btn .icon-left{
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  width:28px;
-  height:28px;
+  width:26px;
+  height:26px;
   font-size:18px;
 }
 
@@ -172,7 +179,12 @@ button.primary{
 .contact-btn.email{ background:var(--mail-blue); color:#fff; border:none; }
 .contact-btn.whatsapp{ background:var(--wa-green); color:#fff; border:none; }
 
-/* QUICK ICONS (under player id) - now use emoji characters for clarity */
+/* ensure icons inside are crisp SVG/text */
+.contact-btn svg{ width:18px; height:18px; fill:none; stroke:currentColor; stroke-width:1.6; }
+
+/* ==== PURCHASE FORM QUICK ICONS (under player id) ==== */
+/* keep them sized and clear but we won't change their order here (user only requested the contact-row change).
+   They remain visually matching contact buttons */
 .quick-icons{ display:flex; gap:14px; align-items:center; justify-content:center; margin-top:8px; }
 .icon-btn{
   display:inline-flex; align-items:center; justify-content:center;
@@ -180,11 +192,12 @@ button.primary{
   transition:transform .12s ease, box-shadow .12s ease;
   box-shadow:0 6px 18px rgba(0,0,0,0.45);
   border:1px solid rgba(255,255,255,0.04);
-  font-size:26px; /* emoji size */
-  background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
 }
 .icon-btn.wa{ background:linear-gradient(180deg,var(--wa-green), #1ebc5b); color:#fff }
 .icon-btn.mail{ background:linear-gradient(180deg,var(--mail-blue), #0a58ca); color:#fff }
+
+/* svg rendering for crisp icons */
+.icon-btn svg{ width:26px; height:26px; fill:none; stroke:currentColor; stroke-width:1.6; }
 
 /* form inputs & actions */
 .form-popup{
@@ -205,6 +218,7 @@ button.primary{
 .form-popup .send{ background:var(--accent); color:#000; padding:10px 18px; border-radius:10px; border:none; font-weight:800; }
 .form-popup .close{ background:#e9ecef; color:#111; padding:10px 14px; border-radius:10px; border:none; font-weight:800; }
 
+/* responsive */
 @media (max-width:480px){
   .contact-row{ flex-direction:column; gap:10px; }
   .contact-btn{ flex: 0 0 100%; }
@@ -246,8 +260,9 @@ button.primary{
   <div class="section">
     <h3 style="color:var(--text); margin-top:0">💳 طرق الدفع</h3>
 
+    <!-- PAYMENT LIST: each li has an emoji on its left as requested -->
     <ul class="payment-list">
-      <li><span class="pay-emoji">💸</span> Cash Plus</li>
+      <li><span class="pay-emoji">🔁</span> Cash Plus</li>
       <li><span class="pay-emoji">🏦</span> تحويل بنكي</li>
     </ul>
   </div>
@@ -255,17 +270,18 @@ button.primary{
   <div class="section">
     <h3 style="color:var(--text); margin-top:0">📬 تواصل معنا</h3>
 
+    <!-- CONTACT ROW: same line, email on left, whatsapp on right, same size -->
     <div class="contact-row">
-      <!-- Email on the left -->
+      <!-- left = Email -->
       <a class="contact-btn email" id="storeEmailBtn" href="mailto:youremail@example.com">
-        <span class="icon-left" aria-hidden="true">📧</span>
+        <span class="icon-left" aria-hidden="true">✉️</span>
         إرسال إيميل
       </a>
 
-      <!-- WhatsApp on the right -->
+      <!-- right = WhatsApp -->
       <a class="contact-btn whatsapp" id="storeWhatsAppBtn" href="https://wa.me/212657482142" target="_blank" rel="noopener">
         واتساب
-        <span class="icon-left" aria-hidden="true">💬</span>
+        <span class="icon-left" aria-hidden="true">📲</span>
       </a>
     </div>
 
@@ -273,7 +289,7 @@ button.primary{
 
 </div>
 
-<!-- Purchase form popup -->
+<!-- Purchase form popup (unchanged behavior) -->
 <div class="form-popup" id="purchaseForm" aria-hidden="true">
   <div class="form-content">
     <strong id="pkgName">-</strong>
@@ -281,10 +297,23 @@ button.primary{
 
     <input id="playerId" type="text" placeholder="معرف اللاعب" aria-label="معرف اللاعب">
 
-    <!-- Quick icons use emoji (clear, not distorted) -->
+    <!-- Quick icons (under player id) - unchanged order -->
     <div class="quick-icons" title="تواصل سريع">
-      <button class="icon-btn wa" onclick="quickWhatsApp()" aria-label="فتح واتساب">💬</button>
-      <button class="icon-btn mail" onclick="quickEmail()" aria-label="فتح الإيميل">📧</button>
+      <button class="icon-btn wa" onclick="quickWhatsApp()" aria-label="فتح واتساب">
+        <!-- WhatsApp SVG (crisp stroke) -->
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M21 12.05c0 4.97-4.03 9-9 9a8.96 8.96 0 01-4.74-1.35L3 21l1.3-4.25A8.97 8.97 0 013 12.05C3 7.08 7.03 3.05 12 3.05s9 4.03 9 9z"></path>
+          <path d="M16.2 13.1c-.25-.12-1.47-.73-1.7-.82-.23-.09-.4-.12-.57.12-.17.24-.66.82-.81.98-.14.17-.28.19-.53.07-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.71"></path>
+        </svg>
+      </button>
+
+      <button class="icon-btn mail" onclick="quickEmail()" aria-label="فتح الإيميل">
+        <!-- Envelope SVG -->
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="2" y="5" width="20" height="14" rx="2" ry="2"></rect>
+          <path d="M3 7l9 6 9-6"></path>
+        </svg>
+      </button>
     </div>
 
     <div class="method-selection" aria-label="طريقة التواصل">
@@ -302,9 +331,10 @@ button.primary{
 </div>
 
 <script>
-/* عدّل هذه القيم لبياناتك الحقيقية */
+/* عجّل تغيير القيم هنا إلى بياناتك الحقيقية */
 const STORE_WA_NUMBER = "212657482142";
 const STORE_EMAIL = "youremail@example.com";
+/* ----------------------------------------------- */
 
 let pkg="", price="";
 
@@ -322,4 +352,44 @@ function closeForm(){
   document.getElementById("purchaseForm").setAttribute("aria-hidden","true");
 }
 function updateMethodUI(){
-  const method = document.querySelector('input[name="contact
+  const method = document.querySelector('input[name="contactMethod"]:checked')?.value || 'whatsapp';
+  const emailField = document.getElementById("buyerEmail");
+  if(method === 'email') emailField.style.display='block'; else { emailField.style.display='none'; emailField.value=''; }
+}
+document.addEventListener('change', function(e){ if(e.target && e.target.name === 'contactMethod') updateMethodUI(); });
+
+function quickWhatsApp(){
+  const id = document.getElementById("playerId").value.trim();
+  if(!id) return alert("أدخل معرف اللاعب قبل فتح واتساب.");
+  const buyerEmail = document.getElementById("buyerEmail").value.trim();
+  const body = [`طلب شراء - SAD SILENT`,`📦 الباقة: ${pkg || "-"}`,`💰 السعر: ${price || "-"}`,`🆔 معرف اللاعب: ${id}`, buyerEmail ? `✉️ ${buyerEmail}` : ''].filter(Boolean).join("\n");
+  const waUrl = `https://wa.me/${STORE_WA_NUMBER}?text=${encodeURIComponent(body)}`;
+  window.open(waUrl,"_blank","noopener");
+}
+function quickEmail(){
+  const id = document.getElementById("playerId").value.trim();
+  if(!id) return alert("أدخل معرف اللاعب قبل فتح الإيميل.");
+  const buyerEmail = document.getElementById("buyerEmail").value.trim();
+  const subject = `طلب شراء - SAD SILENT - ${pkg || "-"}`;
+  const body = [`طلب شراء - SAD SILENT`,`📦 الباقة: ${pkg || "-"}`,`💰 السعر: ${price || "-"}`,`🆔 معرف اللاعب: ${id}`, buyerEmail ? `✉️ ${buyerEmail}` : ''].filter(Boolean).join("\n");
+  window.open(`mailto:${encodeURIComponent(STORE_EMAIL)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`,"_blank","noopener");
+}
+
+function sendOrder(){
+  let id = document.getElementById("playerId").value.trim();
+  if(!id) return alert("أدخل معرف اللاعب");
+  let method = document.querySelector('input[name="contactMethod"]:checked')?.value || 'whatsapp';
+  let buyerEmail = document.getElementById("buyerEmail").value.trim();
+  const body = [`طلب شراء - SAD SILENT`,`📦 الباقة: ${pkg || "-"}`,`💰 السعر: ${price || "-"}`,`🆔 معرف اللاعب: ${id}`, `طريقة التواصل: ${method}` , buyerEmail ? `✉️ ${buyerEmail}` : ''].filter(Boolean).join("\n");
+  if(method === 'whatsapp'){
+    window.open(`https://wa.me/${STORE_WA_NUMBER}?text=${encodeURIComponent(body)}`,"_blank","noopener");
+  } else {
+    if(!buyerEmail) return alert("من فضلك أدخل بريدك الإلكتروني عند اختيار طريقة الإيميل.");
+    const subject = `طلب شراء - SAD SILENT - ${pkg || "-"}`;
+    window.open(`mailto:${encodeURIComponent(STORE_EMAIL)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`,"_blank","noopener");
+  }
+}
+</script>
+
+</body>
+</html>
