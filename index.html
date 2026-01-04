@@ -94,8 +94,8 @@ header{
 .container{ max-width:900px; margin:140px auto 24px; padding:15px; }
 
 /* =========================
-   ✅ Packages (التعديل المطلوب حسب الصورة)
-   الباقة يمين + زر شراء يسار
+   ✅ الباقات مثل الصورة:
+   الباقة (النص) يمين + زر شراء يسار
    ========================= */
 .package{
   background:var(--surface);
@@ -108,12 +108,14 @@ header{
   justify-content:space-between;
   gap:12px;
 
-  /* ✅ هذا هو المهم:
-     صفحة RTL + flex row = أول عنصر (div) كيبان يمين، والزر كيجي يسار */
+  /* مهم: نخلي RTL + row */
+  direction: rtl;
   flex-direction: row;
 }
+
 .package h2{ color:var(--primary); margin:0 }
 .package p{ margin:0; font-weight:600; color:var(--subtext) }
+
 .package button{
   background:var(--primary);
   color:#fff;
@@ -136,17 +138,21 @@ header{
 }
 
 /* =========================
-   ✅ تواصل معنا: نفس الحجم (واتساب = إيميل)
-   منع تكسير النص (إرسال إيميل) لسطرين
+   ✅ تواصل معنا مثل الصورة:
+   واتساب يسار + إيميل يمين
+   ونفس الحجم (الإيميل مايكبرش)
    ========================= */
 .contact-row{
   display:flex;
   flex-direction:row;
   gap:12px;
-  align-items:stretch;        /* نفس الارتفاع */
+  align-items:stretch;
   justify-content:space-between;
   margin-top:8px;
   flex-wrap:nowrap;
+
+  /* هذا كيثبت: أول زر يجي يسار (واتساب) والثاني يمين (إيميل) */
+  direction:ltr;
 }
 
 .contact-btn{
@@ -155,11 +161,11 @@ header{
   justify-content:center;
   gap:10px;
 
-  flex:1 1 0;                 /* نفس العرض */
-  height:64px;                /* نفس الارتفاع */
-  padding:0 14px;             /* ثابت باش مايكبرش واحد */
+  /* نفس العرض ونفس الارتفاع */
+  flex:1 1 0;
+  height:64px;
+  padding:0 14px;
 
-  background:#111;
   color:var(--text);
   border-radius:10px;
   text-decoration:none;
@@ -168,9 +174,14 @@ header{
   font-weight:700;
   font-size:16px;
 
-  white-space:nowrap;         /* مايتكسرش لسطرين */
+  /* منع تكسير "إرسال إيميل" لسطرين */
+  white-space:nowrap;
   min-width:0;
+
+  /* نخلي المحتوى عربي داخل الزر */
+  direction:rtl;
 }
+
 .contact-btn .icon{
   display:inline-flex;
   width:20px;
@@ -181,7 +192,6 @@ header{
   margin-inline-start:8px;
 }
 
-/* نص الزر إذا كانت شاشة ضيقة بزاف، يتقصّ بنقط بدل ما يهبط لسطر */
 .contact-btn span:last-child{
   overflow:hidden;
   text-overflow:ellipsis;
@@ -278,8 +288,8 @@ button.primary{ background:var(--primary); color:#fff; border:none; }
   .profile-name{ right:12px; width:100px; font-size:16px; bottom:-88px }
   .container{ margin:110px 12px 20px }
 
-  /* ✅ نفس توزيع الباقة/الشراء فالموبايل */
-  .package{ flex-direction:row; align-items:center; }
+  /* نخلي الباقة/شراء نفس الصورة فالموبايل */
+  .package{ direction:rtl; flex-direction:row; align-items:center; }
 
   .form-popup{ right:12px; left:12px; width:auto }
   .cover-wrapper{ margin:12px }
@@ -289,7 +299,6 @@ button.primary{ background:var(--primary); color:#fff; border:none; }
   .icon-btn{ width:48px; height:48px }
   .icon-btn svg{ width:22px; height:22px }
 
-  /* ✅ نخلي النص يركب مزيان فالشاشات الصغيرة */
   .contact-btn{
     height:62px;
     font-size:15px;
@@ -342,6 +351,7 @@ button.primary{ background:var(--primary); color:#fff; border:none; }
 
     <div class="contact-row">
 
+      <!-- واتساب (يسار مثل الصورة) -->
       <a class="contact-btn whatsapp" id="storeWhatsAppBtn"
          href="https://wa.me/212657482142" target="_blank" rel="noopener">
         <span class="icon" aria-hidden="true">
@@ -353,6 +363,7 @@ button.primary{ background:var(--primary); color:#fff; border:none; }
         <span>واتساب</span>
       </a>
 
+      <!-- إيميل (يمين مثل الصورة) -->
       <a class="contact-btn email" id="storeEmailBtn"
          href="mailto:youremail@example.com">
         <span class="icon" aria-hidden="true">
