@@ -1,40 +1,62 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>متجر جواهر فري فاير</title>
 
 <style>
+:root{
+  --primary: #0d6efd;     /* اللون الأساسي المناسب */
+  --surface: #ffffff;
+  --muted-bg: #f4f7fb;
+  --accent: #20c997;
+  --text: #222;
+  --shadow: rgba(13,110,253,0.08);
+  --radius: 10px;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
 body{
     margin:0;
-    font-family:Arial;
-    background:#f4f4f4
+    font-family: "Arial", "Tahoma", sans-serif;
+    background:var(--muted-bg);
+    color:var(--text);
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
 }
+
+/* ===== الهيدر ===== */
 header{
-    background:#222;
+    background:linear-gradient(90deg,var(--primary), #0a58ca);
     color:#fff;
     text-align:center;
-    padding:20px;
-    font-size:22px
+    padding:18px 15px;
+    font-size:20px;
+    position:sticky;
+    top:0;
+    z-index:40;
+    box-shadow:0 2px 6px var(--shadow);
 }
 
 /* ===== الغلاف ===== */
 .cover-wrapper{
     position:relative;
-    margin:15px
+    margin:15px;
 }
 .cover-image{
     width:100%;
-    aspect-ratio:5040 / 2460; /* ✅ نسبة الغلاف */
+    aspect-ratio:5040 / 2460;
     border-radius:12px;
     overflow:hidden;
-    background:#ddd
+    background:linear-gradient(180deg,rgba(13,110,253,0.08), #ddd);
 }
 .cover-image img{
     width:100%;
     height:100%;
-    object-fit:cover
+    object-fit:cover;
+    display:block;
 }
 
 /* ===== البروفايل ===== */
@@ -45,55 +67,154 @@ header{
     width:120px;
     height:120px;
     border-radius:50%;
-    background:#fff;
-    padding:4px
+    background:var(--surface);
+    padding:4px;
+    box-shadow:0 6px 18px rgba(0,0,0,0.12);
 }
 .profile-wrapper img{
     width:100%;
     height:100%;
     border-radius:50%;
-    object-fit:cover
+    object-fit:cover;
 }
 
-/* ===== المتجر ===== */
+/* ===== المحتوى ===== */
 .container{
     max-width:900px;
-    margin:80px auto 20px;
-    padding:15px
-}
-.package{
-    background:#fff;
+    margin:80px auto 24px;
     padding:15px;
-    border-radius:10px;
-    margin-bottom:15px;
-    box-shadow:0 2px 6px rgba(0,0,0,.1)
-}
-.package h2{color:#007bff}
-button{
-    background:#28a745;
-    color:#fff;
-    border:none;
-    padding:10px 15px;
-    border-radius:6px;
-    cursor:pointer
-}
-.section{
-    background:#fff;
-    padding:15px;
-    border-radius:10px
 }
 
-/* ===== الفورم ===== */
+/* ===== الباقات ===== */
+.package{
+    background:var(--surface);
+    padding:15px;
+    border-radius:var(--radius);
+    margin-bottom:15px;
+    box-shadow:0 6px 18px var(--shadow);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+}
+.package h2{color:var(--primary); margin:0}
+.package p{margin:0; font-weight:600}
+.package button{
+    background:var(--primary);
+    color:#fff;
+    border:none;
+    padding:10px 14px;
+    border-radius:8px;
+    cursor:pointer;
+    transition:transform .12s ease, box-shadow .12s ease;
+    box-shadow:0 6px 14px rgba(13,110,253,0.12);
+}
+.package button:active{transform:translateY(1px)}
+
+/* ===== الأقسام ===== */
+.section{
+    background:var(--surface);
+    padding:14px;
+    border-radius:var(--radius);
+    box-shadow:0 6px 18px var(--shadow);
+    margin-bottom:12px;
+}
+
+/* ===== شريط التواصل ===== */
+.contact-row{
+    display:flex;
+    gap:10px;
+    align-items:center;
+    justify-content:flex-start;
+    margin-top:8px;
+    flex-wrap:wrap;
+}
+.contact-btn{
+    display:inline-flex;
+    gap:8px;
+    align-items:center;
+    background:#fff;
+    color:var(--text);
+    border-radius:8px;
+    padding:8px 12px;
+    text-decoration:none;
+    box-shadow:0 4px 12px rgba(0,0,0,0.06);
+    border:1px solid rgba(0,0,0,0.04);
+    font-weight:600;
+}
+.contact-btn.whatsapp{background:#25d366; color:#fff; border:none}
+.contact-btn.email{background:#0d6efd; color:#fff; border:none}
+
+/* ===== الفورم (مركز الحقول) ===== */
 .form-popup{
     display:none;
     position:fixed;
     bottom:20px;
     right:20px;
     width:320px;
-    background:#fff;
-    padding:20px;
-    border-radius:10px;
-    box-shadow:0 0 15px rgba(0,0,0,.3)
+    background:var(--surface);
+    padding:18px;
+    border-radius:12px;
+    box-shadow:0 14px 40px rgba(0,0,0,0.18);
+    z-index:60;
+}
+
+/* مركز المحتوى داخل الفورم بحيث الحقول في الوسط ومتجاوبة */
+.form-popup .form-content{
+    display:flex;
+    flex-direction:column;
+    align-items:center; /* يجعل الحقول في الوسط أفقياً */
+    gap:10px;
+    text-align:center;
+}
+
+/* حقول متجاوبة وتساعد على الهاتف والحاسوب */
+.form-popup input[type="text"],
+.form-popup input[type="email"],
+.form-popup input[type="tel"]{
+    width:100%;
+    max-width:260px; /* تناسب الشاشات الكبيرة */
+    padding:10px 12px;
+    border-radius:8px;
+    border:1px solid rgba(0,0,0,0.08);
+    background:#fafbfd;
+    font-size:15px;
+    direction:ltr; /* معرف اللاعب/أرقام عادة أخف للقراءة */
+}
+
+/* أزرار داخل النموذج */
+.form-popup .form-actions{
+    display:flex;
+    gap:8px;
+    width:100%;
+    justify-content:center;
+    flex-wrap:wrap;
+    margin-top:6px;
+}
+.form-popup .form-actions button{
+    padding:9px 12px;
+    border-radius:8px;
+    border:none;
+    cursor:pointer;
+    font-weight:600;
+}
+.form-popup .send{background:var(--accent); color:#fff}
+.form-popup .close{background:#e9ecef; color:#111}
+
+/* تدرجات وتحسين صغير على الأزرار الرئيسية في الصفحة */
+button.primary{
+    background:var(--primary);
+    color:#fff;
+    border:none;
+}
+
+/* ===== تجاوبية ===== */
+@media (max-width:480px){
+    .profile-wrapper{right:12px; width:100px;height:100px; bottom:-40px}
+    .container{margin:70px 12px 20px}
+    .package{flex-direction:column; align-items:flex-start}
+    .form-popup{right:12px; left:12px; width:auto}
+    .cover-wrapper{margin:12px}
 }
 </style>
 </head>
@@ -120,77 +241,128 @@ button{
 <!-- ===== المتجر ===== -->
 <div class="container">
 
-<div class="package">
-<h2>100 جوهرة</h2>
-<p>11 درهم</p>
-<button onclick="openForm('100 جوهرة','11 درهم')">شراء</button>
-</div>
+  <div class="package">
+    <div>
+      <h2>100 جوهرة</h2>
+      <p>11 درهم</p>
+    </div>
+    <div>
+      <button onclick="openForm('100 جوهرة','11 درهم')" class="primary">شراء</button>
+    </div>
+  </div>
 
-<div class="package">
-<h2>210 جوهرة</h2>
-<p>21 درهم</p>
-<button onclick="openForm('210 جوهرة','21 درهم')">شراء</button>
-</div>
+  <div class="package">
+    <div>
+      <h2>210 جوهرة</h2>
+      <p>21 درهم</p>
+    </div>
+    <div>
+      <button onclick="openForm('210 جوهرة','21 درهم')" class="primary">شراء</button>
+    </div>
+  </div>
 
-<div class="package">
-<h2>530 جوهرة</h2>
-<p>51 درهم</p>
-<button onclick="openForm('530 جوهرة','51 درهم')">شراء</button>
-</div>
+  <div class="package">
+    <div>
+      <h2>530 جوهرة</h2>
+      <p>51 درهم</p>
+    </div>
+    <div>
+      <button onclick="openForm('530 جوهرة','51 درهم')" class="primary">شراء</button>
+    </div>
+  </div>
 
-<div class="package">
-<h2>1060 جوهرة</h2>
-<p>100 درهم</p>
-<button onclick="openForm('1060 جوهرة','100 درهم')">شراء</button>
-</div>
+  <div class="package">
+    <div>
+      <h2>1060 جوهرة</h2>
+      <p>100 درهم</p>
+    </div>
+    <div>
+      <button onclick="openForm('1060 جوهرة','100 درهم')" class="primary">شراء</button>
+    </div>
+  </div>
 
-<div class="package">
-<h2>2420 جوهرة</h2>
-<p>230 درهم</p>
-<button onclick="openForm('2420 جوهرة','230 درهم')">شراء</button>
-</div>
+  <div class="package">
+    <div>
+      <h2>2420 جوهرة</h2>
+      <p>230 درهم</p>
+    </div>
+    <div>
+      <button onclick="openForm('2420 جوهرة','230 درهم')" class="primary">شراء</button>
+    </div>
+  </div>
 
-<div class="package">
-<h2>2585 جوهرة</h2>
-<p>240 درهم</p>
-<button onclick="openForm('2585 جوهرة','240 درهم')">شراء</button>
-</div>
+  <div class="package">
+    <div>
+      <h2>2585 جوهرة</h2>
+      <p>240 درهم</p>
+    </div>
+    <div>
+      <button onclick="openForm('2585 جوهرة','240 درهم')" class="primary">شراء</button>
+    </div>
+  </div>
 
-<div class="section">
-<h3>💳 طرق الدفع</h3>
-<ul>
-<li>Cash Plus</li>
-<li>تحويل بنكي</li>
-</ul>
-</div>
+  <div class="section">
+    <h3>💳 طرق الدفع</h3>
+    <ul>
+      <li>Cash Plus</li>
+      <li>تحويل بنكي</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>📬 تواصل معنا</h3>
+    <div class="contact-row">
+      <!-- استبدل الايميل ورقم الوتساب بالقيم الفعلية لديك -->
+      <a class="contact-btn email" href="mailto:youremail@example.com">✉️ إرسال إيميل</a>
+      <a class="contact-btn whatsapp" href="https://wa.me/212657482142" target="_blank" rel="noopener">💬 واتساب</a>
+    </div>
+  </div>
 
 </div>
 
 <!-- ===== فورم الطلب ===== -->
-<div class="form-popup" id="purchaseForm">
-<input id="playerId" placeholder="معرف اللاعب"><br><br>
-<button onclick="sendOrder()">إرسال</button>
-<button onclick="closeForm()">إغلاق</button>
+<div class="form-popup" id="purchaseForm" aria-hidden="true">
+  <div class="form-content">
+    <strong id="pkgName">-</strong>
+    <div id="pkgPrice" style="color:var(--primary);font-weight:700;"></div>
+
+    <!-- خانة معرف اللاعب (متمركزة ومتجاوبة) -->
+    <input id="playerId" type="text" placeholder="معرف اللاعب" aria-label="معرف اللاعب">
+
+    <!-- أضفت حقل إيميل اختياري داخل نفس النموذج لراحة المستخدم -->
+    <input id="buyerEmail" type="email" placeholder="البريد الإلكتروني (اختياري)" aria-label="البريد الإلكتروني">
+
+    <div class="form-actions">
+      <button class="send" onclick="sendOrder()">إرسال</button>
+      <button class="close" onclick="closeForm()">إغلاق</button>
+    </div>
+  </div>
 </div>
 
 <script>
 let pkg="", price="";
 
 function openForm(p,pr){
-    pkg=p;price=pr;
+    pkg=p; price=pr;
+    document.getElementById("pkgName").textContent = `📦 ${pkg}`;
+    document.getElementById("pkgPrice").textContent = `💰 ${price}`;
     document.getElementById("purchaseForm").style.display="block";
+    document.getElementById("purchaseForm").setAttribute("aria-hidden","false");
+    // ضع التركيز على حقل المعرف لتسهيل الاستخدام على الهاتف
+    setTimeout(()=> document.getElementById("playerId").focus(), 100);
 }
 function closeForm(){
     document.getElementById("purchaseForm").style.display="none";
+    document.getElementById("purchaseForm").setAttribute("aria-hidden","true");
 }
 function sendOrder(){
-    let id=document.getElementById("playerId").value;
-    if(!id)return alert("أدخل معرف اللاعب");
+    let id = document.getElementById("playerId").value.trim();
+    if(!id) return alert("أدخل معرف اللاعب");
+    let email = document.getElementById("buyerEmail").value.trim();
+    let text = `طلب شراء\n📦 ${pkg}\n💰 ${price}\n🆔 ${id}` + (email ? `\n✉️ ${email}` : "");
+    // افتح واتساب بالمحتوى
     window.open(
-        "https://wa.me/212657482142?text="+
-        encodeURIComponent(
-            `طلب شراء\n📦 ${pkg}\n💰 ${price}\n🆔 ${id}`
-        ),
+        "https://wa.me/212657482142?text=" + encodeURIComponent(text),
         "_blank"
     );
 }
