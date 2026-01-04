@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>متجر جواهر فري فاير</title>
 
 <style>
@@ -14,6 +14,7 @@
   --text:#fff;
   --subtext:#d0d4da;
   --radius:10px;
+  --shadow:rgba(0,0,0,.6);
 }
 *{box-sizing:border-box}
 body{
@@ -26,20 +27,20 @@ body{
 
 /* ===== الهيدر ===== */
 header{
+  background:#000;
   text-align:center;
   padding:18px;
   font-size:20px;
-  background:#000;
   position:sticky;
   top:0;
-  z-index:10;
+  z-index:50;
 }
 
 /* ===== الغلاف ===== */
-.cover-wrapper{margin:15px; position:relative}
+.cover-wrapper{margin:15px;position:relative}
 .cover-image{
   width:100%;
-  height:200px;
+  height:220px;
   border-radius:12px;
   background:#111;
 }
@@ -62,22 +63,23 @@ header{
 /* ===== المحتوى ===== */
 .container{
   max-width:900px;
-  margin:120px auto 20px;
+  margin:120px auto 24px;
   padding:15px;
 }
 
-/* ===== الباقات ===== */
+/* ===== الباقات (لم تُمس) ===== */
 .package{
   background:var(--surface);
   padding:15px;
   border-radius:var(--radius);
-  margin-bottom:12px;
+  margin-bottom:15px;
+  box-shadow:0 10px 30px var(--shadow);
   display:flex;
   justify-content:space-between;
   align-items:center;
 }
 .package h2{margin:0;color:var(--primary)}
-.package p{margin:0;color:var(--subtext)}
+.package p{margin:0;color:var(--subtext);font-weight:600}
 .package button{
   background:var(--primary);
   border:none;
@@ -92,7 +94,8 @@ header{
   background:var(--surface);
   padding:14px;
   border-radius:var(--radius);
-  margin-bottom:12px;
+  margin-bottom:15px;
+  box-shadow:0 10px 30px var(--shadow);
 }
 
 /* ===== طرق الدفع ===== */
@@ -115,23 +118,41 @@ header{
   width:34px;
   height:34px;
   fill:#4dabf7;
-  filter:drop-shadow(0 4px 8px rgba(77,171,247,0.35));
+  filter:drop-shadow(0 4px 8px rgba(77,171,247,.35));
 }
 
-/* ===== التواصل ===== */
-.contact-row{
+/* ===== طرق التواصل المتطورة (مثل الصورة) ===== */
+.contact-advanced{
   display:flex;
-  gap:10px;
+  gap:16px;
+  justify-content:center;
+  margin-top:12px;
 }
-.contact-btn{
-  padding:10px 14px;
-  border-radius:8px;
+.contact-tile{
+  width:80px;
+  height:80px;
+  border-radius:18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   text-decoration:none;
-  color:#fff;
-  font-weight:700;
+  box-shadow:0 10px 30px rgba(0,0,0,.7);
+  transition:.2s ease;
 }
-.contact-btn.whatsapp{background:#25d366}
-.contact-btn.email{background:var(--primary)}
+.contact-tile svg{
+  width:38px;
+  height:38px;
+  fill:#fff;
+}
+.contact-tile:hover{
+  transform:translateY(-3px);
+}
+.contact-whatsapp{
+  background:linear-gradient(135deg,#25d366,#1ebe5d);
+}
+.contact-email{
+  background:linear-gradient(135deg,#1e6bff,#0d47ff);
+}
 
 /* ===== الفورم ===== */
 .form-popup{
@@ -143,17 +164,19 @@ header{
   padding:18px;
   border-radius:12px;
   width:340px;
+  box-shadow:0 18px 60px rgba(0,0,0,.8);
+  z-index:60;
 }
 .form-popup input{
   width:100%;
   padding:10px;
-  margin-top:8px;
   border-radius:8px;
   border:none;
+  margin-top:8px;
 }
 .method-selection{
   display:flex;
-  gap:10px;
+  gap:12px;
   justify-content:center;
   margin-top:10px;
 }
@@ -161,10 +184,10 @@ header{
   display:flex;
   gap:10px;
   justify-content:center;
-  margin-top:10px;
+  margin-top:12px;
 }
-.send{background:var(--accent);border:none;padding:8px 14px}
-.close{background:#e9ecef;border:none;padding:8px 14px}
+.send{background:var(--accent);border:none;padding:9px 14px;border-radius:8px}
+.close{background:#e9ecef;border:none;padding:9px 14px;border-radius:8px}
 </style>
 </head>
 
@@ -180,56 +203,61 @@ header{
 
 <div class="container">
 
-  <!-- الباقات -->
-  <div class="package">
-    <div><h2>2585 جوهرة</h2><p>240 درهم</p></div>
-    <button onclick="openForm('2585 جوهرة','240 درهم')">شراء</button>
-  </div>
+<!-- ===== الباقات (كاملة) ===== -->
+<div class="package"><div><h2>100 جوهرة</h2><p>11 درهم</p></div><button onclick="openForm('100 جوهرة','11 درهم')">شراء</button></div>
+<div class="package"><div><h2>210 جوهرة</h2><p>21 درهم</p></div><button onclick="openForm('210 جوهرة','21 درهم')">شراء</button></div>
+<div class="package"><div><h2>530 جوهرة</h2><p>51 درهم</p></div><button onclick="openForm('530 جوهرة','51 درهم')">شراء</button></div>
+<div class="package"><div><h2>1060 جوهرة</h2><p>100 درهم</p></div><button onclick="openForm('1060 جوهرة','100 درهم')">شراء</button></div>
+<div class="package"><div><h2>2420 جوهرة</h2><p>230 درهم</p></div><button onclick="openForm('2420 جوهرة','230 درهم')">شراء</button></div>
+<div class="package"><div><h2>2585 جوهرة</h2><p>240 درهم</p></div><button onclick="openForm('2585 جوهرة','240 درهم')">شراء</button></div>
 
-  <!-- طرق الدفع -->
-  <div class="section">
-    <h3>💳 طرق الدفع</h3>
-    <div class="payment-methods">
-
-      <div class="payment-box">
-        💸 <strong>Cash Plus</strong>
-      </div>
-
-      <div class="payment-box">
-        <svg class="bank-icon" viewBox="0 0 24 24">
-          <path d="M3 10L12 4l9 6v2H3v-2z"/>
-          <path d="M5 12h2v6H5zM9 12h2v6H9zM13 12h2v6h-2zM17 12h2v6h-2z"/>
-          <path d="M4 20h16v2H4z"/>
-        </svg>
-        <strong>تحويل بنكي</strong>
-      </div>
-
+<!-- ===== طرق الدفع ===== -->
+<div class="section">
+  <h3>💳 طرق الدفع</h3>
+  <div class="payment-methods">
+    <div class="payment-box">💸 <strong>Cash Plus</strong></div>
+    <div class="payment-box">
+      <svg class="bank-icon" viewBox="0 0 24 24">
+        <path d="M3 10L12 4l9 6v2H3v-2z"/>
+        <path d="M5 12h2v6H5zM9 12h2v6H9zM13 12h2v6h-2zM17 12h2v6h-2z"/>
+        <path d="M4 20h16v2H4z"/>
+      </svg>
+      <strong>تحويل بنكي</strong>
     </div>
   </div>
+</div>
 
-  <!-- التواصل -->
-  <div class="section">
-    <h3>📬 تواصل معنا</h3>
-    <div class="contact-row">
-      <a class="contact-btn whatsapp" href="https://wa.me/212657482142">💬 واتساب</a>
-      <a class="contact-btn email" href="mailto:youremail@example.com">✉️ إيميل</a>
-    </div>
+<!-- ===== التواصل (مثل الصورة) ===== -->
+<div class="section">
+  <h3>📬 تواصل معنا</h3>
+  <div class="contact-advanced">
+    <a class="contact-tile contact-whatsapp" href="https://wa.me/212657482142" target="_blank">
+      <svg viewBox="0 0 24 24">
+        <path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.3A10 10 0 1 0 12 2z"/>
+        <path d="M16.5 13.8c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-1 1.1-.2.2-.4.2-.7.1-.3-.1-1.3-.5-2.4-1.6-.9-.8-1.5-1.8-1.6-2.1-.2-.3 0-.5.1-.6l.5-.6c.2-.2.2-.4.3-.6 0-.2 0-.4-.1-.6-.1-.1-.7-1.6-1-2.2-.3-.6-.6-.5-.8-.5h-.7c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.7s1.2 3.1 1.4 3.3c.2.2 2.3 3.6 5.6 5z"/>
+      </svg>
+    </a>
+
+    <a class="contact-tile contact-email" href="mailto:youremail@example.com">
+      <svg viewBox="0 0 24 24">
+        <path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/>
+        <path d="M22 6l-10 7L2 6"/>
+      </svg>
+    </a>
   </div>
+</div>
 
 </div>
 
-<!-- فورم -->
+<!-- ===== الفورم ===== -->
 <div class="form-popup" id="purchaseForm">
   <strong id="pkgName"></strong>
   <div id="pkgPrice"></div>
-
   <input id="playerId" placeholder="معرف اللاعب">
-
   <div class="method-selection">
     <label><input type="radio" name="method" checked> واتساب</label>
     <label><input type="radio" name="method"> إيميل</label>
   </div>
-
   <div class="form-actions">
     <button class="send" onclick="closeForm()">إرسال</button>
     <button class="close" onclick="closeForm()">إغلاق</button>
