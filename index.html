@@ -1,303 +1,99 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>متجر جواهر فري فاير</title>
 
 <style>
-:root{
-  --bg: #000;
-  --surface: #0f0f10;
-  --primary: #0d6efd;
-  --accent: #20c997;
-  --text: #ffffff;
-  --subtext: #d0d4da;
-  --shadow: rgba(0,0,0,0.65);
-  --radius: 10px;
-  --wa-green: #25D366;
-  --mail-blue: #0d6efd;
-}
-
-/* Reset */
-*{box-sizing:border-box}
-html,body{height:100%}
 body{
-  margin:0;
-  font-family: "Arial", "Tahoma", sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-  direction: rtl;
+    margin:0;
+    font-family:Arial;
+    background:#f4f4f4
 }
-
-/* Header */
 header{
-  background:#000;
-  color:#fff;
-  text-align:center;
-  padding:18px 15px;
-  font-size:20px;
-  position:sticky;
-  top:0;
-  z-index:40;
-  box-shadow:0 2px 6px rgba(255,255,255,0.03);
+    background:#222;
+    color:#fff;
+    text-align:center;
+    padding:20px;
+    font-size:22px
 }
 
-/* Cover */
-.cover-wrapper{ position:relative; margin:15px; }
+/* ===== الغلاف ===== */
+.cover-wrapper{
+    position:relative;
+    margin:15px
+}
 .cover-image{
-  width:100%;
-  aspect-ratio:5040 / 2460;
-  border-radius:12px;
-  overflow:hidden;
-  background:linear-gradient(180deg, rgba(13,110,253,0.06), #111);
+    width:100%;
+    aspect-ratio:5040 / 2460; /* ✅ نسبة الغلاف */
+    border-radius:12px;
+    overflow:hidden;
+    background:#ddd
 }
-.cover-image img{ width:100%; height:100%; object-fit:cover; display:block; filter:brightness(0.85); }
+.cover-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover
+}
 
-/* Profile on the right */
+/* ===== البروفايل ===== */
 .profile-wrapper{
-  position:absolute;
-  bottom:-45px;
-  right:20px;
-  width:120px;
-  height:120px;
-  border-radius:50%;
-  background:var(--surface);
-  padding:4px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.7);
-  display:flex;
-  align-items:center;
-  justify-content:center;
+    position:absolute;
+    bottom:-45px;
+    right:20px;
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    background:#fff;
+    padding:4px
 }
-.profile-wrapper img{ width:100%; height:100%; border-radius:50%; object-fit:cover; }
-
-.profile-name{
-  position:absolute;
-  bottom:-95px;
-  right:20px;
-  width:120px;
-  text-align:center;
-  font-weight:900;
-  letter-spacing:0.8px;
-  color:var(--text);
-  background:transparent;
-  padding-top:8px;
-  pointer-events:none;
-  text-shadow:0 2px 8px rgba(0,0,0,0.7);
-  text-transform:uppercase;
-  font-size:18px;
+.profile-wrapper img{
+    width:100%;
+    height:100%;
+    border-radius:50%;
+    object-fit:cover
 }
 
-/* Container */
-.container{ max-width:900px; margin:140px auto 24px; padding:15px; }
-
-/* Packages (الباقة يمين + زر شراء يسار) */
+/* ===== المتجر ===== */
+.container{
+    max-width:900px;
+    margin:80px auto 20px;
+    padding:15px
+}
 .package{
-  background:var(--surface);
-  padding:15px;
-  border-radius:var(--radius);
-  margin-bottom:15px;
-  box-shadow:0 10px 30px var(--shadow);
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-
-  direction: rtl;
-  flex-direction: row;
+    background:#fff;
+    padding:15px;
+    border-radius:10px;
+    margin-bottom:15px;
+    box-shadow:0 2px 6px rgba(0,0,0,.1)
 }
-.package h2{ color:var(--primary); margin:0 }
-.package p{ margin:0; font-weight:600; color:var(--subtext) }
-.package button{
-  background:var(--primary);
-  color:#fff;
-  border:none;
-  padding:10px 14px;
-  border-radius:8px;
-  cursor:pointer;
-  transition:transform .12s ease, box-shadow .12s ease;
-  box-shadow:0 8px 20px rgba(13,110,253,0.14);
+.package h2{color:#007bff}
+button{
+    background:#28a745;
+    color:#fff;
+    border:none;
+    padding:10px 15px;
+    border-radius:6px;
+    cursor:pointer
 }
-
-/* Sections */
 .section{
-  background:var(--surface);
-  padding:14px;
-  border-radius:var(--radius);
-  box-shadow:0 10px 30px var(--shadow);
-  margin-bottom:12px;
-  color:var(--subtext);
+    background:#fff;
+    padding:15px;
+    border-radius:10px
 }
 
-/* ========== ✅ تواصل معنا (الإيميل يمين + واتساب يسار + النص كامل) ========== */
-.contact-row{
-  display:flex;
-  flex-direction:row;
-  gap:18px;
-  align-items:stretch;
-  justify-content:space-between;
-  flex-wrap:nowrap;
-
-  /* ✅ مهم: نخليه RTL باش أول زر فالـ HTML يبان فاليمين */
-  direction: rtl;
-}
-
-.contact-btn,
-.contact-btn:visited{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:14px;
-
-  /* ✅ نفس الحجم دائماً */
-  flex:1 1 0;
-  height:84px;
-  padding:0 22px;
-  border-radius:22px;
-
-  /* ✅ خلي النص كامل ومايتقصّش */
-  white-space:nowrap;
-  overflow:visible;
-  text-overflow:clip;
-
-  /* ✅ لا تغيير بسبب visited */
-  color:#fff;
-  text-decoration:none;
-
-  font-weight:800;
-  font-size:22px;
-  line-height:1;
-  min-width:0;
-
-  direction: rtl;
-}
-
-.contact-btn .icon{
-  width:30px; /* حجم ثابت للأيقونة */
-  height:30px;
-  flex:0 0 30px;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-}
-
-/* SVG */
-.contact-row svg{
-  width:26px;
-  height:26px;
-  fill:none;
-  stroke:currentColor;
-  stroke-width:1.7;
-  stroke-linecap:round;
-  stroke-linejoin:round;
-}
-
-/* ألوان ثابتة */
-.contact-btn.email,
-.contact-btn.email:visited{ background:var(--mail-blue); border:none; }
-.contact-btn.whatsapp,
-.contact-btn.whatsapp:visited{ background:var(--wa-green); border:none; }
-
-/* Form popup */
+/* ===== الفورم ===== */
 .form-popup{
-  display:none;
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  width:360px;
-  background:var(--surface);
-  padding:18px;
-  border-radius:12px;
-  box-shadow:0 18px 60px rgba(0,0,0,0.8);
-  z-index:60;
-  color:var(--text);
-}
-.form-popup .form-content{ display:flex; flex-direction:column; align-items:center; gap:10px; text-align:center; }
-
-/* Inputs */
-.form-popup input[type="text"],
-.form-popup input[type="email"],
-.form-popup input[type="tel"]{
-  width:100%;
-  max-width:320px;
-  padding:10px 12px;
-  border-radius:8px;
-  border:1px solid rgba(255,255,255,0.06);
-  background:#0b0b0c;
-  color:var(--text);
-  font-size:15px;
-  direction:ltr;
-}
-
-/* Method selection */
-.method-selection{ display:flex; gap:10px; align-items:center; justify-content:center; padding:6px; width:100%; }
-.method-selection label{
-  display:inline-flex; gap:8px; align-items:center; padding:6px 10px; border-radius:8px; cursor:pointer; user-select:none;
-  background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.03); font-weight:700; color:var(--subtext);
-}
-.method-selection input[type="radio"]{ accent-color: var(--primary); }
-
-/* Quick icons */
-.quick-icons{ display:flex; gap:14px; align-items:center; justify-content:center; margin-top:8px; width:100%; }
-.icon-btn{
-  display:inline-flex; align-items:center; justify-content:center;
-  width:54px; height:54px; border-radius:12px; cursor:pointer;
-  border:1px solid rgba(255,255,255,0.04);
-  background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-  transition:transform .14s ease, box-shadow .14s ease;
-  box-shadow:0 6px 18px rgba(0,0,0,0.45);
-}
-.icon-btn:active{ transform:translateY(1px) }
-.icon-btn:hover{ transform:translateY(-4px) scale(1.03); box-shadow:0 14px 30px rgba(0,0,0,0.55); }
-.icon-btn.wa{ background:linear-gradient(180deg,var(--wa-green), #1ebc5b); color:#fff; box-shadow:0 10px 30px rgba(37,211,102,0.18) }
-.icon-btn.mail{ background:linear-gradient(180deg,var(--mail-blue), #0a58ca); color:#fff; box-shadow:0 10px 30px rgba(13,110,253,0.12) }
-
-.icon-btn svg{
-  width:28px;
-  height:28px;
-  display:block;
-  fill:none;
-  stroke:currentColor;
-  stroke-width:1.6;
-  stroke-linecap:round;
-  stroke-linejoin:round;
-  shape-rendering:geometricPrecision;
-  vector-effect:non-scaling-stroke;
-}
-
-/* Form buttons */
-.form-popup .form-actions{ display:flex; gap:8px; width:100%; justify-content:center; flex-wrap:wrap; margin-top:6px; }
-.form-popup .form-actions button{ padding:9px 12px; border-radius:8px; border:none; cursor:pointer; font-weight:700; }
-.form-popup .send{ background:var(--accent); color:#000 }
-.form-popup .close{ background:#e9ecef; color:#111 }
-button.primary{ background:var(--primary); color:#fff; border:none; }
-
-/* Responsive */
-@media (max-width:480px){
-  .profile-wrapper{ right:12px; width:100px; height:100px; bottom:-40px }
-  .profile-name{ right:12px; width:100px; font-size:16px; bottom:-88px }
-  .container{ margin:110px 12px 20px }
-  .package{ flex-direction:row; align-items:center }
-
-  .form-popup{ right:12px; left:12px; width:auto }
-  .cover-wrapper{ margin:12px }
-  .form-popup input[type="text"],
-  .form-popup input[type="email"],
-  .form-popup input[type="tel"]{ max-width:100% }
-
-  /* ✅ باش "إرسال إيميل" تبقى كاملة فالموبايل */
-  .contact-btn,
-  .contact-btn:visited{
-    height:78px;
-    border-radius:20px;
-    padding:0 16px;
-    font-size:18px;
-    gap:10px;
-  }
-  .contact-btn .icon{ width:26px; height:26px; flex:0 0 26px; }
-  .contact-row svg{ width:22px; height:22px; }
+    display:none;
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    width:320px;
+    background:#fff;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 0 15px rgba(0,0,0,.3)
 }
 </style>
 </head>
@@ -306,82 +102,99 @@ button.primary{ background:var(--primary); color:#fff; border:none; }
 
 <header>🛒 متجر جواهر فري فاير</header>
 
-<!-- Cover + profile -->
+<!-- ===== الغلاف + البروفايل ===== -->
 <div class="cover-wrapper">
-  <div class="cover-image">
-    <img src="cover.jpg" alt="غلاف المتجر">
-  </div>
 
-  <div class="profile-wrapper">
-    <img src="profile.png" alt="صورة المتجر">
-  </div>
+    <div class="cover-image">
+        <!-- ضع صورة الغلاف هنا -->
+        <img src="cover.jpg" alt="غلاف المتجر">
+    </div>
 
-  <div class="profile-name">SAD SILENT</div>
+    <div class="profile-wrapper">
+        <!-- ضع صورة البروفايل هنا -->
+        <img src="profile.png" alt="صورة المتجر">
+    </div>
+
 </div>
 
-<!-- Store content -->
+<!-- ===== المتجر ===== -->
 <div class="container">
 
-  <!-- الباقات كاملة -->
-  <div class="package"><div><h2>100 جوهرة</h2><p>11 درهم</p></div><button class="primary" onclick="openForm('100 جوهرة','11 درهم')">شراء</button></div>
-  <div class="package"><div><h2>210 جوهرة</h2><p>21 درهم</p></div><button class="primary" onclick="openForm('210 جوهرة','21 درهم')">شراء</button></div>
-  <div class="package"><div><h2>530 جوهرة</h2><p>51 درهم</p></div><button class="primary" onclick="openForm('530 جوهرة','51 درهم')">شراء</button></div>
-  <div class="package"><div><h2>1060 جوهرة</h2><p>100 درهم</p></div><button class="primary" onclick="openForm('1060 جوهرة','100 درهم')">شراء</button></div>
-  <div class="package"><div><h2>2420 جوهرة</h2><p>230 درهم</p></div><button class="primary" onclick="openForm('2420 جوهرة','230 درهم')">شراء</button></div>
-  <div class="package"><div><h2>2585 جوهرة</h2><p>240 درهم</p></div><button class="primary" onclick="openForm('2585 جوهرة','240 درهم')">شراء</button></div>
+<div class="package">
+<h2>100 جوهرة</h2>
+<p>11 درهم</p>
+<button onclick="openForm('100 جوهرة','11 درهم')">شراء</button>
+</div>
 
-  <!-- طرق الدفع -->
-  <div class="section">
-    <h3>💳 طرق الدفع</h3>
-    <ul class="payment-list">
-      <li><span class="pay-emoji">💸</span> Cash Plus</li>
-      <li><span class="pay-emoji">🏦</span> تحويل بنكي</li>
-    </ul>
-  </div>
+<div class="package">
+<h2>210 جوهرة</h2>
+<p>21 درهم</p>
+<button onclick="openForm('210 جوهرة','21 درهم')">شراء</button>
+</div>
 
-  <!-- تواصل معنا -->
-  <div class="section">
-    <h3 style="color:var(--text);margin-top:0">📬 تواصل معنا</h3>
+<div class="package">
+<h2>530 جوهرة</h2>
+<p>51 درهم</p>
+<button onclick="openForm('530 جوهرة','51 درهم')">شراء</button>
+</div>
 
-    <div class="contact-row">
+<div class="package">
+<h2>1060 جوهرة</h2>
+<p>100 درهم</p>
+<button onclick="openForm('1060 جوهرة','100 درهم')">شراء</button>
+</div>
 
-      <!-- ✅ الإيميل: أول عنصر => يبان فاليمين -->
-      <a class="contact-btn email" id="storeEmailBtn" href="mailto:youremail@example.com">
-        <span class="icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24">
-            <rect x="2" y="5" width="20" height="14" rx="2"></rect>
-            <path d="M3 7l9 6 9-6"></path>
-          </svg>
-        </span>
-        <span>إرسال إيميل</span>
-      </a>
+<div class="package">
+<h2>2420 جوهرة</h2>
+<p>230 درهم</p>
+<button onclick="openForm('2420 جوهرة','230 درهم')">شراء</button>
+</div>
 
-      <!-- ✅ واتساب: ثاني عنصر => يبان فاليسار -->
-      <a class="contact-btn whatsapp" id="storeWhatsAppBtn" href="https://wa.me/212657482142" target="_blank" rel="noopener">
-        <span class="icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24">
-            <path d="M21 12.05c0 4.97-4.03 9-9 9a8.96 8.96 0 01-4.74-1.35L3 21l1.3-4.25A8.97 8.97 0 013 12.05C3 7.08 7.03 3.05 12 3.05s9 4.03 9 9z"></path>
-            <path d="M16.2 13.1c-.25-.12-1.47-.73-1.7-.82-.23-.09-.4-.12-.57.12-.17.24-.66.82-.81.98-.14.17-.28.19-.53.07-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.71-.14-.24-.01-.37.11-.49.12-.12.27-.31.41-.46.13-.14.17-.24.25-.4.08-.16.04-.3 0-.42-.04-.12-.52-1.26-.71-1.73-.19-.46-.38-.4-.52-.41-.14 0-.3 0-.46 0-.16 0-.41.06-.62.28-.21.22-.79.77-.79 1.88 0 1.11.8 2.33.91 2.52.11.19 1.6 2.62 3.89 3.67z"></path>
-          </svg>
-        </span>
-        <span>واتساب</span>
-      </a>
+<div class="package">
+<h2>2585 جوهرة</h2>
+<p>240 درهم</p>
+<button onclick="openForm('2585 جوهرة','240 درهم')">شراء</button>
+</div>
 
-    </div>
-  </div>
+<div class="section">
+<h3>💳 طرق الدفع</h3>
+<ul>
+<li>Cash Plus</li>
+<li>تحويل بنكي</li>
+</ul>
+</div>
 
 </div>
 
-<!-- Purchase form popup -->
-<div class="form-popup" id="purchaseForm" aria-hidden="true">
-  <div class="form-content">
-    <strong id="pkgName">-</strong>
-    <div id="pkgPrice" style="color:var(--primary);font-weight:700;"></div>
+<!-- ===== فورم الطلب ===== -->
+<div class="form-popup" id="purchaseForm">
+<input id="playerId" placeholder="معرف اللاعب"><br><br>
+<button onclick="sendOrder()">إرسال</button>
+<button onclick="closeForm()">إغلاق</button>
+</div>
 
-    <input id="playerId" type="text" placeholder="معرف اللاعب" aria-label="معرف اللاعب">
+<script>
+let pkg="", price="";
 
-    <div class="quick-icons" title="تواصل سريع">
-      <button class="icon-btn wa" onclick="quickWhatsApp()" aria-label="فتح واتساب">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
-          <path d="M21 12.05c0 4.97-4.03 9-9 9a8.96 8.96 0 01-4.74-1.35L3 21l1.3-4.25A8.97 8.97 0 013 12.05C3 7.08 7.03 3.05 12 3.05s9 4.03 9 9z"></path>
-          <path d="M16.2 13.1c-.25-.12-1.47-.73-1.7-.82-.23-.09-.4-.12-.57.12-.17.24-.66.82-.81.98-.14.17-.28.19-.53.07-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.71-.14-.24-.01-.37.11-.49.12-.12.27-.31.41-.46
+function openForm(p,pr){
+    pkg=p;price=pr;
+    document.getElementById("purchaseForm").style.display="block";
+}
+function closeForm(){
+    document.getElementById("purchaseForm").style.display="none";
+}
+function sendOrder(){
+    let id=document.getElementById("playerId").value;
+    if(!id)return alert("أدخل معرف اللاعب");
+    window.open(
+        "https://wa.me/212657482142?text="+
+        encodeURIComponent(
+            `طلب شراء\n📦 ${pkg}\n💰 ${price}\n🆔 ${id}`
+        ),
+        "_blank"
+    );
+}
+</script>
+
+</body>
+</html>
