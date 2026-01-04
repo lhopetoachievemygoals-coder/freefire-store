@@ -206,7 +206,7 @@ header{
   width:28px;
   height:28px;
   display:block;
-  fill:none;               /* use stroke for crisp lines on all screens */
+  fill:none;
   stroke:currentColor;
   stroke-width:1.6;
   stroke-linecap:round;
@@ -296,18 +296,7 @@ button.primary{ background:var(--primary); color:#fff; border:none; }
   <div class="section">
     <h3 style="color:var(--text);margin-top:0">📬 تواصل معنا</h3>
     <div class="contact-row">
-      <!-- site-level contact buttons: use the same clear SVG icons -->
-      <a class="contact-btn email" id="storeEmailBtn" href="mailto:youremail@example.com">
-        إرسال إيميل
-        <span class="icon" aria-hidden="true">
-          <!-- Envelope (stroke SVG, crisp) -->
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
-            <rect x="2" y="5" width="20" height="14" rx="2" ry="2"></rect>
-            <path d="M3 7l9 6 9-6"></path>
-          </svg>
-        </span>
-      </a>
-
+      <!-- swapped: WhatsApp button moved into the left position, Email moved to the right -->
       <a class="contact-btn whatsapp" id="storeWhatsAppBtn" href="https://wa.me/212657482142" target="_blank" rel="noopener">
         واتساب
         <span class="icon" aria-hidden="true">
@@ -315,6 +304,17 @@ button.primary{ background:var(--primary); color:#fff; border:none; }
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
             <path d="M21 12.05c0 4.97-4.03 9-9 9a8.96 8.96 0 01-4.74-1.35L3 21l1.3-4.25A8.97 8.97 0 013 12.05C3 7.08 7.03 3.05 12 3.05s9 4.03 9 9z"></path>
             <path d="M16.2 13.1c-.25-.12-1.47-.73-1.7-.82-.23-.09-.4-.12-.57.12-.17.24-.66.82-.81.98-.14.17-.28.19-.53.07-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.71-.14-.24-.01-.37.11-.49.12-.12.27-.31.41-.46.13-.14.17-.24.25-.4.08-.16.04-.3 0-.42-.04-.12-.52-1.26-.71-1.73-.19-.46-.38-.4-.52-.41-.14 0-.3 0-.46 0-.16 0-.41.06-.62.28-.21.22-.79.77-.79 1.88 0 1.11.8 2.33.91 2.52.11.19 1.6 2.62 3.89 3.67 2.29 1.05 2.29.7 2.63.66.34-.04 1.17-.51 1.35-1.02.18-.51.18-.96.12-1.06-.06-.1-.21-.17-.45-.31z"></path>
+          </svg>
+        </span>
+      </a>
+
+      <a class="contact-btn email" id="storeEmailBtn" href="mailto:youremail@example.com">
+        إرسال إيميل
+        <span class="icon" aria-hidden="true">
+          <!-- Envelope (stroke SVG, crisp) -->
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
+            <rect x="2" y="5" width="20" height="14" rx="2" ry="2"></rect>
+            <path d="M3 7l9 6 9-6"></path>
           </svg>
         </span>
       </a>
@@ -331,21 +331,21 @@ button.primary{ background:var(--primary); color:#fff; border:none; }
 
     <input id="playerId" type="text" placeholder="معرف اللاعب" aria-label="معرف اللاعب">
 
-    <!-- Improved clear icons under ID (same SVGs as site-level) -->
+    <!-- swapped: Email icon first, then WhatsApp (reversed from previous order) -->
     <div class="quick-icons" title="تواصل سريع">
-      <button class="icon-btn wa" onclick="quickWhatsApp()" aria-label="فتح واتساب">
-        <!-- WhatsApp (stroke SVG) -->
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
-          <path d="M21 12.05c0 4.97-4.03 9-9 9a8.96 8.96 0 01-4.74-1.35L3 21l1.3-4.25A8.97 8.97 0 013 12.05C3 7.08 7.03 3.05 12 3.05s9 4.03 9 9z"></path>
-          <path d="M16.2 13.1c-.25-.12-1.47-.73-1.7-.82-.23-.09-.4-.12-.57.12-.17.24-.66.82-.81.98-.14.17-.28.19-.53.07-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.71-.14-.24-.01-.37.11-.49.12-.12.27-.31.41-.46.13-.14.17-.24.25-.4.08-.16.04-.3 0-.42-.04-.12-.52-1.26-.71-1.73-.19-.46-.38-.4-.52-.41-.14 0-.3 0-.46 0-.16 0-.41.06-.62.28-.21.22-.79.77-.79 1.88 0 1.11.8 2.33.91 2.52.11.19 1.6 2.62 3.89 3.67 2.29 1.05 2.29.7 2.63.66.34-.04 1.17-.51 1.35-1.02.18-.51.18-.96.12-1.06-.06-.1-.21-.17-.45-.31z"></path>
-        </svg>
-      </button>
-
       <button class="icon-btn mail" onclick="quickEmail()" aria-label="فتح الإيميل">
         <!-- Envelope (stroke SVG) -->
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
           <rect x="2" y="5" width="20" height="14" rx="2" ry="2"></rect>
           <path d="M3 7l9 6 9-6"></path>
+        </svg>
+      </button>
+
+      <button class="icon-btn wa" onclick="quickWhatsApp()" aria-label="فتح واتساب">
+        <!-- WhatsApp (stroke SVG) -->
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
+          <path d="M21 12.05c0 4.97-4.03 9-9 9a8.96 8.96 0 01-4.74-1.35L3 21l1.3-4.25A8.97 8.97 0 013 12.05C3 7.08 7.03 3.05 12 3.05s9 4.03 9 9z"></path>
+          <path d="M16.2 13.1c-.25-.12-1.47-.73-1.7-.82-.23-.09-.4-.12-.57.12-.17.24-.66.82-.81.98-.14.17-.28.19-.53.07-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.71-.14-.24-.01-.37.11-.49.12-.12.27-.31.41-.46.13-.14.17-.24.25-.4.08-.16.04-.3 0-.42-.04-.12-.52-1.26-.71-1.73-.19-.46-.38-.4-.52-.41-.14 0-.3 0-.46 0-.16 0-.41.06-.62.28-.21.22-.79.77-.79 1.88 0 1.11.8 2.33.91 2.52.11.19 1.6 2.62 3.89 3.67 2.29 1.05 2.29.7 2.63.66.34-.04 1.17-.51 1.35-1.02.18-.51.18-.96.12-1.06-.06-.1-.21-.17-.45-.31z"></path>
         </svg>
       </button>
     </div>
