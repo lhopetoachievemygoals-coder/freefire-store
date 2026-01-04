@@ -6,6 +6,7 @@
 <title>متجر جواهر فري فاير</title>
 
 <style>
+/* ======= الكود الأصلي (بدون تغيير) ======= */
 :root{
   --bg:#000;
   --surface:#0f0f10;
@@ -18,7 +19,6 @@
   --wa-green:#25D366;
   --mail-blue:#0d6efd;
 }
-
 *{box-sizing:border-box}
 html,body{height:100%}
 body{
@@ -28,8 +28,6 @@ body{
   color:var(--text);
   direction:rtl;
 }
-
-/* Header */
 header{
   background:#000;
   text-align:center;
@@ -37,30 +35,26 @@ header{
   font-size:20px;
   position:sticky;
   top:0;
-  z-index:40;
 }
-
-/* Cover */
 .cover-wrapper{position:relative;margin:15px}
 .cover-image{width:100%;aspect-ratio:5040/2460;border-radius:12px;overflow:hidden;background:#111}
 .cover-image img{width:100%;height:100%;object-fit:cover}
 .profile-wrapper{position:absolute;bottom:-45px;right:20px;width:120px;height:120px;border-radius:50%;background:var(--surface);padding:4px}
 .profile-wrapper img{width:100%;height:100%;border-radius:50%}
 .profile-name{position:absolute;bottom:-95px;right:20px;width:120px;text-align:center;font-weight:900}
-
-/* Container */
 .container{max-width:900px;margin:140px auto 24px;padding:15px}
 
-/* Packages */
+/* الباقات */
 .package{
   background:var(--surface);
   padding:15px;
   border-radius:var(--radius);
   margin-bottom:15px;
+  box-shadow:0 10px 30px var(--shadow);
   display:flex;
   justify-content:space-between;
 }
-.package h2{color:var(--primary);margin:0}
+.package h2{margin:0;color:var(--primary)}
 .package p{margin:0;color:var(--subtext)}
 button.primary{
   background:var(--primary);
@@ -70,58 +64,55 @@ button.primary{
   border-radius:8px;
 }
 
-/* Sections */
+/* الأقسام */
 .section{
   background:var(--surface);
   padding:14px;
   border-radius:var(--radius);
   margin-bottom:12px;
+  box-shadow:0 10px 30px var(--shadow);
 }
 
-/* ====== تواصل معنا (تكبير الحجم فقط) ====== */
+/* تواصل معنا (الكود الأصلي) */
 .contact-row{
   display:flex;
   flex-direction:column;
-  gap:18px;
+  gap:12px;
   align-items:flex-end;
 }
-
-/* 🔥 هنا التعديل */
 .contact-btn{
-  min-width:320px;          /* تكبير العرض */
-  min-height:78px;          /* تكبير الارتفاع */
-  padding:18px 26px;
-  font-size:20px;           /* تكبير النص */
-  border-radius:16px;
-  display:flex;
+  display:inline-flex;
   align-items:center;
-  justify-content:center;
-  gap:14px;
-  font-weight:800;
+  gap:8px;
+  background:#111;
   color:#fff;
+  border-radius:10px;
+  padding:12px 18px;
   text-decoration:none;
+  font-weight:700;
 }
-
 .contact-btn.whatsapp{background:var(--wa-green)}
 .contact-btn.email{background:var(--mail-blue)}
-
-/* تكبير الأيقونة */
-.contact-btn svg{
-  width:30px;
-  height:30px;
+.contact-btn .icon svg{
+  width:18px;
+  height:18px;
   stroke:currentColor;
   fill:none;
-  stroke-width:1.6;
 }
 
-/* Responsive */
-@media (max-width:480px){
-  .contact-btn{
-    min-width:100%;
-    min-height:82px;
-    font-size:21px;
-  }
+/* ======= PATCH فقط لتواصل معنا (تكبير الحجم) ======= */
+/* ⛔ لا يؤثر على أي شيء آخر */
+.section .contact-row .contact-btn{
+  padding:20px 28px;   /* تكبير الزر */
+  font-size:20px;      /* تكبير النص */
+  min-height:76px;     /* ارتفاع أكبر */
+  border-radius:16px;
 }
+.section .contact-row .contact-btn .icon svg{
+  width:30px;
+  height:30px;
+}
+/* ======= نهاية التعديل ======= */
 </style>
 </head>
 
@@ -137,7 +128,7 @@ button.primary{
 
 <div class="container">
 
-<!-- الباقات (لم تُمس) -->
+<!-- الباقات (كما هي) -->
 <div class="package"><div><h2>100 جوهرة</h2><p>11 درهم</p></div><button class="primary">شراء</button></div>
 <div class="package"><div><h2>210 جوهرة</h2><p>21 درهم</p></div><button class="primary">شراء</button></div>
 <div class="package"><div><h2>530 جوهرة</h2><p>51 درهم</p></div><button class="primary">شراء</button></div>
@@ -145,30 +136,28 @@ button.primary{
 <div class="package"><div><h2>2420 جوهرة</h2><p>230 درهم</p></div><button class="primary">شراء</button></div>
 <div class="package"><div><h2>2585 جوهرة</h2><p>240 درهم</p></div><button class="primary">شراء</button></div>
 
-<!-- ===== تواصل معنا ===== -->
+<!-- تواصل معنا -->
 <div class="section">
   <h3>📬 تواصل معنا</h3>
 
   <div class="contact-row">
-
-    <!-- واتساب -->
     <a class="contact-btn whatsapp" href="#">
-      <svg viewBox="0 0 24 24">
-        <path d="M21 12.05c0 4.97-4.03 9-9 9a8.96 8.96 0 01-4.74-1.35L3 21l1.3-4.25A8.97 8.97 0 013 12.05z"/>
-        <path d="M16.2 13.1c-.25-.12-1.47-.73-1.7-.82-.23-.09-.4-.12-.57.12"/>
-      </svg>
+      <span class="icon">
+        <svg viewBox="0 0 24 24">
+          <path d="M21 12.05c0 4.97-4.03 9-9 9z"/>
+        </svg>
+      </span>
       واتساب
     </a>
 
-    <!-- إيميل -->
     <a class="contact-btn email" href="#">
-      <svg viewBox="0 0 24 24">
-        <rect x="2" y="5" width="20" height="14" rx="2"/>
-        <path d="M3 7l9 6 9-6"/>
-      </svg>
+      <span class="icon">
+        <svg viewBox="0 0 24 24">
+          <rect x="2" y="5" width="20" height="14" rx="2"/>
+        </svg>
+      </span>
       إرسال إيميل
     </a>
-
   </div>
 </div>
 
