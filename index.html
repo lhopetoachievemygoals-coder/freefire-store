@@ -26,7 +26,7 @@ header{
 }
 .cover-image{
     width:100%;
-    aspect-ratio:5040 / 2460; /* ✅ نسبة الغلاف */
+    aspect-ratio:5040 / 2460;
     border-radius:12px;
     overflow:hidden;
     background:#ddd
@@ -95,6 +95,22 @@ button{
     border-radius:10px;
     box-shadow:0 0 15px rgba(0,0,0,.3)
 }
+
+.form-popup h3{
+    text-align:center;
+    margin-top:0
+}
+
+.form-popup input{
+    width:100%;
+    padding:12px;
+    font-size:16px;
+    text-align:center;
+    border-radius:8px;
+    border:1px solid #ccc;
+    outline:none;
+    box-sizing:border-box
+}
 </style>
 </head>
 
@@ -106,12 +122,10 @@ button{
 <div class="cover-wrapper">
 
     <div class="cover-image">
-        <!-- ضع صورة الغلاف هنا -->
         <img src="cover.jpg" alt="غلاف المتجر">
     </div>
 
     <div class="profile-wrapper">
-        <!-- ضع صورة البروفايل هنا -->
         <img src="profile.png" alt="صورة المتجر">
     </div>
 
@@ -168,15 +182,16 @@ button{
 
 <!-- ===== فورم الطلب ===== -->
 <div class="form-popup" id="purchaseForm">
-    <h3>إتمام الطلب</h3>
+<h3>إتمام الطلب</h3>
 
-    <input id="playerId" placeholder="أدخل معرف اللاعب">
+<input id="playerId" placeholder="أدخل معرف اللاعب">
 
-    <br><br>
+<br><br>
 
-    <button onclick="sendOrder()">إرسال</button>
-    <button onclick="closeForm()">إغلاق</button>
+<button onclick="sendOrder()">إرسال</button>
+<button onclick="closeForm()">إغلاق</button>
 </div>
+
 <script>
 let pkg="", price="";
 
@@ -202,17 +217,3 @@ function sendOrder(){
 
 </body>
 </html>
-.form-popup input {
-    width: 100%;
-    padding: 12px;
-    font-size: 16px;
-    text-align: center;      /* ← النص في الوسط */
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    outline: none;
-    box-sizing: border-box;
-}
-
-.form-popup h3 {
-    text-align: center;      /* ← العنوان في الوسط */
-}
