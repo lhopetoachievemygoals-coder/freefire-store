@@ -114,7 +114,7 @@ button.primary{
   color:var(--subtext);
 }
 
-/* PAYMENT LIST: emoji on the left of each method (app-style emojis as requested) */
+/* PAYMENT LIST: emoji on the left of each method */
 .payment-list{ list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:10px }
 .payment-list li{
   display:flex;
@@ -158,7 +158,7 @@ button.primary{
   box-shadow:0 8px 18px rgba(0,0,0,0.6);
 }
 
-/* left-side small icon stored as emoji (we keep them as user liked) */
+/* left-side small icon stored as emoji (consistent with apps) */
 .contact-btn .icon-left{
   display:inline-flex;
   align-items:center;
@@ -172,7 +172,7 @@ button.primary{
 .contact-btn.email{ background:var(--mail-blue); color:#fff; border:none; }
 .contact-btn.whatsapp{ background:var(--wa-green); color:#fff; border:none; }
 
-/* QUICK ICONS (under player id) - use emoji characters for clarity (unchanged) */
+/* QUICK ICONS (under player id) - now use emoji characters for clarity */
 .quick-icons{ display:flex; gap:14px; align-items:center; justify-content:center; margin-top:8px; }
 .icon-btn{
   display:inline-flex; align-items:center; justify-content:center;
@@ -247,7 +247,6 @@ button.primary{
     <h3 style="color:var(--text); margin-top:0">💳 طرق الدفع</h3>
 
     <ul class="payment-list">
-      <!-- Changed payment emojis only (app-style emojis) -->
       <li><span class="pay-emoji">💸</span> Cash Plus</li>
       <li><span class="pay-emoji">🏦</span> تحويل بنكي</li>
     </ul>
@@ -257,13 +256,13 @@ button.primary{
     <h3 style="color:var(--text); margin-top:0">📬 تواصل معنا</h3>
 
     <div class="contact-row">
-      <!-- Email on the left (kept the same emoji style as you liked) -->
+      <!-- Email on the left -->
       <a class="contact-btn email" id="storeEmailBtn" href="mailto:youremail@example.com">
         <span class="icon-left" aria-hidden="true">📧</span>
         إرسال إيميل
       </a>
 
-      <!-- WhatsApp on the right (kept the same emoji style as you liked) -->
+      <!-- WhatsApp on the right -->
       <a class="contact-btn whatsapp" id="storeWhatsAppBtn" href="https://wa.me/212657482142" target="_blank" rel="noopener">
         واتساب
         <span class="icon-left" aria-hidden="true">💬</span>
@@ -282,7 +281,7 @@ button.primary{
 
     <input id="playerId" type="text" placeholder="معرف اللاعب" aria-label="معرف اللاعب">
 
-    <!-- Quick icons (under player id) - unchanged and use emoji for clarity -->
+    <!-- Quick icons use emoji (clear, not distorted) -->
     <div class="quick-icons" title="تواصل سريع">
       <button class="icon-btn wa" onclick="quickWhatsApp()" aria-label="فتح واتساب">💬</button>
       <button class="icon-btn mail" onclick="quickEmail()" aria-label="فتح الإيميل">📧</button>
@@ -323,44 +322,4 @@ function closeForm(){
   document.getElementById("purchaseForm").setAttribute("aria-hidden","true");
 }
 function updateMethodUI(){
-  const method = document.querySelector('input[name="contactMethod"]:checked')?.value || 'whatsapp';
-  const emailField = document.getElementById("buyerEmail");
-  if(method === 'email') emailField.style.display='block'; else { emailField.style.display='none'; emailField.value=''; }
-}
-document.addEventListener('change', function(e){ if(e.target && e.target.name === 'contactMethod') updateMethodUI(); });
-
-function quickWhatsApp(){
-  const id = document.getElementById("playerId").value.trim();
-  if(!id) return alert("أدخل معرف اللاعب قبل فتح واتساب.");
-  const buyerEmail = document.getElementById("buyerEmail").value.trim();
-  const body = [`طلب شراء - SAD SILENT`,`📦 الباقة: ${pkg || "-"}`,`💰 السعر: ${price || "-"}`,`🆔 معرف اللاعب: ${id}`, buyerEmail ? `✉️ ${buyerEmail}` : ''].filter(Boolean).join("\n");
-  const waUrl = `https://wa.me/${STORE_WA_NUMBER}?text=${encodeURIComponent(body)}`;
-  window.open(waUrl,"_blank","noopener");
-}
-function quickEmail(){
-  const id = document.getElementById("playerId").value.trim();
-  if(!id) return alert("أدخل معرف اللاعب قبل فتح الإيميل.");
-  const buyerEmail = document.getElementById("buyerEmail").value.trim();
-  const subject = `طلب شراء - SAD SILENT - ${pkg || "-"}`;
-  const body = [`طلب شراء - SAD SILENT`,`📦 الباقة: ${pkg || "-"}`,`💰 السعر: ${price || "-"}`,`🆔 معرف اللاعب: ${id}`, buyerEmail ? `✉️ ${buyerEmail}` : ''].filter(Boolean).join("\n");
-  window.open(`mailto:${encodeURIComponent(STORE_EMAIL)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`,"_blank","noopener");
-}
-
-function sendOrder(){
-  let id = document.getElementById("playerId").value.trim();
-  if(!id) return alert("أدخل معرف اللاعب");
-  let method = document.querySelector('input[name="contactMethod"]:checked')?.value || 'whatsapp';
-  let buyerEmail = document.getElementById("buyerEmail").value.trim();
-  const body = [`طلب شراء - SAD SILENT`,`📦 الباقة: ${pkg || "-"}`,`💰 السعر: ${price || "-"}`,`🆔 معرف اللاعب: ${id}`, `طريقة التواصل: ${method}`, buyerEmail ? `✉️ ${buyerEmail}` : ''].filter(Boolean).join("\n");
-  if(method === 'whatsapp'){
-    window.open(`https://wa.me/${STORE_WA_NUMBER}?text=${encodeURIComponent(body)}`,"_blank","noopener");
-  } else {
-    if(!buyerEmail) return alert("من فضلك أدخل بريدك الإلكتروني عند اختيار طريقة الإيميل.");
-    const subject = `طلب شراء - SAD SILENT - ${pkg || "-"}`;
-    window.open(`mailto:${encodeURIComponent(STORE_EMAIL)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`,"_blank","noopener");
-  }
-}
-</script>
-
-</body>
-</html>
+  const method = document.querySelector('input[name="contact
