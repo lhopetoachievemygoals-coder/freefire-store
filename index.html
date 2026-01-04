@@ -7,12 +7,14 @@
 
 <style>
 :root{
-  --primary: #0d6efd;     /* اللون الأساسي المناسب */
-  --surface: #ffffff;
-  --muted-bg: #f4f7fb;
+  --bg: #000;             /* خلفية المتجر: أسود */
+  --surface: #0f0f10;     /* واجهات البطاقات */
+  --muted-bg: #0a0a0a;
+  --primary: #0d6efd;     /* اللون الأساسي */
   --accent: #20c997;
-  --text: #222;
-  --shadow: rgba(13,110,253,0.08);
+  --text: #ffffff;
+  --subtext: #d0d4da;
+  --shadow: rgba(0,0,0,0.65);
   --radius: 10px;
 }
 
@@ -21,15 +23,16 @@ html,body{height:100%}
 body{
     margin:0;
     font-family: "Arial", "Tahoma", sans-serif;
-    background:var(--muted-bg);
+    background:var(--bg);
     color:var(--text);
     -webkit-font-smoothing:antialiased;
     -moz-osx-font-smoothing:grayscale;
+    direction: rtl;
 }
 
 /* ===== الهيدر ===== */
 header{
-    background:linear-gradient(90deg,var(--primary), #0a58ca);
+    background: #000;
     color:#fff;
     text-align:center;
     padding:18px 15px;
@@ -37,7 +40,7 @@ header{
     position:sticky;
     top:0;
     z-index:40;
-    box-shadow:0 2px 6px var(--shadow);
+    box-shadow:0 2px 6px rgba(255,255,255,0.03);
 }
 
 /* ===== الغلاف ===== */
@@ -50,16 +53,17 @@ header{
     aspect-ratio:5040 / 2460;
     border-radius:12px;
     overflow:hidden;
-    background:linear-gradient(180deg,rgba(13,110,253,0.08), #ddd);
+    background:linear-gradient(180deg, rgba(13,110,253,0.06), #111);
 }
 .cover-image img{
     width:100%;
     height:100%;
     object-fit:cover;
     display:block;
+    filter: brightness(0.85);
 }
 
-/* ===== البروفايل ===== */
+/* ===== البروفايل واسم المتجر تحت الصورة ===== */
 .profile-wrapper{
     position:absolute;
     bottom:-45px;
@@ -69,7 +73,10 @@ header{
     border-radius:50%;
     background:var(--surface);
     padding:4px;
-    box-shadow:0 6px 18px rgba(0,0,0,0.12);
+    box-shadow:0 10px 30px rgba(0,0,0,0.7);
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 .profile-wrapper img{
     width:100%;
@@ -78,10 +85,26 @@ header{
     object-fit:cover;
 }
 
+/* اسم المتجر أسفل الصورة */
+.profile-name{
+    position:absolute;
+    bottom:-95px;
+    right:10px;
+    width:160px;
+    text-align:center;
+    font-weight:800;
+    letter-spacing:0.6px;
+    color:var(--text);
+    background:transparent;
+    padding-top:8px;
+    pointer-events:none;
+    text-shadow:0 2px 8px rgba(0,0,0,0.7);
+}
+
 /* ===== المحتوى ===== */
 .container{
     max-width:900px;
-    margin:80px auto 24px;
+    margin:120px auto 24px; /* تباعد أكبر بسبب البروفايل واسم المتجر */
     padding:15px;
 }
 
@@ -91,14 +114,14 @@ header{
     padding:15px;
     border-radius:var(--radius);
     margin-bottom:15px;
-    box-shadow:0 6px 18px var(--shadow);
+    box-shadow:0 10px 30px var(--shadow);
     display:flex;
     align-items:center;
     justify-content:space-between;
     gap:12px;
 }
 .package h2{color:var(--primary); margin:0}
-.package p{margin:0; font-weight:600}
+.package p{margin:0; font-weight:600; color:var(--subtext)}
 .package button{
     background:var(--primary);
     color:#fff;
@@ -107,7 +130,7 @@ header{
     border-radius:8px;
     cursor:pointer;
     transition:transform .12s ease, box-shadow .12s ease;
-    box-shadow:0 6px 14px rgba(13,110,253,0.12);
+    box-shadow:0 8px 20px rgba(13,110,253,0.14);
 }
 .package button:active{transform:translateY(1px)}
 
@@ -116,8 +139,9 @@ header{
     background:var(--surface);
     padding:14px;
     border-radius:var(--radius);
-    box-shadow:0 6px 18px var(--shadow);
+    box-shadow:0 10px 30px var(--shadow);
     margin-bottom:12px;
+    color:var(--subtext);
 }
 
 /* ===== شريط التواصل ===== */
@@ -133,17 +157,17 @@ header{
     display:inline-flex;
     gap:8px;
     align-items:center;
-    background:#fff;
+    background:#111;
     color:var(--text);
     border-radius:8px;
     padding:8px 12px;
     text-decoration:none;
-    box-shadow:0 4px 12px rgba(0,0,0,0.06);
-    border:1px solid rgba(0,0,0,0.04);
+    box-shadow:0 6px 18px rgba(0,0,0,0.6);
+    border:1px solid rgba(255,255,255,0.03);
     font-weight:600;
 }
 .contact-btn.whatsapp{background:#25d366; color:#fff; border:none}
-.contact-btn.email{background:#0d6efd; color:#fff; border:none}
+.contact-btn.email{background:var(--primary); color:#fff; border:none}
 
 /* ===== الفورم (مركز الحقول) ===== */
 .form-popup{
@@ -151,12 +175,13 @@ header{
     position:fixed;
     bottom:20px;
     right:20px;
-    width:320px;
+    width:360px;
     background:var(--surface);
     padding:18px;
     border-radius:12px;
-    box-shadow:0 14px 40px rgba(0,0,0,0.18);
+    box-shadow:0 18px 60px rgba(0,0,0,0.8);
     z-index:60;
+    color:var(--text);
 }
 
 /* مركز المحتوى داخل الفورم بحيث الحقول في الوسط ومتجاوبة */
@@ -173,13 +198,41 @@ header{
 .form-popup input[type="email"],
 .form-popup input[type="tel"]{
     width:100%;
-    max-width:260px; /* تناسب الشاشات الكبيرة */
+    max-width:320px;
     padding:10px 12px;
     border-radius:8px;
-    border:1px solid rgba(0,0,0,0.08);
-    background:#fafbfd;
+    border:1px solid rgba(255,255,255,0.06);
+    background:#0b0b0c;
+    color:var(--text);
     font-size:15px;
-    direction:ltr; /* معرف اللاعب/أرقام عادة أخف للقراءة */
+    direction:ltr; /* معرف اللاعب/أرقام عادة أحسن للقراءة */
+}
+
+/* اختيار طريقة التواصل (تحت خانة id) */
+.method-selection{
+    display:flex;
+    gap:10px;
+    align-items:center;
+    justify-content:center;
+    background:transparent;
+    padding:6px;
+    width:100%;
+}
+.method-selection label{
+    display:inline-flex;
+    gap:8px;
+    align-items:center;
+    padding:6px 10px;
+    border-radius:8px;
+    cursor:pointer;
+    user-select:none;
+    background:rgba(255,255,255,0.02);
+    border:1px solid rgba(255,255,255,0.03);
+    font-weight:700;
+    color:var(--subtext);
+}
+.method-selection input[type="radio"]{
+    accent-color: var(--primary);
 }
 
 /* أزرار داخل النموذج */
@@ -196,9 +249,9 @@ header{
     border-radius:8px;
     border:none;
     cursor:pointer;
-    font-weight:600;
+    font-weight:700;
 }
-.form-popup .send{background:var(--accent); color:#fff}
+.form-popup .send{background:var(--accent); color:#000}
 .form-popup .close{background:#e9ecef; color:#111}
 
 /* تدرجات وتحسين صغير على الأزرار الرئيسية في الصفحة */
@@ -211,10 +264,14 @@ button.primary{
 /* ===== تجاوبية ===== */
 @media (max-width:480px){
     .profile-wrapper{right:12px; width:100px;height:100px; bottom:-40px}
-    .container{margin:70px 12px 20px}
+    .profile-name{right:8px; bottom:-88px; width:140px; font-size:14px}
+    .container{margin:100px 12px 20px}
     .package{flex-direction:column; align-items:flex-start}
     .form-popup{right:12px; left:12px; width:auto}
     .cover-wrapper{margin:12px}
+    .form-popup input[type="text"],
+    .form-popup input[type="email"],
+    .form-popup input[type="tel"]{max-width:100%}
 }
 </style>
 </head>
@@ -235,6 +292,9 @@ button.primary{
         <!-- ضع صورة البروفايل هنا -->
         <img src="profile.png" alt="صورة المتجر">
     </div>
+
+    <!-- اسم المتجر أسفل البروفايل -->
+    <div class="profile-name">SAD SILENT</div>
 
 </div>
 
@@ -302,15 +362,15 @@ button.primary{
   </div>
 
   <div class="section">
-    <h3>💳 طرق الدفع</h3>
-    <ul>
+    <h3 style="color:var(--text);margin-top:0">💳 طرق الدفع</h3>
+    <ul style="color:var(--subtext);">
       <li>Cash Plus</li>
       <li>تحويل بنكي</li>
     </ul>
   </div>
 
   <div class="section">
-    <h3>📬 تواصل معنا</h3>
+    <h3 style="color:var(--text);margin-top:0">📬 تواصل معنا</h3>
     <div class="contact-row">
       <!-- استبدل الايميل ورقم الوتساب بالقيم الفعلية لديك -->
       <a class="contact-btn email" href="mailto:youremail@example.com">✉️ إرسال إيميل</a>
@@ -329,8 +389,20 @@ button.primary{
     <!-- خانة معرف اللاعب (متمركزة ومتجاوبة) -->
     <input id="playerId" type="text" placeholder="معرف اللاعب" aria-label="معرف اللاعب">
 
-    <!-- أضفت حقل إيميل اختياري داخل نفس النموذج لراحة المستخدم -->
-    <input id="buyerEmail" type="email" placeholder="البريد الإلكتروني (اختياري)" aria-label="البريد الإلكتروني">
+    <!-- اختيار طريقة التواصل (تحت خانة id): واتساب أو إيميل -->
+    <div class="method-selection" aria-label="طريقة التواصل">
+      <label>
+        <input type="radio" name="contactMethod" value="whatsapp" checked>
+        واتساب
+      </label>
+      <label>
+        <input type="radio" name="contactMethod" value="email">
+        إيميل
+      </label>
+    </div>
+
+    <!-- حقل البريد الإلكتروني يظهر فقط عند اختيار الإيميل -->
+    <input id="buyerEmail" type="email" placeholder="البريد الإلكتروني (اختياري)" aria-label="البريد الإلكتروني" style="display:none">
 
     <div class="form-actions">
       <button class="send" onclick="sendOrder()">إرسال</button>
@@ -348,19 +420,47 @@ function openForm(p,pr){
     document.getElementById("pkgPrice").textContent = `💰 ${price}`;
     document.getElementById("purchaseForm").style.display="block";
     document.getElementById("purchaseForm").setAttribute("aria-hidden","false");
-    // ضع التركيز على حقل المعرف لتسهيل الاستخدام على الهاتف
+    // افتراضياً إخفاء حقل الإيميل إلا عند اختيار الإيميل
+    updateMethodUI();
     setTimeout(()=> document.getElementById("playerId").focus(), 100);
 }
+
 function closeForm(){
     document.getElementById("purchaseForm").style.display="none";
     document.getElementById("purchaseForm").setAttribute("aria-hidden","true");
 }
+
+// تحديث واجهة حقل الإيميل بناءً على اختيار المستخدم
+function updateMethodUI(){
+    const method = document.querySelector('input[name="contactMethod"]:checked')?.value || 'whatsapp';
+    const emailField = document.getElementById("buyerEmail");
+    if(method === 'email'){
+        emailField.style.display = 'block';
+    } else {
+        emailField.style.display = 'none';
+        emailField.value = '';
+    }
+}
+
+// استمع لتغيّر طريقة التواصل
+document.addEventListener('change', function(e){
+    if(e.target && e.target.name === 'contactMethod'){
+        updateMethodUI();
+    }
+});
+
 function sendOrder(){
     let id = document.getElementById("playerId").value.trim();
     if(!id) return alert("أدخل معرف اللاعب");
+    let method = document.querySelector('input[name="contactMethod"]:checked')?.value || 'whatsapp';
     let email = document.getElementById("buyerEmail").value.trim();
-    let text = `طلب شراء\n📦 ${pkg}\n💰 ${price}\n🆔 ${id}` + (email ? `\n✉️ ${email}` : "");
-    // افتح واتساب بالمحتوى
+
+    if(method === 'email' && !email){
+        return alert("من فضلك أدخل البريد الإلكتروني أو اختر واتساب كطريقة تواصل.");
+    }
+
+    let text = `طلب شراء\n📦 ${pkg}\n💰 ${price}\n🆔 ${id}\nطريقة التواصل: ${method === 'whatsapp' ? 'واتساب' : 'إيميل'}` + (email ? `\n✉️ ${email}` : "");
+    // افتح واتساب بالمحتوى (مفيد للواتساب). إذا اختار المستخدم الإيميل، يمكن للمشغل متابعة عبر الإيميل المرسل.
     window.open(
         "https://wa.me/212657482142?text=" + encodeURIComponent(text),
         "_blank"
