@@ -8,108 +8,170 @@
 <style>
 body{
     margin:0;
-    font-family:Arial;
-    background:#f4f4f4
+    font-family:Arial, sans-serif;
+    background:#f2f4f8;
 }
+
 header{
-    background:#222;
+    background:#1f2933;
     color:#fff;
     text-align:center;
     padding:20px;
-    font-size:22px
+    font-size:22px;
 }
 
-/* ===== الغلاف ===== */
+/* ===== الغلاف + البروفايل ===== */
 .cover-wrapper{
     position:relative;
-    margin:15px
+    margin:15px;
 }
+
 .cover-image{
-    width:100%;
-    aspect-ratio:5040 / 2460;
-    border-radius:12px;
+    height:260px;
+    border-radius:16px;
     overflow:hidden;
-    background:#ddd
+    background:#ddd;
 }
+
 .cover-image img{
     width:100%;
     height:100%;
-    object-fit:cover
+    object-fit:cover;
 }
 
-/* ===== البروفايل ===== */
 .profile-wrapper{
     position:absolute;
-    bottom:-45px;
-    right:20px;
-    width:120px;
-    height:120px;
+    bottom:-55px;
+    right:25px;
+    width:130px;
+    height:130px;
     border-radius:50%;
     background:#fff;
-    padding:4px
+    padding:5px;
 }
+
 .profile-wrapper img{
     width:100%;
     height:100%;
     border-radius:50%;
-    object-fit:cover
+    object-fit:cover;
 }
 
 /* ===== المتجر ===== */
 .container{
     max-width:900px;
-    margin:80px auto 20px;
-    padding:15px
-}
-.package{
-    background:#fff;
+    margin:90px auto 20px;
     padding:15px;
-    border-radius:10px;
-    margin-bottom:15px;
-    box-shadow:0 2px 6px rgba(0,0,0,.1)
-}
-.package h2{color:#007bff}
-button{
-    background:#28a745;
-    color:#fff;
-    border:none;
-    padding:10px 15px;
-    border-radius:6px;
-    cursor:pointer
-}
-.section{
-    background:#fff;
-    padding:15px;
-    border-radius:10px
 }
 
-/* ===== الفورم ===== */
+.package{
+    background:#fff;
+    border-radius:16px;
+    padding:20px;
+    margin-bottom:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+.package h2{
+    color:#2563eb;
+    margin:0;
+}
+
+.package p{
+    font-size:18px;
+    margin:10px 0;
+}
+
+.package button{
+    background:#22c55e;
+    color:#fff;
+    border:none;
+    padding:12px 20px;
+    border-radius:10px;
+    font-size:15px;
+    cursor:pointer;
+}
+
+.package button:hover{
+    background:#16a34a;
+}
+
+/* ===== طرق الدفع ===== */
+.section{
+    background:#fff;
+    padding:20px;
+    border-radius:16px;
+    margin-top:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+/* ===== نافذة الطلب ===== */
 .form-popup{
     display:none;
     position:fixed;
-    bottom:20px;
-    right:20px;
-    width:320px;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:90%;
+    max-width:380px;
     background:#fff;
-    padding:20px;
-    border-radius:10px;
-    box-shadow:0 0 15px rgba(0,0,0,.3)
+    padding:25px;
+    border-radius:18px;
+    box-shadow:0 15px 40px rgba(0,0,0,.3);
+    text-align:center;
+    z-index:999;
 }
 
 .form-popup h3{
-    text-align:center;
-    margin-top:0
+    margin-bottom:15px;
+    color:#1f2933;
 }
 
-.form-popup input{
+.form-popup input,
+.form-popup select{
     width:100%;
-    padding:12px;
-    font-size:16px;
+    padding:14px;
+    margin-bottom:12px;
+    border-radius:12px;
+    border:1.5px solid #ddd;
+    font-size:15px;
     text-align:center;
-    border-radius:8px;
-    border:1px solid #ccc;
     outline:none;
-    box-sizing:border-box
+}
+
+.form-popup input:focus,
+.form-popup select:focus{
+    border-color:#22c55e;
+    box-shadow:0 0 0 3px rgba(34,197,94,.2);
+}
+
+/* أزرار الفورم */
+.form-popup .actions{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+}
+
+.form-popup .send-btn{
+    flex:1;
+    background:#22c55e;
+    color:#fff;
+    border:none;
+    padding:12px;
+    border-radius:12px;
+    font-size:15px;
+    cursor:pointer;
+}
+
+.form-popup .close-btn{
+    flex:1;
+    background:#e5e7eb;
+    color:#111;
+    border:none;
+    padding:12px;
+    border-radius:12px;
+    font-size:15px;
+    cursor:pointer;
 }
 </style>
 </head>
@@ -118,100 +180,107 @@ button{
 
 <header>🛒 متجر جواهر فري فاير</header>
 
-<!-- ===== الغلاف + البروفايل ===== -->
 <div class="cover-wrapper">
-
     <div class="cover-image">
-        <img src="cover.jpg" alt="غلاف المتجر">
+        <img src="images/cover.jpg" alt="غلاف المتجر">
     </div>
 
     <div class="profile-wrapper">
-        <img src="profile.png" alt="صورة المتجر">
+        <img src="images/profile.png" alt="بروفايل المتجر">
     </div>
-
 </div>
 
-<!-- ===== المتجر ===== -->
 <div class="container">
 
 <div class="package">
-<h2>100 جوهرة</h2>
-<p>11 درهم</p>
-<button onclick="openForm('100 جوهرة','11 درهم')">شراء</button>
+    <h2>100 جوهرة</h2>
+    <p>11 درهم</p>
+    <button onclick="openForm('100 جوهرة','11 درهم')">شراء</button>
 </div>
 
 <div class="package">
-<h2>210 جوهرة</h2>
-<p>21 درهم</p>
-<button onclick="openForm('210 جوهرة','21 درهم')">شراء</button>
+    <h2>210 جوهرة</h2>
+    <p>21 درهم</p>
+    <button onclick="openForm('210 جوهرة','21 درهم')">شراء</button>
 </div>
 
 <div class="package">
-<h2>530 جوهرة</h2>
-<p>51 درهم</p>
-<button onclick="openForm('530 جوهرة','51 درهم')">شراء</button>
+    <h2>530 جوهرة</h2>
+    <p>51 درهم</p>
+    <button onclick="openForm('530 جوهرة','51 درهم')">شراء</button>
 </div>
 
 <div class="package">
-<h2>1060 جوهرة</h2>
-<p>100 درهم</p>
-<button onclick="openForm('1060 جوهرة','100 درهم')">شراء</button>
-</div>
-
-<div class="package">
-<h2>2420 جوهرة</h2>
-<p>230 درهم</p>
-<button onclick="openForm('2420 جوهرة','230 درهم')">شراء</button>
-</div>
-
-<div class="package">
-<h2>2585 جوهرة</h2>
-<p>240 درهم</p>
-<button onclick="openForm('2585 جوهرة','240 درهم')">شراء</button>
+    <h2>1060 جوهرة</h2>
+    <p>100 درهم</p>
+    <button onclick="openForm('1060 جوهرة','100 درهم')">شراء</button>
 </div>
 
 <div class="section">
-<h3>💳 طرق الدفع</h3>
-<ul>
-<li>Cash Plus</li>
-<li>تحويل بنكي</li>
-</ul>
+    <h3>💳 طرق الدفع</h3>
+    <ul>
+        <li>Cash Plus</li>
+        <li>تحويل بنكي</li>
+    </ul>
 </div>
 
 </div>
 
-<!-- ===== فورم الطلب ===== -->
+<!-- ===== نافذة الطلب ===== -->
 <div class="form-popup" id="purchaseForm">
-<h3>إتمام الطلب</h3>
+    <h3>إتمام الطلب</h3>
 
-<input id="playerId" placeholder="أدخل معرف اللاعب">
+    <input id="playerId" placeholder="أدخل معرف اللاعب">
 
-<br><br>
+    <select id="contactMethod">
+        <option value="whatsapp">📱 واتساب</option>
+        <option value="email">✉️ البريد الإلكتروني</option>
+    </select>
 
-<button onclick="sendOrder()">إرسال</button>
-<button onclick="closeForm()">إغلاق</button>
+    <div class="actions">
+        <button class="send-btn" onclick="sendOrder()">إرسال</button>
+        <button class="close-btn" onclick="closeForm()">إغلاق</button>
+    </div>
 </div>
 
 <script>
 let pkg="", price="";
 
 function openForm(p,pr){
-    pkg=p;price=pr;
+    pkg=p; price=pr;
     document.getElementById("purchaseForm").style.display="block";
 }
+
 function closeForm(){
     document.getElementById("purchaseForm").style.display="none";
 }
+
 function sendOrder(){
-    let id=document.getElementById("playerId").value;
-    if(!id)return alert("أدخل معرف اللاعب");
-    window.open(
-        "https://wa.me/212657482142?text="+
-        encodeURIComponent(
-            `طلب شراء\n📦 ${pkg}\n💰 ${price}\n🆔 ${id}`
-        ),
-        "_blank"
-    );
+    const id=document.getElementById("playerId").value;
+    const method=document.getElementById("contactMethod").value;
+
+    if(!id){
+        alert("المرجو إدخال معرف اللاعب");
+        return;
+    }
+
+    const message=
+        "طلب شراء جواهر\n"+
+        "📦 الباقة: "+pkg+"\n"+
+        "💰 السعر: "+price+"\n"+
+        "🆔 معرف اللاعب: "+id;
+
+    if(method==="whatsapp"){
+        window.open(
+            "https://wa.me/212657482142?text="+encodeURIComponent(message),
+            "_blank"
+        );
+    }else{
+        window.location.href=
+        "mailto:l.hope.to.achieve.my.goals@gmail.com"+
+        "?subject="+encodeURIComponent("طلب شراء جواهر")+
+        "&body="+encodeURIComponent(message);
+    }
 }
 </script>
 
