@@ -54,15 +54,9 @@ header{
   overflow:hidden;
   background:linear-gradient(180deg, rgba(13,110,253,0.06), #111);
 }
-.cover-image img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
-  filter:brightness(0.85);
-}
+.cover-image img{ width:100%; height:100%; object-fit:cover; display:block; filter:brightness(0.85); }
 
-/* Profile */
+/* Profile on the right */
 .profile-wrapper{
   position:absolute;
   bottom:-45px;
@@ -99,7 +93,10 @@ header{
 /* Container */
 .container{ max-width:900px; margin:140px auto 24px; padding:15px; }
 
-/* Packages (✅ الباقة يمين + زر شراء يسار مثل الصورة) */
+/* =========================
+   ✅ الباقات مثل الصورة:
+   الباقة (النص) يمين + زر شراء يسار
+   ========================= */
 .package{
   background:var(--surface);
   padding:15px;
@@ -111,11 +108,14 @@ header{
   justify-content:space-between;
   gap:12px;
 
-  direction: rtl;        /* يخلي أول عنصر يمين */
-  flex-direction: row;   /* div يمين + زر يسار */
+  /* مهم: نخلي RTL + row */
+  direction: rtl;
+  flex-direction: row;
 }
+
 .package h2{ color:var(--primary); margin:0 }
 .package p{ margin:0; font-weight:600; color:var(--subtext) }
+
 .package button{
   background:var(--primary);
   color:#fff;
@@ -137,73 +137,74 @@ header{
   color:var(--subtext);
 }
 
-/* ====== ✅ تواصل معنا (ثابت مثل الصورة) ====== */
+/* =========================
+   ✅ تواصل معنا مثل الصورة:
+   واتساب يسار + إيميل يمين
+   ونفس الحجم (الإيميل مايكبرش)
+   ========================= */
 .contact-row{
   display:flex;
-  gap:14px;
+  flex-direction:row;
+  gap:12px;
   align-items:stretch;
   justify-content:space-between;
+  margin-top:8px;
   flex-wrap:nowrap;
 
-  /* باش الترتيب يبقى: الإيميل يسار + واتساب يمين */
+  /* هذا كيثبت: أول زر يجي يسار (واتساب) والثاني يمين (إيميل) */
   direction:ltr;
 }
 
-/* نفس الحجم دائماً + مايتبدلش مع visited */
-.contact-btn,
-.contact-btn:visited{
+.contact-btn{
   display:flex;
   align-items:center;
   justify-content:center;
-  gap:12px;
+  gap:10px;
 
-  flex: 1 1 0;
-  height: 84px;          /* ثابت */
-  padding: 0 22px;
-  border-radius: 22px;
+  /* نفس العرض ونفس الارتفاع */
+  flex:1 1 0;
+  height:64px;
+  padding:0 14px;
 
-  white-space: nowrap;   /* مايتكسرش النص */
-  line-height: 1;
-
-  color:#fff;
+  color:var(--text);
+  border-radius:10px;
   text-decoration:none;
+  box-shadow:0 6px 18px rgba(0,0,0,0.6);
+  border:1px solid rgba(255,255,255,0.03);
+  font-weight:700;
+  font-size:16px;
 
+  /* منع تكسير "إرسال إيميل" لسطرين */
+  white-space:nowrap;
   min-width:0;
-  direction:rtl;         /* النص داخل الزر عربي */
+
+  /* نخلي المحتوى عربي داخل الزر */
+  direction:rtl;
 }
 
-/* النص إذا ضاقت الشاشة بزاف: ما يهبطش لسطر */
+.contact-btn .icon{
+  display:inline-flex;
+  width:20px;
+  height:20px;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 auto;
+  margin-inline-start:8px;
+}
+
 .contact-btn span:last-child{
   overflow:hidden;
   text-overflow:ellipsis;
   white-space:nowrap;
 }
 
-/* ثبات الأيقونة */
-.contact-btn .icon{
-  width:28px;
-  height:28px;
-  flex:0 0 28px;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-}
+.contact-btn.whatsapp{ background:var(--wa-green); color:#fff; border:none }
+.contact-btn.email{ background:var(--mail-blue); color:#fff; border:none }
 
-/* ألوان ثابتة */
-.contact-btn.email,
-.contact-btn.email:visited{ background: var(--mail-blue); border:none; }
-.contact-btn.whatsapp,
-.contact-btn.whatsapp:visited{ background: var(--wa-green); border:none; }
-
-/* SVG */
 .contact-row svg{
-  width:22px;
-  height:22px;
-  fill:none;
-  stroke:currentColor;
-  stroke-width:1.6;
-  stroke-linecap:round;
-  stroke-linejoin:round;
+  width:18px; height:18px;
+  fill:none; stroke:currentColor; stroke-width:1.6;
+  stroke-linecap:round; stroke-linejoin:round;
 }
 
 /* Form popup */
@@ -220,13 +221,7 @@ header{
   z-index:60;
   color:var(--text);
 }
-.form-popup .form-content{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:10px;
-  text-align:center;
-}
+.form-popup .form-content{ display:flex; flex-direction:column; align-items:center; gap:10px; text-align:center; }
 
 /* Inputs */
 .form-popup input[type="text"],
@@ -244,46 +239,18 @@ header{
 }
 
 /* Method selection */
-.method-selection{
-  display:flex;
-  gap:10px;
-  align-items:center;
-  justify-content:center;
-  padding:6px;
-  width:100%;
-}
+.method-selection{ display:flex; gap:10px; align-items:center; justify-content:center; padding:6px; width:100%; }
 .method-selection label{
-  display:inline-flex;
-  gap:8px;
-  align-items:center;
-  padding:6px 10px;
-  border-radius:8px;
-  cursor:pointer;
-  user-select:none;
-  background:rgba(255,255,255,0.02);
-  border:1px solid rgba(255,255,255,0.03);
-  font-weight:700;
-  color:var(--subtext);
+  display:inline-flex; gap:8px; align-items:center; padding:6px 10px; border-radius:8px; cursor:pointer; user-select:none;
+  background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.03); font-weight:700; color:var(--subtext);
 }
 .method-selection input[type="radio"]{ accent-color: var(--primary); }
 
 /* Quick icons */
-.quick-icons{
-  display:flex;
-  gap:14px;
-  align-items:center;
-  justify-content:center;
-  margin-top:8px;
-  width:100%;
-}
+.quick-icons{ display:flex; gap:14px; align-items:center; justify-content:center; margin-top:8px; width:100%; }
 .icon-btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  width:54px;
-  height:54px;
-  border-radius:12px;
-  cursor:pointer;
+  display:inline-flex; align-items:center; justify-content:center;
+  width:54px; height:54px; border-radius:12px; cursor:pointer;
   border:1px solid rgba(255,255,255,0.04);
   background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
   transition:transform .14s ease, box-shadow .14s ease;
@@ -308,21 +275,8 @@ header{
 }
 
 /* Form buttons */
-.form-popup .form-actions{
-  display:flex;
-  gap:8px;
-  width:100%;
-  justify-content:center;
-  flex-wrap:wrap;
-  margin-top:6px;
-}
-.form-popup .form-actions button{
-  padding:9px 12px;
-  border-radius:8px;
-  border:none;
-  cursor:pointer;
-  font-weight:700;
-}
+.form-popup .form-actions{ display:flex; gap:8px; width:100%; justify-content:center; flex-wrap:wrap; margin-top:6px; }
+.form-popup .form-actions button{ padding:9px 12px; border-radius:8px; border:none; cursor:pointer; font-weight:700; }
 .form-popup .send{ background:var(--accent); color:#000 }
 .form-popup .close{ background:#e9ecef; color:#111 }
 
@@ -333,7 +287,9 @@ button.primary{ background:var(--primary); color:#fff; border:none; }
   .profile-wrapper{ right:12px; width:100px; height:100px; bottom:-40px }
   .profile-name{ right:12px; width:100px; font-size:16px; bottom:-88px }
   .container{ margin:110px 12px 20px }
-  .package{ direction:rtl; flex-direction:row; align-items:center }
+
+  /* نخلي الباقة/شراء نفس الصورة فالموبايل */
+  .package{ direction:rtl; flex-direction:row; align-items:center; }
 
   .form-popup{ right:12px; left:12px; width:auto }
   .cover-wrapper{ margin:12px }
@@ -343,13 +299,10 @@ button.primary{ background:var(--primary); color:#fff; border:none; }
   .icon-btn{ width:48px; height:48px }
   .icon-btn svg{ width:22px; height:22px }
 
-  /* زرّين تواصل معنا ثابتين فالموبايل كذلك */
-  .contact-btn,
-  .contact-btn:visited{
-    height:78px;
-    border-radius:20px;
-    padding:0 18px;
-    font-size:18px;
+  .contact-btn{
+    height:62px;
+    font-size:15px;
+    padding:0 12px;
   }
 }
 </style>
@@ -398,19 +351,9 @@ button.primary{ background:var(--primary); color:#fff; border:none; }
 
     <div class="contact-row">
 
-      <!-- الإيميل (يسار مثل الصورة) -->
-      <a class="contact-btn email" id="storeEmailBtn" href="mailto:youremail@example.com">
-        <span class="icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24">
-            <rect x="2" y="5" width="20" height="14" rx="2"></rect>
-            <path d="M3 7l9 6 9-6"></path>
-          </svg>
-        </span>
-        <span>إرسال إيميل</span>
-      </a>
-
-      <!-- واتساب (يمين مثل الصورة) -->
-      <a class="contact-btn whatsapp" id="storeWhatsAppBtn" href="https://wa.me/212657482142" target="_blank" rel="noopener">
+      <!-- واتساب (يسار مثل الصورة) -->
+      <a class="contact-btn whatsapp" id="storeWhatsAppBtn"
+         href="https://wa.me/212657482142" target="_blank" rel="noopener">
         <span class="icon" aria-hidden="true">
           <svg viewBox="0 0 24 24">
             <path d="M21 12.05c0 4.97-4.03 9-9 9a8.96 8.96 0 01-4.74-1.35L3 21l1.3-4.25A8.97 8.97 0 013 12.05C3 7.08 7.03 3.05 12 3.05s9 4.03 9 9z"></path>
@@ -418,6 +361,18 @@ button.primary{ background:var(--primary); color:#fff; border:none; }
           </svg>
         </span>
         <span>واتساب</span>
+      </a>
+
+      <!-- إيميل (يمين مثل الصورة) -->
+      <a class="contact-btn email" id="storeEmailBtn"
+         href="mailto:youremail@example.com">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <rect x="2" y="5" width="20" height="14" rx="2"></rect>
+            <path d="M3 7l9 6 9-6"></path>
+          </svg>
+        </span>
+        <span>إرسال إيميل</span>
       </a>
 
     </div>
@@ -474,14 +429,6 @@ const STORE_EMAIL = "youremail@example.com";
 /* ============================= */
 
 let pkg="", price="";
-
-/* اختياري: ثبّت الروابط على نفس القيم */
-document.addEventListener("DOMContentLoaded", () => {
-  const wa = document.getElementById("storeWhatsAppBtn");
-  const mail = document.getElementById("storeEmailBtn");
-  if (wa) wa.href = `https://wa.me/${STORE_WA_NUMBER}`;
-  if (mail) mail.href = `mailto:${STORE_EMAIL}`;
-});
 
 function openForm(p,pr){
   pkg=p; price=pr;
