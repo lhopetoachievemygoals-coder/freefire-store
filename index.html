@@ -171,6 +171,7 @@ header{
     border:1px solid rgba(255,255,255,0.03);
     font-weight:600;
 }
+.contact-btn .icon { display:inline-flex; width:20px; height:20px; align-items:center; justify-content:center; margin-inline-start:6px; }
 .contact-btn.whatsapp{background:var(--wa-green); color:#fff; border:none}
 .contact-btn.email{background:var(--mail-blue); color:#fff; border:none}
 
@@ -409,9 +410,26 @@ button.primary{
   <div class="section">
     <h3 style="color:var(--text);margin-top:0">📬 تواصل معنا</h3>
     <div class="contact-row">
-      <!-- استبدل الايميل ورقم الوتساب بالقيم الفعلية لديك -->
-      <a class="contact-btn email" id="storeEmailBtn" href="mailto:youremail@example.com">✉️ إرسال إيميل</a>
-      <a class="contact-btn whatsapp" id="storeWhatsAppBtn" href="https://wa.me/212657482142" target="_blank" rel="noopener">💬 واتساب</a>
+      <!-- استبدلت الإيموجي بأيقونات متجهة متناسقة مع الأزرار تحت الـ ID -->
+      <a class="contact-btn email" id="storeEmailBtn" href="mailto:youremail@example.com">
+        <span class="icon" aria-hidden="true">
+          <!-- Mail SVG (مطابق للأيقونة المستخدمة تحت الـ ID) -->
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true">
+            <path d="M12 13.065L2.4 6.6V18c0 1.104.896 2 2 2h15.2c1.104 0 2-.896 2-2V6.6L12 13.065zM12 11L22.8 4H1.2L12 11z"/>
+          </svg>
+        </span>
+        إرسال إيميل
+      </a>
+
+      <a class="contact-btn whatsapp" id="storeWhatsAppBtn" href="https://wa.me/212657482142" target="_blank" rel="noopener">
+        <span class="icon" aria-hidden="true">
+          <!-- WhatsApp SVG (مطابق للأيقونة المستخدمة تحت الـ ID) -->
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true">
+            <path d="M20.52 3.48A11.93 11.93 0 0012 0C5.373 0 0 5.373 0 12c0 2.116.555 4.155 1.603 5.94L0 24l6.295-1.645A11.938 11.938 0 0012 24c6.627 0 12-5.373 12-12 0-3.208-1.246-6.222-3.48-8.52zM12 22c-1.86 0-3.668-.5-5.23-1.447l-.373-.23-3.74.978.999-3.647-.244-.378A9.003 9.003 0 013 12c0-4.97 4.03-9 9-9 2.402 0 4.66.94 6.363 2.638A8.967 8.967 0 0121 12c0 4.97-4.03 9-9 9zM17.01 14.3c-.16-.08-1-.49-1.155-.54-.155-.05-.27-.08-.38.08-.11.16-.43.54-.53.65-.1.11-.18.16-.34.05-.16-.11-.67-.25-1.28-.79-.47-.41-.79-.92-.88-1.08-.09-.16-.01-.25.07-.33.07-.07.16-.18.24-.27.08-.09.11-.16.17-.27.06-.11.03-.2 0-.28-.03-.08-.38-.92-.52-1.26-.14-.34-.28-.3-.38-.3-.1 0-.22 0-.34 0-.11 0-.28.04-.43.2-.15.16-.57.56-.57 1.36 0 .79.58 1.55.66 1.66.08.11 1.14 1.84 2.76 2.58 1.62.74 1.62.49 1.91.46.29-.03.95-.39 1.08-.77.13-.38.13-.71.09-.77-.04-.06-.15-.1-.31-.18z"/>
+          </svg>
+        </span>
+        واتساب
+      </a>
     </div>
   </div>
 
@@ -429,15 +447,15 @@ button.primary{
     <!-- أيقونات سريعة تحت الـ ID لفتح واتساب أو الإيميل مباشرة -->
     <div class="quick-icons" title="تواصل سريع">
       <button class="icon-btn wa" onclick="quickWhatsApp()" aria-label="فتح واتساب">
-        <!-- WhatsApp SVG -->
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- WhatsApp SVG (مُحسّن) -->
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
           <path d="M20.52 3.48A11.93 11.93 0 0012 0C5.373 0 0 5.373 0 12c0 2.116.555 4.155 1.603 5.94L0 24l6.295-1.645A11.938 11.938 0 0012 24c6.627 0 12-5.373 12-12 0-3.208-1.246-6.222-3.48-8.52zM12 22c-1.86 0-3.668-.5-5.23-1.447l-.373-.23-3.74.978.999-3.647-.244-.378A9.003 9.003 0 013 12c0-4.97 4.03-9 9-9 2.402 0 4.66.94 6.363 2.638A8.967 8.967 0 0121 12c0 4.97-4.03 9-9 9zM17.01 14.3c-.16-.08-1-.49-1.155-.54-.155-.05-.27-.08-.38.08-.11.16-.43.54-.53.65-.1.11-.18.16-.34.05-.16-.11-.67-.25-1.28-.79-.47-.41-.79-.92-.88-1.08-.09-.16-.01-.25.07-.33.07-.07.16-.18.24-.27.08-.09.11-.16.17-.27.06-.11.03-.2 0-.28-.03-.08-.38-.92-.52-1.26-.14-.34-.28-.3-.38-.3-.1 0-.22 0-.34 0-.11 0-.28.04-.43.2-.15.16-.57.56-.57 1.36 0 .79.58 1.55.66 1.66.08.11 1.14 1.84 2.76 2.58 1.62.74 1.62.49 1.91.46.29-.03.95-.39 1.08-.77.13-.38.13-.71.09-.77-.04-.06-.15-.1-.31-.18z"/>
         </svg>
       </button>
 
       <button class="icon-btn mail" onclick="quickEmail()" aria-label="فتح الإيميل">
-        <!-- Mail SVG -->
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- Mail SVG (مُحسّن) -->
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
           <path d="M12 13.065L2.4 6.6V18c0 1.104.896 2 2 2h15.2c1.104 0 2-.896 2-2V6.6L12 13.065zM12 11L22.8 4H1.2L12 11z"/>
         </svg>
       </button>
