@@ -81,20 +81,84 @@ button{
     background:#fff;
     padding:15px;
     border-radius:10px
-}
+<!doctype html>
+<html lang="ar">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>مثال مودال متقدم</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main id="main-content">
+    <h1>صفحة تجريبية</h1>
+    <p>مثال على فتح فورم داخل مودال مع تحسينات الوصول.</p>
 
-/* ===== الفورم ===== */
-.form-popup{
-    display:none;
-    position:fixed;
-    bottom:20px;
-    right:20px;
-    width:320px;
-    background:#fff;
-    padding:20px;
-    border-radius:10px;
-    box-shadow:0 0 15px rgba(0,0,0,.3)
-}
+    <button id="openFormBtn" type="button" data-modal-open="myForm">
+      افتح النموذج
+    </button>
+  </main>
+
+  <!-- المودال -->
+  <div id="myForm" class="modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="formTitle">
+    <div class="modal__overlay" tabindex="-1">
+      <div class="modal__dialog" role="document">
+        <header class="modal__header">
+          <h2 id="formTitle">نموذج اتصال</h2>
+          <button class="modal__close" type="button" aria-label="إغلاق">✕</button>
+        </header>
+
+        <form class="modal__content" novalidate>
+          <label>
+            الاسم
+            <input name="name" type="text" required />
+          </label>
+          <label>
+            البريد الإلكتروني
+            <input name="email" type="email" required />
+          </label>
+          <label>
+            رسالة
+            <textarea name="message" rows="4"></textarea>
+          </label>
+
+          <div class="modal__actions">
+            <button type="submit">إرسال</button>
+            <button type="button" class="secondary" data-modal-close>إلغاء</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="modal.js"></script>
+  <script>
+    // تهيئة سريعة للمودال عند تحميل الصفحة
+    document.addEventListener('DOMContentLoaded', () => {
+      const modalEl = document.getElementById('myForm');
+      const modal = new ModalDialog(modalEl, { closeOnBackdrop: true });
+
+      // ربط زر الفتح
+      const openBtn = document.getElementById('openFormBtn');
+      openBtn.addEventListener('click', () => modal.open(openBtn));
+
+      // ربط أزرار الإغلاق داخل المودال (مثال: زر فيه data-modal-close)
+      modalEl.addEventListener('click', (e) => {
+        if (e.target.matches('[data-modal-close]') || e.target.classList.contains('modal__close')) {
+          modal.close();
+        }
+      });
+
+      // مثال: منع إرسال النموذج فعليًا (للاختبار)
+      modalEl.querySelector('form').addEventListener('submit', (ev) => {
+        ev.preventDefault();
+        alert('تم (محاكاة) إرسال النموذج');
+        modal.close();
+      });
+    });
+  </script>
+</body>
+</html>
 </style>
 </head>
 
