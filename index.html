@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>متجر جواهر فري فاير</title>
 
 <style>
@@ -11,12 +11,12 @@
   --surface:#0f0f10;
   --primary:#0d6efd;
   --accent:#20c997;
-  --text:#fff;
+  --text:#ffffff;
   --subtext:#d0d4da;
+  --shadow: rgba(0,0,0,0.65);
   --radius:10px;
   --wa-green:#25D366;
   --mail-blue:#0d6efd;
-  --shadow: rgba(0,0,0,0.65);
 }
 
 *{box-sizing:border-box}
@@ -41,15 +41,15 @@ header{
 }
 
 /* Cover + profile */
-.cover-wrapper{ position:relative; margin:15px; }
+.cover-wrapper{position:relative;margin:15px}
 .cover-image{
   width:100%;
   aspect-ratio:5040/2460;
   border-radius:12px;
   overflow:hidden;
-  background:linear-gradient(180deg, rgba(13,110,253,0.06), #111);
+  background:#111;
 }
-.cover-image img{ width:100%; height:100%; object-fit:cover; filter:brightness(.85); }
+.cover-image img{width:100%;height:100%;object-fit:cover}
 
 .profile-wrapper{
   position:absolute;
@@ -61,7 +61,7 @@ header{
   background:var(--surface);
   padding:4px;
 }
-.profile-wrapper img{ width:100%; height:100%; border-radius:50%; object-fit:cover; }
+.profile-wrapper img{width:100%;height:100%;border-radius:50%}
 
 .profile-name{
   position:absolute;
@@ -74,7 +74,7 @@ header{
 }
 
 /* Container */
-.container{ max-width:900px; margin:140px auto 24px; padding:15px; }
+.container{max-width:900px;margin:140px auto 24px;padding:15px}
 
 /* Packages */
 .package{
@@ -87,8 +87,8 @@ header{
   justify-content:space-between;
   align-items:center;
 }
-.package h2{ color:var(--primary); margin:0 }
-.package p{ margin:0; color:var(--subtext); font-weight:600 }
+.package h2{margin:0;color:var(--primary)}
+.package p{margin:0;color:var(--subtext);font-weight:600}
 button.primary{
   background:var(--primary);
   color:#fff;
@@ -108,32 +108,19 @@ button.primary{
   color:var(--subtext);
 }
 
-/* ===== طرق الدفع (إيموجي متطور يسار الاسم) ===== */
-.payment-list{
-  list-style:none;
-  padding:0;
-  margin:0;
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-}
+/* Payment */
+.payment-list{list-style:none;padding:0;margin:0}
 .payment-list li{
   display:flex;
   align-items:center;
   gap:10px;
-  font-size:16px;
-  direction:ltr; /* يجعل الإيموجي يسار الاسم */
+  direction:ltr;
 }
-.pay-emoji{
-  font-size:22px;
-  width:30px;
-  text-align:center;
-}
+.pay-emoji{font-size:22px;width:30px;text-align:center}
 
-/* ===== تواصل معنا ===== */
+/* Contact */
 .contact-row{
   display:flex;
-  justify-content:space-between;
   gap:12px;
   margin-top:8px;
 }
@@ -143,15 +130,14 @@ button.primary{
   align-items:center;
   justify-content:center;
   gap:10px;
-  padding:12px 14px;
+  padding:12px;
   border-radius:12px;
   font-weight:800;
-  font-size:16px;
-  text-decoration:none;
   color:#fff;
+  text-decoration:none;
 }
-.contact-btn.email{ background:var(--mail-blue); }
-.contact-btn.whatsapp{ background:var(--wa-green); }
+.contact-btn.whatsapp{background:var(--wa-green)}
+.contact-btn.email{background:var(--mail-blue)}
 
 /* Form */
 .form-popup{
@@ -166,32 +152,38 @@ button.primary{
   box-shadow:0 18px 60px rgba(0,0,0,0.8);
   z-index:60;
 }
-.form-popup .form-content{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:10px;
-}
+.form-content{display:flex;flex-direction:column;align-items:center;gap:10px}
 .form-popup input{
   width:100%;
   max-width:320px;
-  padding:10px 12px;
+  padding:10px;
   border-radius:8px;
   border:1px solid rgba(255,255,255,0.06);
   background:#0b0b0c;
   color:#fff;
   direction:ltr;
 }
-.form-actions{
-  display:flex;
-  gap:10px;
+
+/* Quick icons */
+.quick-icons{display:flex;gap:14px;justify-content:center}
+.icon-btn{
+  width:54px;
+  height:54px;
+  border-radius:12px;
+  border:none;
+  font-size:26px;
+  cursor:pointer;
 }
-.send{ background:var(--accent); color:#000; padding:10px 18px; border:none; border-radius:10px; }
-.close{ background:#e9ecef; color:#111; padding:10px 14px; border:none; border-radius:10px; }
+.icon-btn.wa{background:linear-gradient(180deg,var(--wa-green),#1ebc5b);color:#fff}
+.icon-btn.mail{background:linear-gradient(180deg,var(--mail-blue),#0a58ca);color:#fff}
+
+.form-actions{display:flex;gap:10px}
+.send{background:var(--accent);border:none;padding:10px 18px;border-radius:10px}
+.close{background:#e9ecef;border:none;padding:10px 14px;border-radius:10px}
 
 @media(max-width:480px){
-  .contact-row{ flex-direction:column }
-  .contact-btn{ flex:0 0 100% }
+  .contact-row{flex-direction:column}
+  .contact-btn{flex:0 0 100%}
 }
 </style>
 </head>
@@ -218,20 +210,20 @@ button.primary{
 
 <!-- طرق الدفع -->
 <div class="section">
-  <h3 style="color:#fff;margin-top:0">💳 طرق الدفع</h3>
+  <h3>💳 طرق الدفع</h3>
   <ul class="payment-list">
     <li><span class="pay-emoji">💸</span> Cash Plus</li>
     <li><span class="pay-emoji">🏦</span> تحويل بنكي</li>
   </ul>
 </div>
 
-<!-- تواصل معنا -->
+<!-- تواصل معنا (واتساب يمين / إيميل يسار) -->
 <div class="section">
-  <h3 style="color:#fff;margin-top:0">📬 تواصل معنا</h3>
+  <h3>📬 تواصل معنا</h3>
   <div class="contact-row">
-    <!-- واتساب يمين -->
-    <a class="contact-btn whatsapp" href="https://wa.me/212657482142" target="_blank">💬 واتساب</a>
-    <!-- إيميل يسار -->
+    <!-- واتساب (يمين) -->
+    <a class="contact-btn whatsapp" href="https://wa.me/212657482142">💬 واتساب</a>
+    <!-- إيميل (يسار) -->
     <a class="contact-btn email" href="mailto:youremail@example.com">📧 إرسال إيميل</a>
   </div>
 </div>
@@ -243,7 +235,15 @@ button.primary{
   <div class="form-content">
     <strong id="pkgName">-</strong>
     <div id="pkgPrice"></div>
+
     <input id="playerId" placeholder="معرف اللاعب">
+
+    <!-- واتساب يمين / إيميل يسار بنفس الإيموجي -->
+    <div class="quick-icons">
+      <button class="icon-btn wa" onclick="quickWhatsApp()">💬</button>
+      <button class="icon-btn mail" onclick="quickEmail()">📧</button>
+    </div>
+
     <div class="form-actions">
       <button class="send" onclick="closeForm()">إرسال</button>
       <button class="close" onclick="closeForm()">إغلاق</button>
@@ -252,15 +252,28 @@ button.primary{
 </div>
 
 <script>
-let pkg="", price="";
+let pkg="",price="";
+const STORE_WA_NUMBER="212657482142";
+const STORE_EMAIL="youremail@example.com";
+
 function openForm(p,pr){
-  pkg=p; price=pr;
+  pkg=p;price=pr;
   document.getElementById("pkgName").textContent=p;
   document.getElementById("pkgPrice").textContent=pr;
   document.getElementById("purchaseForm").style.display="block";
 }
 function closeForm(){
   document.getElementById("purchaseForm").style.display="none";
+}
+function quickWhatsApp(){
+  const id=document.getElementById("playerId").value.trim();
+  if(!id) return alert("أدخل معرف اللاعب");
+  window.open(`https://wa.me/${STORE_WA_NUMBER}?text=${encodeURIComponent(pkg+" - "+price+" - "+id)}`);
+}
+function quickEmail(){
+  const id=document.getElementById("playerId").value.trim();
+  if(!id) return alert("أدخل معرف اللاعب");
+  window.open(`mailto:${STORE_EMAIL}?subject=طلب شراء&body=${encodeURIComponent(pkg+" - "+price+" - "+id)}`);
 }
 </script>
 
