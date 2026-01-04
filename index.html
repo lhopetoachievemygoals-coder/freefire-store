@@ -52,6 +52,68 @@
       box-shadow: 0 2px 6px rgba(255, 255, 255, 0.03);
     }
 
+    /* Cover */
+    .cover-wrapper {
+      position: relative;
+      margin: 15px;
+    }
+
+    .cover-image {
+      width: 100%;
+      aspect-ratio: 5040 / 2460;
+      border-radius: 12px;
+      overflow: hidden;
+      background: linear-gradient(180deg, rgba(13, 110, 253, 0.06), #111);
+    }
+
+    .cover-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.85);
+    }
+
+    /* Profile on the right */
+    .profile-wrapper {
+      position: absolute;
+      bottom: -45px;
+      right: 20px;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: var(--surface);
+      padding: 4px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .profile-wrapper img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .profile-name {
+      position: absolute;
+      bottom: -95px;
+      right: 20px;
+      width: 120px;
+      text-align: center;
+      font-weight: 900;
+      letter-spacing: 0.8px;
+      color: var(--text);
+      background: transparent;
+      padding-top: 8px;
+      pointer-events: none;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+      text-transform: uppercase;
+      font-size: 18px;
+    }
+
     /* Container */
     .container {
       max-width: 900px;
@@ -60,48 +122,9 @@
     }
 
     /* =========================
-      ✅ الباقات مثل الصورة:
-      الباقة (النص) يمين + زر شراء يسار
+      ✅ تواصل معنا مثل الصورة:
+      واتساب يسار + إيميل يمين
     ========================= */
-    .package {
-      background: var(--surface);
-      padding: 15px;
-      border-radius: var(--radius);
-      margin-bottom: 15px;
-      box-shadow: 0 10px 30px var(--shadow);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-
-      /* مهم: نخلي RTL + row */
-      direction: rtl;
-      flex-direction: row;
-    }
-
-    .package h2 {
-      color: var(--primary);
-      margin: 0;
-    }
-
-    .package p {
-      margin: 0;
-      font-weight: 600;
-      color: var(--subtext);
-    }
-
-    .package button {
-      background: var(--primary);
-      color: #fff;
-      border: none;
-      padding: 10px 14px;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: transform 0.12s ease, box-shadow 0.12s ease;
-      box-shadow: 0 8px 20px rgba(13, 110, 253, 0.14);
-    }
-
-    /* تواصل معنا */
     .contact-row {
       display: flex;
       gap: 12px;
@@ -167,16 +190,6 @@
       flex: 1 1 0; /* تعديل هنا لزيادة عرض الزر */
     }
 
-    .contact-row svg {
-      width: 18px;
-      height: 18px;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 1.6;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
     /* Responsive */
     @media (max-width: 480px) {
       .profile-wrapper {
@@ -214,6 +227,19 @@
 <body>
 
   <header>🛒 متجر جواهر فري فاير</header>
+
+  <!-- Cover + profile -->
+  <div class="cover-wrapper">
+    <div class="cover-image">
+      <img src="cover.jpg" alt="غلاف المتجر">
+    </div>
+
+    <div class="profile-wrapper">
+      <img src="profile.png" alt="صورة المتجر">
+    </div>
+
+    <div class="profile-name">SAD SILENT</div>
+  </div>
 
   <!-- Store content -->
   <div class="container">
