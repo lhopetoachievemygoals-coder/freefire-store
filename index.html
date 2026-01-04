@@ -20,7 +20,7 @@ header {
     font-size: 22px;
 }
 
-/* ===== الغلاف + البروفايل ===== */
+/* الغلاف والبروفايل */
 .cover-wrapper {
     position: relative;
     margin: 15px;
@@ -40,7 +40,7 @@ header {
     object-fit: cover;
 }
 
-.cover-btn,.save-btn{
+.cover-btn, .save-btn {
     position: absolute;
     top: 10px;
     padding: 6px 10px;
@@ -92,7 +92,7 @@ header {
     cursor: pointer;
 }
 
-/* ===== المتجر ===== */
+/* المتجر */
 .container {
     max-width: 900px;
     margin: 80px auto 20px;
@@ -114,7 +114,7 @@ button { background: #28a745; color: #fff; border: none; padding: 10px 15px; bor
     border-radius: 10px;
 }
 
-/* ===== الفورم ===== */
+/* الفورم */
 .form-popup {
     display: none;
     position: fixed;
@@ -127,7 +127,7 @@ button { background: #28a745; color: #fff; border: none; padding: 10px 15px; bor
     box-shadow: 0 0 15px rgba(0,0,0,0.3);
 }
 
-/* ===== جدول المعرف وطريقة التواصل ===== */
+/* جدول ID وطريقة التواصل */
 .form-table {
     display: flex;
     gap: 10px;
@@ -147,21 +147,36 @@ button { background: #28a745; color: #fff; border: none; padding: 10px 15px; bor
     color: #0d6efd;
     font-weight: bold;
 }
-.send-btn {
-    width: 48%;
-    background: #28a745;
-}
-.close-btn {
-    width: 48%;
-    background: #dc3545;
-}
+
 .button-group {
     display: flex;
     gap: 10px;
 }
 
-/* ===== تنسيق نصوص ===== */
-h3 { text-align: center; margin-bottom: 15px; }
+.send-btn {
+    flex: 1;
+    background: #28a745;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.close-btn {
+    flex: 1;
+    background: #dc3545;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+h3 {
+    text-align: center;
+    margin-bottom: 15px;
+}
 </style>
 </head>
 
@@ -191,19 +206,17 @@ h3 { text-align: center; margin-bottom: 15px; }
 </div>
 
 <div class="container">
+  <div class="package"><h2>100 جوهرة</h2><p>11 درهم</p><button onclick="openForm('100 جوهرة','11 درهم')">شراء</button></div>
+  <div class="package"><h2>210 جوهرة</h2><p>21 درهم</p><button onclick="openForm('210 جوهرة','21 درهم')">شراء</button></div>
+  <div class="package"><h2>530 جوهرة</h2><p>51 درهم</p><button onclick="openForm('530 جوهرة','51 درهم')">شراء</button></div>
+  <div class="package"><h2>1060 جوهرة</h2><p>100 درهم</p><button onclick="openForm('1060 جوهرة','100 درهم')">شراء</button></div>
+  <div class="package"><h2>2420 جوهرة</h2><p>230 درهم</p><button onclick="openForm('2420 جوهرة','230 درهم')">شراء</button></div>
+  <div class="package"><h2>2585 جوهرة</h2><p>240 درهم</p><button onclick="openForm('2585 جوهرة','240 درهم')">شراء</button></div>
 
-<div class="package"><h2>100 جوهرة</h2><p>11 درهم</p><button onclick="openForm('100 جوهرة','11 درهم')">شراء</button></div>
-<div class="package"><h2>210 جوهرة</h2><p>21 درهم</p><button onclick="openForm('210 جوهرة','21 درهم')">شراء</button></div>
-<div class="package"><h2>530 جوهرة</h2><p>51 درهم</p><button onclick="openForm('530 جوهرة','51 درهم')">شراء</button></div>
-<div class="package"><h2>1060 جوهرة</h2><p>100 درهم</p><button onclick="openForm('1060 جوهرة','100 درهم')">شراء</button></div>
-<div class="package"><h2>2420 جوهرة</h2><p>230 درهم</p><button onclick="openForm('2420 جوهرة','230 درهم')">شراء</button></div>
-<div class="package"><h2>2585 جوهرة</h2><p>240 درهم</p><button onclick="openForm('2585 جوهرة','240 درهم')">شراء</button></div>
-
-<div class="section">
-<h3>💳 طرق الدفع</h3>
-<ul><li>Cash Plus</li><li>تحويل بنكي</li></ul>
-</div>
-
+  <div class="section">
+    <h3>💳 طرق الدفع</h3>
+    <ul><li>Cash Plus</li><li>تحويل بنكي</li></ul>
+  </div>
 </div>
 
 <!-- الفورم -->
