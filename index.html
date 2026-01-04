@@ -64,12 +64,12 @@ header{
     filter: brightness(0.85);
 }
 
-/* ===== البروفايل واسم المتجر تحت الصورة (متمركزان) ===== */
+/* ===== البروفايل واسم المتجر تحت الصورة (موجودان على اليمين) ===== */
 .profile-wrapper{
     position:absolute;
     bottom:-45px;
-    left:50%;
-    transform:translateX(-50%);
+    right:20px;               /* تموضع البروفايل على اليمين */
+    left:auto;
     width:120px;
     height:120px;
     border-radius:50%;
@@ -87,13 +87,13 @@ header{
     object-fit:cover;
 }
 
-/* اسم المتجر مُحاذي لوسط البروفايل */
+/* اسم المتجر أسفل البروفايل وعلى اليمين (متمركز بالنسبة للبروفايل) */
 .profile-name{
     position:absolute;
     bottom:-95px;
-    left:50%;
-    transform:translateX(-50%);
-    width:200px;
+    right:20px;               /* نفس الـ right لتكون متمركزة تحت الدائرة */
+    left:auto;
+    width:120px;              /* يطابق عرض البروفايل لضمان التمركز تحته */
     text-align:center;
     font-weight:900;
     letter-spacing:0.8px;
@@ -240,33 +240,35 @@ header{
     accent-color: var(--primary);
 }
 
-/* ===== أيقونات سريعة تحت الـ ID ===== */
+/* ===== أيقونات سريعة تحت الـ ID (تم تعديل الشكل كما طلبت) ===== */
 .quick-icons{
     display:flex;
-    gap:12px;
+    gap:14px;
     align-items:center;
     justify-content:center;
-    margin-top:6px;
+    margin-top:8px;
     width:100%;
 }
 .icon-btn{
     display:inline-flex;
     align-items:center;
     justify-content:center;
-    width:46px;
-    height:46px;
-    border-radius:10px;
+    width:54px;               /* كبرت الحجم لتظهر أجمل */
+    height:54px;
+    border-radius:12px;       /* شكل أنعم */
     cursor:pointer;
     border:1px solid rgba(255,255,255,0.04);
-    background:transparent;
-    transition:transform .12s ease, box-shadow .12s ease;
+    background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    transition:transform .14s ease, box-shadow .14s ease;
+    box-shadow:0 6px 18px rgba(0,0,0,0.45);
 }
 .icon-btn:active{transform:translateY(1px)}
-.icon-btn.wa{background:var(--wa-green); box-shadow:0 6px 18px rgba(37,211,102,0.18); color:#fff}
-.icon-btn.mail{background:var(--mail-blue); box-shadow:0 6px 18px rgba(13,110,253,0.12); color:#fff}
+.icon-btn:hover{transform:translateY(-4px) scale(1.03); box-shadow:0 14px 30px rgba(0,0,0,0.55)}
+.icon-btn.wa{background:linear-gradient(180deg,var(--wa-green), #1ebc5b); color:#fff; box-shadow:0 10px 30px rgba(37,211,102,0.18)}
+.icon-btn.mail{background:linear-gradient(180deg,var(--mail-blue), #0a58ca); color:#fff; box-shadow:0 10px 30px rgba(13,110,253,0.12)}
 
 /* أيقونات svg داخل الأزرار */
-.icon-btn svg{width:22px; height:22px; display:block; fill:currentColor}
+.icon-btn svg{width:26px; height:26px; display:block; fill:currentColor}
 
 /* أزرار داخل النموذج */
 .form-popup .form-actions{
@@ -296,8 +298,8 @@ button.primary{
 
 /* ===== تجاوبية ===== */
 @media (max-width:480px){
-    .profile-wrapper{width:100px;height:100px; bottom:-40px}
-    .profile-name{width:160px; font-size:16px; bottom:-88px}
+    .profile-wrapper{right:12px; width:100px;height:100px; bottom:-40px}
+    .profile-name{right:12px; width:100px; font-size:16px; bottom:-88px}
     .container{margin:110px 12px 20px}
     .package{flex-direction:column; align-items:flex-start}
     .form-popup{right:12px; left:12px; width:auto}
@@ -305,7 +307,8 @@ button.primary{
     .form-popup input[type="text"],
     .form-popup input[type="email"],
     .form-popup input[type="tel"]{max-width:100%}
-    .icon-btn{width:44px;height:44px}
+    .icon-btn{width:48px;height:48px}
+    .icon-btn svg{width:22px;height:22px}
 }
 </style>
 </head>
@@ -327,7 +330,7 @@ button.primary{
         <img src="profile.png" alt="صورة المتجر">
     </div>
 
-    <!-- اسم المتجر أسفل البروفايل (بالأحرف الكبيرة ومتمركز) -->
+    <!-- اسم المتجر أسفل البروفايل (بالأحرف الكبيرة ومتمركز تحت البروفايل على اليمين) -->
     <div class="profile-name">SAD SILENT</div>
 
 </div>
