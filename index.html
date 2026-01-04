@@ -54,13 +54,7 @@ header{
   overflow:hidden;
   background:linear-gradient(180deg, rgba(13,110,253,0.06), #111);
 }
-.cover-image img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
-  filter:brightness(0.85);
-}
+.cover-image img{ width:100%; height:100%; object-fit:cover; display:block; filter:brightness(0.85); }
 
 /* Profile on the right */
 .profile-wrapper{
@@ -99,7 +93,10 @@ header{
 /* Container */
 .container{ max-width:900px; margin:140px auto 24px; padding:15px; }
 
-/* Packages */
+/* =========================
+   ✅ Packages (التعديل المطلوب حسب الصورة)
+   الباقة يمين + زر شراء يسار
+   ========================= */
 .package{
   background:var(--surface);
   padding:15px;
@@ -111,19 +108,12 @@ header{
   justify-content:space-between;
   gap:12px;
 
-  /* ✅ التعديل الوحيد: مكان الباقة */
-  direction:ltr;        /* يثبت توزيع العناصر: الأول يسار، الثاني يمين */
-  flex-direction:row;   /* div (يسار) + زر (يمين) */
+  /* ✅ هذا هو المهم:
+     صفحة RTL + flex row = أول عنصر (div) كيبان يمين، والزر كيجي يسار */
+  flex-direction: row;
 }
 .package h2{ color:var(--primary); margin:0 }
 .package p{ margin:0; font-weight:600; color:var(--subtext) }
-
-/* ✅ نخلي نص الباقة عربي RTL مزيان وهو فجهة الساعة */
-.package > div{
-  direction:rtl;
-  text-align:right;
-}
-
 .package button{
   background:var(--primary);
   color:#fff;
@@ -145,33 +135,67 @@ header{
   color:var(--subtext);
 }
 
-/* Contact row (كما كان) */
+/* =========================
+   ✅ تواصل معنا: نفس الحجم (واتساب = إيميل)
+   منع تكسير النص (إرسال إيميل) لسطرين
+   ========================= */
 .contact-row{
   display:flex;
   flex-direction:row;
   gap:12px;
-  align-items:center;
-  justify-content:center;
+  align-items:stretch;        /* نفس الارتفاع */
+  justify-content:space-between;
   margin-top:8px;
   flex-wrap:nowrap;
 }
+
 .contact-btn{
-  display:inline-flex;
-  gap:8px;
+  display:flex;
   align-items:center;
+  justify-content:center;
+  gap:10px;
+
+  flex:1 1 0;                 /* نفس العرض */
+  height:64px;                /* نفس الارتفاع */
+  padding:0 14px;             /* ثابت باش مايكبرش واحد */
+
   background:#111;
   color:var(--text);
   border-radius:10px;
-  padding:12px 18px;
   text-decoration:none;
   box-shadow:0 6px 18px rgba(0,0,0,0.6);
   border:1px solid rgba(255,255,255,0.03);
   font-weight:700;
   font-size:16px;
+
+  white-space:nowrap;         /* مايتكسرش لسطرين */
+  min-width:0;
 }
-.contact-btn .icon { display:inline-flex; width:20px; height:20px; align-items:center; justify-content:center; margin-inline-start:8px; }
+.contact-btn .icon{
+  display:inline-flex;
+  width:20px;
+  height:20px;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 auto;
+  margin-inline-start:8px;
+}
+
+/* نص الزر إذا كانت شاشة ضيقة بزاف، يتقصّ بنقط بدل ما يهبط لسطر */
+.contact-btn span:last-child{
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
 .contact-btn.whatsapp{ background:var(--wa-green); color:#fff; border:none }
 .contact-btn.email{ background:var(--mail-blue); color:#fff; border:none }
+
+.contact-row svg{
+  width:18px; height:18px;
+  fill:none; stroke:currentColor; stroke-width:1.6;
+  stroke-linecap:round; stroke-linejoin:round;
+}
 
 /* Form popup */
 .form-popup{
@@ -227,7 +251,6 @@ header{
 .icon-btn.wa{ background:linear-gradient(180deg,var(--wa-green), #1ebc5b); color:#fff; box-shadow:0 10px 30px rgba(37,211,102,0.18) }
 .icon-btn.mail{ background:linear-gradient(180deg,var(--mail-blue), #0a58ca); color:#fff; box-shadow:0 10px 30px rgba(13,110,253,0.12) }
 
-/* SVG rendering */
 .icon-btn svg{
   width:28px;
   height:28px;
@@ -239,9 +262,6 @@ header{
   stroke-linejoin:round;
   shape-rendering:geometricPrecision;
   vector-effect:non-scaling-stroke;
-}
-.contact-row svg{
-  width:18px; height:18px; fill:none; stroke:currentColor; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round;
 }
 
 /* Form buttons */
@@ -258,12 +278,8 @@ button.primary{ background:var(--primary); color:#fff; border:none; }
   .profile-name{ right:12px; width:100px; font-size:16px; bottom:-88px }
   .container{ margin:110px 12px 20px }
 
-  /* ✅ مهم: نخلي نفس الترتيب فالموبايل */
-  .package{
-    direction:ltr;
-    flex-direction:row;
-    align-items:center;
-  }
+  /* ✅ نفس توزيع الباقة/الشراء فالموبايل */
+  .package{ flex-direction:row; align-items:center; }
 
   .form-popup{ right:12px; left:12px; width:auto }
   .cover-wrapper{ margin:12px }
@@ -272,6 +288,13 @@ button.primary{ background:var(--primary); color:#fff; border:none; }
   .form-popup input[type="tel"]{ max-width:100% }
   .icon-btn{ width:48px; height:48px }
   .icon-btn svg{ width:22px; height:22px }
+
+  /* ✅ نخلي النص يركب مزيان فالشاشات الصغيرة */
+  .contact-btn{
+    height:62px;
+    font-size:15px;
+    padding:0 12px;
+  }
 }
 </style>
 </head>
