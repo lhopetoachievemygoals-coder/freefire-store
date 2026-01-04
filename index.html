@@ -7,9 +7,9 @@
 
 <style>
 :root{
-  --bg: #000;
-  --surface: #0f0f10;
-  --primary: #0d6efd;
+  --bg: #000;             /* خلفية المتجر: أسود */
+  --surface: #0f0f10;     /* واجهات البطاقات */
+  --primary: #0d6efd;     /* اللون الأساسي */
   --accent: #20c997;
   --text: #ffffff;
   --subtext: #d0d4da;
@@ -19,237 +19,296 @@
   --mail-blue: #0d6efd;
 }
 
-/* Reset */
 *{box-sizing:border-box}
 html,body{height:100%}
 body{
-  margin:0;
-  font-family: "Arial", "Tahoma", sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-  direction: rtl;
+    margin:0;
+    font-family: "Arial", "Tahoma", sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    direction: rtl;
 }
 
-/* Header */
+/* ===== الهيدر ===== */
 header{
-  background:#000;
-  color:#fff;
-  text-align:center;
-  padding:18px 15px;
-  font-size:20px;
-  position:sticky;
-  top:0;
-  z-index:40;
-  box-shadow:0 2px 6px rgba(255,255,255,0.03);
+    background: #000;
+    color:#fff;
+    text-align:center;
+    padding:18px 15px;
+    font-size:20px;
+    position:sticky;
+    top:0;
+    z-index:40;
+    box-shadow:0 2px 6px rgba(255,255,255,0.03);
 }
 
-/* Cover */
-.cover-wrapper{ position:relative; margin:15px; }
+/* ===== الغلاف ===== */
+.cover-wrapper{
+    position:relative;
+    margin:15px;
+}
 .cover-image{
-  width:100%;
-  aspect-ratio:5040 / 2460;
-  border-radius:12px;
-  overflow:hidden;
-  background:linear-gradient(180deg, rgba(13,110,253,0.06), #111);
+    width:100%;
+    aspect-ratio:5040 / 2460;
+    border-radius:12px;
+    overflow:hidden;
+    background:linear-gradient(180deg, rgba(13,110,253,0.06), #111);
 }
-.cover-image img{ width:100%; height:100%; object-fit:cover; display:block; filter:brightness(0.85); }
+.cover-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    filter: brightness(0.85);
+}
 
-/* Profile on the right */
+/* ===== البروفايل واسم المتجر تحت الصورة (موجودان على اليمين) ===== */
 .profile-wrapper{
-  position:absolute;
-  bottom:-45px;
-  right:20px;
-  width:120px;
-  height:120px;
-  border-radius:50%;
-  background:var(--surface);
-  padding:4px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.7);
-  display:flex;
-  align-items:center;
-  justify-content:center;
+    position:absolute;
+    bottom:-45px;
+    right:20px;               /* تموضع البروفايل على اليمين */
+    left:auto;
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    background:var(--surface);
+    padding:4px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.7);
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
-.profile-wrapper img{ width:100%; height:100%; border-radius:50%; object-fit:cover; }
+.profile-wrapper img{
+    width:100%;
+    height:100%;
+    border-radius:50%;
+    object-fit:cover;
+}
 
+/* اسم المتجر أسفل البروفايل وعلى اليمين (متمركز بالنسبة للبروفايل) */
 .profile-name{
-  position:absolute;
-  bottom:-95px;
-  right:20px;
-  width:120px;
-  text-align:center;
-  font-weight:900;
-  letter-spacing:0.8px;
-  color:var(--text);
-  background:transparent;
-  padding-top:8px;
-  pointer-events:none;
-  text-shadow:0 2px 8px rgba(0,0,0,0.7);
-  text-transform:uppercase;
-  font-size:18px;
+    position:absolute;
+    bottom:-95px;
+    right:20px;               /* نفس الـ right لتكون متمركزة تحت الدائرة */
+    left:auto;
+    width:120px;              /* يطابق عرض البروفايل لضمان التمركز تحته */
+    text-align:center;
+    font-weight:900;
+    letter-spacing:0.8px;
+    color:var(--text);
+    background:transparent;
+    padding-top:8px;
+    pointer-events:none;
+    text-shadow:0 2px 8px rgba(0,0,0,0.7);
+    text-transform:uppercase; /* أحرف كبيرة */
+    font-size:18px;
 }
 
-/* Container */
-.container{ max-width:900px; margin:140px auto 24px; padding:15px; }
+/* ===== المحتوى ===== */
+.container{
+    max-width:900px;
+    margin:140px auto 24px; /* تباعد أكبر بسبب البروفايل واسم المتجر */
+    padding:15px;
+}
 
-/* Packages */
+/* ===== الباقات ===== */
 .package{
-  background:var(--surface);
-  padding:15px;
-  border-radius:var(--radius);
-  margin-bottom:15px;
-  box-shadow:0 10px 30px var(--shadow);
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
+    background:var(--surface);
+    padding:15px;
+    border-radius:var(--radius);
+    margin-bottom:15px;
+    box-shadow:0 10px 30px var(--shadow);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
 }
-.package h2{ color:var(--primary); margin:0 }
-.package p{ margin:0; font-weight:600; color:var(--subtext) }
+.package h2{color:var(--primary); margin:0}
+.package p{margin:0; font-weight:600; color:var(--subtext)}
 .package button{
-  background:var(--primary);
-  color:#fff;
-  border:none;
-  padding:10px 14px;
-  border-radius:8px;
-  cursor:pointer;
-  transition:transform .12s ease, box-shadow .12s ease;
-  box-shadow:0 8px 20px rgba(13,110,253,0.14);
+    background:var(--primary);
+    color:#fff;
+    border:none;
+    padding:10px 14px;
+    border-radius:8px;
+    cursor:pointer;
+    transition:transform .12s ease, box-shadow .12s ease;
+    box-shadow:0 8px 20px rgba(13,110,253,0.14);
 }
+.package button:active{transform:translateY(1px)}
 
-/* Sections */
+/* ===== الأقسام ===== */
 .section{
-  background:var(--surface);
-  padding:14px;
-  border-radius:var(--radius);
-  box-shadow:0 10px 30px var(--shadow);
-  margin-bottom:12px;
-  color:var(--subtext);
+    background:var(--surface);
+    padding:14px;
+    border-radius:var(--radius);
+    box-shadow:0 10px 30px var(--shadow);
+    margin-bottom:12px;
+    color:var(--subtext);
 }
 
-/* Contact row (site-level) - stacked as in images (واتساب فوق، إيميل تحت) */
+/* ===== شريط التواصل العام ===== */
 .contact-row{
-  display:flex;
-  flex-direction:column;       /* stacked */
-  gap:12px;
-  align-items:flex-end;        /* aligned to the right (rtl) like in screenshots */
-  justify-content:flex-start;
-  margin-top:8px;
-  flex-wrap:nowrap;
+    display:flex;
+    gap:10px;
+    align-items:center;
+    justify-content:flex-start;
+    margin-top:8px;
+    flex-wrap:wrap;
 }
 .contact-btn{
-  display:inline-flex;
-  gap:8px;
-  align-items:center;
-  background:#111;
-  color:var(--text);
-  border-radius:10px;
-  padding:12px 18px;
-  text-decoration:none;
-  box-shadow:0 6px 18px rgba(0,0,0,0.6);
-  border:1px solid rgba(255,255,255,0.03);
-  font-weight:700;
-  font-size:16px;
+    display:inline-flex;
+    gap:8px;
+    align-items:center;
+    background:#111;
+    color:var(--text);
+    border-radius:8px;
+    padding:8px 12px;
+    text-decoration:none;
+    box-shadow:0 6px 18px rgba(0,0,0,0.6);
+    border:1px solid rgba(255,255,255,0.03);
+    font-weight:600;
 }
-.contact-btn .icon { display:inline-flex; width:20px; height:20px; align-items:center; justify-content:center; margin-inline-start:8px; }
-.contact-btn.whatsapp{ background:var(--wa-green); color:#fff; border:none }
-.contact-btn.email{ background:var(--mail-blue); color:#fff; border:none }
+.contact-btn.whatsapp{background:var(--wa-green); color:#fff; border:none}
+.contact-btn.email{background:var(--mail-blue); color:#fff; border:none}
 
-/* Form popup */
+/* ===== الفورم (متمركز الحقول) ===== */
 .form-popup{
-  display:none;
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  width:360px;
-  background:var(--surface);
-  padding:18px;
-  border-radius:12px;
-  box-shadow:0 18px 60px rgba(0,0,0,0.8);
-  z-index:60;
-  color:var(--text);
+    display:none;
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    width:360px;
+    background:var(--surface);
+    padding:18px;
+    border-radius:12px;
+    box-shadow:0 18px 60px rgba(0,0,0,0.8);
+    z-index:60;
+    color:var(--text);
 }
-.form-popup .form-content{ display:flex; flex-direction:column; align-items:center; gap:10px; text-align:center; }
 
-/* Inputs */
+/* مركز المحتوى داخل الفورم بحيث الحقول في الوسط ومتجاوبة */
+.form-popup .form-content{
+    display:flex;
+    flex-direction:column;
+    align-items:center; /* يجعل الحقول في الوسط أفقياً */
+    gap:10px;
+    text-align:center;
+}
+
+/* حقول متجاوبة وتساعد على الهاتف والحاسوب */
 .form-popup input[type="text"],
 .form-popup input[type="email"],
 .form-popup input[type="tel"]{
-  width:100%;
-  max-width:320px;
-  padding:10px 12px;
-  border-radius:8px;
-  border:1px solid rgba(255,255,255,0.06);
-  background:#0b0b0c;
-  color:var(--text);
-  font-size:15px;
-  direction:ltr;
+    width:100%;
+    max-width:320px;
+    padding:10px 12px;
+    border-radius:8px;
+    border:1px solid rgba(255,255,255,0.06);
+    background:#0b0b0c;
+    color:var(--text);
+    font-size:15px;
+    direction:ltr; /* معرف اللاعب/أرقام عادة أحسن للقراءة */
 }
 
-/* Method selection */
-.method-selection{ display:flex; gap:10px; align-items:center; justify-content:center; padding:6px; width:100%; }
+/* اختيار طريقة التواصل (تحت خانة id) */
+.method-selection{
+    display:flex;
+    gap:10px;
+    align-items:center;
+    justify-content:center;
+    background:transparent;
+    padding:6px;
+    width:100%;
+}
 .method-selection label{
-  display:inline-flex; gap:8px; align-items:center; padding:6px 10px; border-radius:8px; cursor:pointer; user-select:none;
-  background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.03); font-weight:700; color:var(--subtext);
+    display:inline-flex;
+    gap:8px;
+    align-items:center;
+    padding:6px 10px;
+    border-radius:8px;
+    cursor:pointer;
+    user-select:none;
+    background:rgba(255,255,255,0.02);
+    border:1px solid rgba(255,255,255,0.03);
+    font-weight:700;
+    color:var(--subtext);
 }
-.method-selection input[type="radio"]{ accent-color: var(--primary); }
+.method-selection input[type="radio"]{
+    accent-color: var(--primary);
+}
 
-/* Quick icons (under player id) - order set to match images: واتساب أولاً (يسار)، إيميل ثانياً (يمين) */
-.quick-icons{ display:flex; gap:14px; align-items:center; justify-content:center; margin-top:8px; width:100%; }
+/* ===== أيقونات سريعة تحت الـ ID (تم تعديل الشكل كما طلبت) ===== */
+.quick-icons{
+    display:flex;
+    gap:14px;
+    align-items:center;
+    justify-content:center;
+    margin-top:8px;
+    width:100%;
+}
 .icon-btn{
-  display:inline-flex; align-items:center; justify-content:center;
-  width:54px; height:54px; border-radius:12px; cursor:pointer;
-  border:1px solid rgba(255,255,255,0.04);
-  background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-  transition:transform .14s ease, box-shadow .14s ease;
-  box-shadow:0 6px 18px rgba(0,0,0,0.45);
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:54px;               /* كبرت الحجم لتظهر أجمل */
+    height:54px;
+    border-radius:12px;       /* شكل أنعم */
+    cursor:pointer;
+    border:1px solid rgba(255,255,255,0.04);
+    background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    transition:transform .14s ease, box-shadow .14s ease;
+    box-shadow:0 6px 18px rgba(0,0,0,0.45);
 }
-.icon-btn:active{ transform:translateY(1px) }
-.icon-btn:hover{ transform:translateY(-4px) scale(1.03); box-shadow:0 14px 30px rgba(0,0,0,0.55); }
-.icon-btn.wa{ background:linear-gradient(180deg,var(--wa-green), #1ebc5b); color:#fff; box-shadow:0 10px 30px rgba(37,211,102,0.18) }
-.icon-btn.mail{ background:linear-gradient(180deg,var(--mail-blue), #0a58ca); color:#fff; box-shadow:0 10px 30px rgba(13,110,253,0.12) }
+.icon-btn:active{transform:translateY(1px)}
+.icon-btn:hover{transform:translateY(-4px) scale(1.03); box-shadow:0 14px 30px rgba(0,0,0,0.55)}
+.icon-btn.wa{background:linear-gradient(180deg,var(--wa-green), #1ebc5b); color:#fff; box-shadow:0 10px 30px rgba(37,211,102,0.18)}
+.icon-btn.mail{background:linear-gradient(180deg,var(--mail-blue), #0a58ca); color:#fff; box-shadow:0 10px 30px rgba(13,110,253,0.12)}
 
-/* SVG rendering to avoid distortion */
-.icon-btn svg{
-  width:28px;
-  height:28px;
-  display:block;
-  fill:none;
-  stroke:currentColor;
-  stroke-width:1.6;
-  stroke-linecap:round;
-  stroke-linejoin:round;
-  shape-rendering:geometricPrecision;
-  vector-effect:non-scaling-stroke;
+/* أيقونات svg داخل الأزرار */
+.icon-btn svg{width:26px; height:26px; display:block; fill:currentColor}
+
+/* أزرار داخل النموذج */
+.form-popup .form-actions{
+    display:flex;
+    gap:8px;
+    width:100%;
+    justify-content:center;
+    flex-wrap:wrap;
+    margin-top:6px;
+}
+.form-popup .form-actions button{
+    padding:9px 12px;
+    border-radius:8px;
+    border:none;
+    cursor:pointer;
+    font-weight:700;
+}
+.form-popup .send{background:var(--accent); color:#000}
+.form-popup .close{background:#e9ecef; color:#111}
+
+/* تدرجات وتحسين صغير على الأزرار الرئيسية في الصفحة */
+button.primary{
+    background:var(--primary);
+    color:#fff;
+    border:none;
 }
 
-/* Make sure site-level contact icons match style and are clear */
-.contact-row svg{
-  width:18px; height:18px; fill:none; stroke:currentColor; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round;
-}
-
-/* Form buttons */
-.form-popup .form-actions{ display:flex; gap:8px; width:100%; justify-content:center; flex-wrap:wrap; margin-top:6px; }
-.form-popup .form-actions button{ padding:9px 12px; border-radius:8px; border:none; cursor:pointer; font-weight:700; }
-.form-popup .send{ background:var(--accent); color:#000 }
-.form-popup .close{ background:#e9ecef; color:#111 }
-
-button.primary{ background:var(--primary); color:#fff; border:none; }
-
-/* Responsive */
+/* ===== تجاوبية ===== */
 @media (max-width:480px){
-  .profile-wrapper{ right:12px; width:100px; height:100px; bottom:-40px }
-  .profile-name{ right:12px; width:100px; font-size:16px; bottom:-88px }
-  .container{ margin:110px 12px 20px }
-  .package{ flex-direction:column; align-items:flex-start }
-  .form-popup{ right:12px; left:12px; width:auto }
-  .cover-wrapper{ margin:12px }
-  .form-popup input[type="text"],
-  .form-popup input[type="email"],
-  .form-popup input[type="tel"]{ max-width:100% }
-  .icon-btn{ width:48px; height:48px }
-  .icon-btn svg{ width:22px; height:22px }
+    .profile-wrapper{right:12px; width:100px;height:100px; bottom:-40px}
+    .profile-name{right:12px; width:100px; font-size:16px; bottom:-88px}
+    .container{margin:110px 12px 20px}
+    .package{flex-direction:column; align-items:flex-start}
+    .form-popup{right:12px; left:12px; width:auto}
+    .cover-wrapper{margin:12px}
+    .form-popup input[type="text"],
+    .form-popup input[type="email"],
+    .form-popup input[type="tel"]{max-width:100%}
+    .icon-btn{width:48px;height:48px}
+    .icon-btn svg{width:22px;height:22px}
 }
 </style>
 </head>
@@ -258,115 +317,145 @@ button.primary{ background:var(--primary); color:#fff; border:none; }
 
 <header>🛒 متجر جواهر فري فاير</header>
 
-<!-- Cover + profile -->
+<!-- ===== الغلاف + البروفايل ===== -->
 <div class="cover-wrapper">
-  <div class="cover-image">
-    <img src="cover.jpg" alt="غلاف المتجر">
-  </div>
 
-  <div class="profile-wrapper">
-    <img src="profile.png" alt="صورة المتجر">
-  </div>
+    <div class="cover-image">
+        <!-- ضع صورة الغلاف هنا -->
+        <img src="cover.jpg" alt="غلاف المتجر">
+    </div>
 
-  <div class="profile-name">SAD SILENT</div>
+    <div class="profile-wrapper">
+        <!-- ضع صورة البروفايل هنا -->
+        <img src="profile.png" alt="صورة المتجر">
+    </div>
+
+    <!-- اسم المتجر أسفل البروفايل (بالأحرف الكبيرة ومتمركز تحت البروفايل على اليمين) -->
+    <div class="profile-name">SAD SILENT</div>
+
 </div>
 
-<!-- Store content -->
+<!-- ===== المتجر ===== -->
 <div class="container">
 
-<!-- الباقات كاملة -->
-<div class="package"><div><h2>100 جوهرة</h2><p>11 درهم</p></div><button class="primary" onclick="openForm('100 جوهرة','11 درهم')">شراء</button></div>
-<div class="package"><div><h2>210 جوهرة</h2><p>21 درهم</p></div><button class="primary" onclick="openForm('210 جوهرة','21 درهم')">شراء</button></div>
-<div class="package"><div><h2>530 جوهرة</h2><p>51 درهم</p></div><button class="primary" onclick="openForm('530 جوهرة','51 درهم')">شراء</button></div>
-<div class="package"><div><h2>1060 جوهرة</h2><p>100 درهم</p></div><button class="primary" onclick="openForm('1060 جوهرة','100 درهم')">شراء</button></div>
-<div class="package"><div><h2>2420 جوهرة</h2><p>230 درهم</p></div><button class="primary" onclick="openForm('2420 جوهرة','230 درهم')">شراء</button></div>
-<div class="package"><div><h2>2585 جوهرة</h2><p>240 درهم</p></div><button class="primary" onclick="openForm('2585 جوهرة','240 درهم')">شراء</button></div>
-  
-<!-- طرق الدفع -->
-<div class="section">
-  <h3>💳 طرق الدفع</h3>
-  <ul class="payment-list">
-    <li><span class="pay-emoji">💸</span> Cash Plus</li>
-    <li><span class="pay-emoji">🏦</span> تحويل بنكي</li>
-  </ul>
-</div>
-  <div class="section">
-    
-  <!-- ===== تواصل معنا ===== -->
-<div class="section">
-  <!-- ===== تواصل معنا ===== -->
-<div class="section">
-  <h3 style="color:var(--text);margin-top:0">📬 تواصل معنا</h3>
-
-  <div class="contact-row">
-
-    <!-- واتساب (يمين) -->
-    <a class="contact-btn whatsapp" id="storeWhatsAppBtn"
-       href="https://wa.me/212657482142" target="_blank" rel="noopener">
-
-      <span class="icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24">
-          <path d="M21 12.05c0 4.97-4.03 9-9 9a8.96 8.96 0 01-4.74-1.35L3 21l1.3-4.25A8.97 8.97 0 013 12.05C3 7.08 7.03 3.05 12 3.05s9 4.03 9 9z"></path>
-          <path d="M16.2 13.1c-.25-.12-1.47-.73-1.7-.82-.23-.09-.4-.12-.57.12-.17.24-.66.82-.81.98-.14.17-.28.19-.53.07-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.71-.14-.24-.01-.37.11-.49.12-.12.27-.31.41-.46.13-.14.17-.24.25-.4.08-.16.04-.3 0-.42-.04-.12-.52-1.26-.71-1.73-.19-.46-.38-.4-.52-.41-.14 0-.3 0-.46 0-.16 0-.41.06-.62.28-.21.22-.79.77-.79 1.88 0 1.11.8 2.33.91 2.52.11.19 1.6 2.62 3.89 3.67z"></path>
-        </svg>
-      </span>
-
-      <span>واتساب</span>
-    </a>
-
-    <!-- إيميل (يسار) -->
-    <a class="contact-btn email" id="storeEmailBtn"
-       href="mailto:youremail@example.com">
-
-      <span class="icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24">
-          <rect x="2" y="5" width="20" height="14" rx="2"></rect>
-          <path d="M3 7l9 6 9-6"></path>
-        </svg>
-      </span>
-
-      <span>إرسال إيميل</span>
-    </a>
-
+  <div class="package">
+    <div>
+      <h2>100 جوهرة</h2>
+      <p>11 درهم</p>
+    </div>
+    <div>
+      <button onclick="openForm('100 جوهرة','11 درهم')" class="primary">شراء</button>
+    </div>
   </div>
+
+  <div class="package">
+    <div>
+      <h2>210 جوهرة</h2>
+      <p>21 درهم</p>
+    </div>
+    <div>
+      <button onclick="openForm('210 جوهرة','21 درهم')" class="primary">شراء</button>
+    </div>
+  </div>
+
+  <div class="package">
+    <div>
+      <h2>530 جوهرة</h2>
+      <p>51 درهم</p>
+    </div>
+    <div>
+      <button onclick="openForm('530 جوهرة','51 درهم')" class="primary">شراء</button>
+    </div>
+  </div>
+
+  <div class="package">
+    <div>
+      <h2>1060 جوهرة</h2>
+      <p>100 درهم</p>
+    </div>
+    <div>
+      <button onclick="openForm('1060 جوهرة','100 درهم')" class="primary">شراء</button>
+    </div>
+  </div>
+
+  <div class="package">
+    <div>
+      <h2>2420 جوهرة</h2>
+      <p>230 درهم</p>
+    </div>
+    <div>
+      <button onclick="openForm('2420 جوهرة','230 درهم')" class="primary">شراء</button>
+    </div>
+  </div>
+
+  <div class="package">
+    <div>
+      <h2>2585 جوهرة</h2>
+      <p>240 درهم</p>
+    </div>
+    <div>
+      <button onclick="openForm('2585 جوهرة','240 درهم')" class="primary">شراء</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <h3 style="color:var(--text);margin-top:0">💳 طرق الدفع</h3>
+    <ul style="color:var(--subtext);">
+      <li>Cash Plus</li>
+      <li>تحويل بنكي</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3 style="color:var(--text);margin-top:0">📬 تواصل معنا</h3>
+    <div class="contact-row">
+      <!-- استبدل الايميل ورقم الوتساب بالقيم الفعلية لديك -->
+      <a class="contact-btn email" id="storeEmailBtn" href="mailto:youremail@example.com">✉️ إرسال إيميل</a>
+      <a class="contact-btn whatsapp" id="storeWhatsAppBtn" href="https://wa.me/212657482142" target="_blank" rel="noopener">💬 واتساب</a>
+    </div>
+  </div>
+
 </div>
 
-<!-- Purchase form popup -->
+<!-- ===== فورم الطلب ===== -->
 <div class="form-popup" id="purchaseForm" aria-hidden="true">
   <div class="form-content">
     <strong id="pkgName">-</strong>
     <div id="pkgPrice" style="color:var(--primary);font-weight:700;"></div>
 
+    <!-- خانة معرف اللاعب (متمركزة ومتجاوبة) -->
     <input id="playerId" type="text" placeholder="معرف اللاعب" aria-label="معرف اللاعب">
 
-    <!-- QUICK ICONS: واتساب أولاً (يسار) ثم إيميل (يمين) — طبقاً للصور -->
+    <!-- أيقونات سريعة تحت الـ ID لفتح واتساب أو الإيميل مباشرة -->
     <div class="quick-icons" title="تواصل سريع">
       <button class="icon-btn wa" onclick="quickWhatsApp()" aria-label="فتح واتساب">
-        <!-- WhatsApp -->
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
-          <path d="M21 12.05c0 4.97-4.03 9-9 9a8.96 8.96 0 01-4.74-1.35L3 21l1.3-4.25A8.97 8.97 0 013 12.05C3 7.08 7.03 3.05 12 3.05s9 4.03 9 9z"></path>
-          <path d="M16.2 13.1c-.25-.12-1.47-.73-1.7-.82-.23-.09-.4-.12-.57.12-.17.24-.66.82-.81.98-.14.17-.28.19-.53.07-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.71-.14-.24-.01-.37.11-.49.12-.12.27-.31.41-.46.13-.14.17-.24.25-.4.08-.16.04-.3 0-.42-.04-.12-.52-1.26-.71-1.73-.19-.46-.38-.4-.52-.41-.14 0-.3 0-.46 0-.16 0-.41.06-.62.28-.21.22-.79.77-.79 1.88 0 1.11.8 2.33.91 2.52.11.19 1.6 2.62 3.89 3.67 2.29 1.05 2.29.7 2.63.66.34-.04 1.17-.51 1.35-1.02.18-.51.18-.96.12-1.06-.06-.1-.21-.17-.45-.31z"></path>
+        <!-- WhatsApp SVG -->
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M20.52 3.48A11.93 11.93 0 0012 0C5.373 0 0 5.373 0 12c0 2.116.555 4.155 1.603 5.94L0 24l6.295-1.645A11.938 11.938 0 0012 24c6.627 0 12-5.373 12-12 0-3.208-1.246-6.222-3.48-8.52zM12 22c-1.86 0-3.668-.5-5.23-1.447l-.373-.23-3.74.978.999-3.647-.244-.378A9.003 9.003 0 013 12c0-4.97 4.03-9 9-9 2.402 0 4.66.94 6.363 2.638A8.967 8.967 0 0121 12c0 4.97-4.03 9-9 9zM17.01 14.3c-.16-.08-1-.49-1.155-.54-.155-.05-.27-.08-.38.08-.11.16-.43.54-.53.65-.1.11-.18.16-.34.05-.16-.11-.67-.25-1.28-.79-.47-.41-.79-.92-.88-1.08-.09-.16-.01-.25.07-.33.07-.07.16-.18.24-.27.08-.09.11-.16.17-.27.06-.11.03-.2 0-.28-.03-.08-.38-.92-.52-1.26-.14-.34-.28-.3-.38-.3-.1 0-.22 0-.34 0-.11 0-.28.04-.43.2-.15.16-.57.56-.57 1.36 0 .79.58 1.55.66 1.66.08.11 1.14 1.84 2.76 2.58 1.62.74 1.62.49 1.91.46.29-.03.95-.39 1.08-.77.13-.38.13-.71.09-.77-.04-.06-.15-.1-.31-.18z"/>
         </svg>
       </button>
 
       <button class="icon-btn mail" onclick="quickEmail()" aria-label="فتح الإيميل">
-        <!-- Envelope -->
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
-          <rect x="2" y="5" width="20" height="14" rx="2" ry="2"></rect>
-          <path d="M3 7l9 6 9-6"></path>
+        <!-- Mail SVG -->
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M12 13.065L2.4 6.6V18c0 1.104.896 2 2 2h15.2c1.104 0 2-.896 2-2V6.6L12 13.065zM12 11L22.8 4H1.2L12 11z"/>
         </svg>
       </button>
     </div>
 
+    <!-- اختيار طريقة التواصل (تحت الأيقونات): واتساب أو إيميل -->
     <div class="method-selection" aria-label="طريقة التواصل">
       <label>
-        <input type="radio" name="contactMethod" value="whatsapp" checked> واتساب
+        <input type="radio" name="contactMethod" value="whatsapp" checked>
+        واتساب
       </label>
       <label>
-        <input type="radio" name="contactMethod" value="email"> إيميل
+        <input type="radio" name="contactMethod" value="email">
+        إيميل
       </label>
     </div>
 
+    <!-- حقل البريد الإلكتروني يظهر فقط عند اختيار الإيميل -->
     <input id="buyerEmail" type="email" placeholder="البريد الإلكتروني (مطلوب عند اختيار الإيميل)" aria-label="البريد الإلكتروني" style="display:none">
 
     <div class="form-actions">
@@ -377,97 +466,108 @@ button.primary{ background:var(--primary); color:#fff; border:none; }
 </div>
 
 <script>
-/* === ضع بياناتك الحقيقية هنا === */
-const STORE_WA_NUMBER = "212657482142";
-const STORE_EMAIL = "youremail@example.com";
-/* ============================= */
+/* ===== عدّل هذه القيم إلى بياناتك الحقيقية ===== */
+const STORE_WA_NUMBER = "212657482142"; // رقم واتساب المتجر بصيغة دولية بدون +
+const STORE_EMAIL = "youremail@example.com"; // إيميل المتجر الذي ستستقبل عليه الطلبات
+/* ================================================== */
 
 let pkg="", price="";
 
 function openForm(p,pr){
-  pkg=p; price=pr;
-  document.getElementById("pkgName").textContent = `📦 ${pkg}`;
-  document.getElementById("pkgPrice").textContent = `💰 ${price}`;
-  document.getElementById("purchaseForm").style.display="block";
-  document.getElementById("purchaseForm").setAttribute("aria-hidden","false");
-  updateMethodUI();
-  setTimeout(()=> document.getElementById("playerId").focus(), 100);
+    pkg=p; price=pr;
+    document.getElementById("pkgName").textContent = `📦 ${pkg}`;
+    document.getElementById("pkgPrice").textContent = `💰 ${price}`;
+    document.getElementById("purchaseForm").style.display="block";
+    document.getElementById("purchaseForm").setAttribute("aria-hidden","false");
+    updateMethodUI();
+    setTimeout(()=> document.getElementById("playerId").focus(), 100);
 }
 
 function closeForm(){
-  document.getElementById("purchaseForm").style.display="none";
-  document.getElementById("purchaseForm").setAttribute("aria-hidden","true");
+    document.getElementById("purchaseForm").style.display="none";
+    document.getElementById("purchaseForm").setAttribute("aria-hidden","true");
 }
 
 function updateMethodUI(){
-  const method = document.querySelector('input[name="contactMethod"]:checked')?.value || 'whatsapp';
-  const emailField = document.getElementById("buyerEmail");
-  if(method === 'email'){
-    emailField.style.display = 'block';
-  } else {
-    emailField.style.display = 'none';
-    emailField.value = '';
-  }
+    const method = document.querySelector('input[name="contactMethod"]:checked')?.value || 'whatsapp';
+    const emailField = document.getElementById("buyerEmail");
+    if(method === 'email'){
+        emailField.style.display = 'block';
+    } else {
+        emailField.style.display = 'none';
+        emailField.value = '';
+    }
 }
 document.addEventListener('change', function(e){
-  if(e.target && e.target.name === 'contactMethod') updateMethodUI();
+    if(e.target && e.target.name === 'contactMethod'){
+        updateMethodUI();
+    }
 });
 
+/* وظائف الأيقونات السريعة:
+   - quickWhatsApp: يفتح دردشة واتساب مع نص الطلب (يطلب معرف اللاعب إن لم يُدخل)
+   - quickEmail: يفتح عميل الإيميل (mailto) مع نص الطلب (يطلب بريد المشتري إذا اختار الإيميل أو يفتح لإرسال من المشتري)
+*/
 function quickWhatsApp(){
-  const id = document.getElementById("playerId").value.trim();
-  if(!id) return alert("أدخل معرف اللاعب قبل فتح واتساب.");
-  const buyerEmail = document.getElementById("buyerEmail").value.trim();
-  const body = [
-    `طلب شراء - SAD SILENT`,
-    `📦 الباقة: ${pkg || "-"}`,
-    `💰 السعر: ${price || "-"}`,
-    `🆔 معرف اللاعب: ${id}`,
-    buyerEmail ? `✉️ بريد المشتري: ${buyerEmail}` : ''
-  ].filter(Boolean).join("\n");
-  const waUrl = `https://wa.me/${STORE_WA_NUMBER}?text=${encodeURIComponent(body)}`;
-  window.open(waUrl, "_blank", "noopener");
+    const id = document.getElementById("playerId").value.trim();
+    if(!id) return alert("أدخل معرف اللاعب قبل فتح واتساب.");
+    const buyerEmail = document.getElementById("buyerEmail").value.trim();
+    const body = [
+        `طلب شراء - SAD SILENT`,
+        `📦 الباقة: ${pkg || "-"}`,
+        `💰 السعر: ${price || "-"}`,
+        `🆔 معرف اللاعب: ${id}`,
+        buyerEmail ? `✉️ بريد المشتري: ${buyerEmail}` : ''
+    ].filter(Boolean).join("\n");
+    const waUrl = `https://wa.me/${STORE_WA_NUMBER}?text=${encodeURIComponent(body)}`;
+    window.open(waUrl, "_blank", "noopener");
 }
 
 function quickEmail(){
-  const id = document.getElementById("playerId").value.trim();
-  if(!id) return alert("أدخل معرف اللاعب قبل فتح الإيميل.");
-  const buyerEmail = document.getElementById("buyerEmail").value.trim();
-  const subject = `طلب شراء - SAD SILENT - ${pkg || "-"}`;
-  const body = [
-    `طلب شراء - SAD SILENT`,
-    `📦 الباقة: ${pkg || "-"}`,
-    `💰 السعر: ${price || "-"}`,
-    `🆔 معرف اللاعب: ${id}`,
-    buyerEmail ? `✉️ بريد المشتري: ${buyerEmail}` : ''
-  ].filter(Boolean).join("\n");
-  const mailto = `mailto:${encodeURIComponent(STORE_EMAIL)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  window.open(mailto, "_blank", "noopener");
-}
-
-function sendOrder(){
-  let id = document.getElementById("playerId").value.trim();
-  if(!id) return alert("أدخل معرف اللاعب");
-  let method = document.querySelector('input[name="contactMethod"]:checked')?.value || 'whatsapp';
-  let buyerEmail = document.getElementById("buyerEmail").value.trim();
-
-  const body = [
-    `طلب شراء - SAD SILENT`,
-    `📦 الباقة: ${pkg || "-"}`,
-    `💰 السعر: ${price || "-"}`,
-    `🆔 معرف اللاعب: ${id}`,
-    `طريقة التواصل المختارة: ${method === 'whatsapp' ? 'واتساب' : 'إيميل'}`,
-    buyerEmail ? `✉️ بريد المشتري: ${buyerEmail}` : ''
-  ].filter(Boolean).join("\n");
-
-  if(method === 'whatsapp'){
-    const waUrl = `https://wa.me/${STORE_WA_NUMBER}?text=${encodeURIComponent(body)}`;
-    window.open(waUrl, "_blank", "noopener");
-  } else {
-    if(!buyerEmail) return alert("من فضلك أدخل بريدك الإلكتروني عند اختيار طريقة الإيميل.");
+    const id = document.getElementById("playerId").value.trim();
+    if(!id) return alert("أدخل معرف اللاعب قبل فتح الإيميل.");
+    const buyerEmail = document.getElementById("buyerEmail").value.trim();
     const subject = `طلب شراء - SAD SILENT - ${pkg || "-"}`;
+    const body = [
+        `طلب شراء - SAD SILENT`,
+        `📦 الباقة: ${pkg || "-"}`,
+        `💰 السعر: ${price || "-"}`,
+        `🆔 معرف اللاعب: ${id}`,
+        buyerEmail ? `✉️ بريد المشتري: ${buyerEmail}` : ''
+    ].filter(Boolean).join("\n");
     const mailto = `mailto:${encodeURIComponent(STORE_EMAIL)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     window.open(mailto, "_blank", "noopener");
-  }
+}
+
+/* عند الضغط إرسال:
+   - إذا اختار المستخدم "واتساب" يفتح نافذة دردشة واتساب مع نص الطلب جاهزاً.
+   - إذا اختار "إيميل" يفتح عميل الإيميل (mailto) مع الموضوع والنص، ويجب أن يدخل المشتري بريده.
+*/
+function sendOrder(){
+    let id = document.getElementById("playerId").value.trim();
+    if(!id) return alert("أدخل معرف اللاعب");
+
+    let method = document.querySelector('input[name="contactMethod"]:checked')?.value || 'whatsapp';
+    let buyerEmail = document.getElementById("buyerEmail").value.trim();
+
+    const body = [
+        `طلب شراء - SAD SILENT`,
+        `📦 الباقة: ${pkg || "-"}`,
+        `💰 السعر: ${price || "-"}`,
+        `🆔 معرف اللاعب: ${id}`,
+        `طريقة التواصل المختارة: ${method === 'whatsapp' ? 'واتساب' : 'إيميل'}`,
+        buyerEmail ? `✉️ بريد المشتري: ${buyerEmail}` : ''
+    ].filter(Boolean).join("\n");
+
+    if(method === 'whatsapp'){
+        const waUrl = `https://wa.me/${STORE_WA_NUMBER}?text=${encodeURIComponent(body)}`;
+        window.open(waUrl, "_blank", "noopener");
+    } else {
+        if(!buyerEmail) return alert("من فضلك أدخل بريدك الإلكتروني عند اختيار طريقة الإيميل.");
+        const subject = `طلب شراء - SAD SILENT - ${pkg || "-"}`;
+        const mailto = `mailto:${encodeURIComponent(STORE_EMAIL)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        window.open(mailto, "_blank", "noopener");
+    }
 }
 </script>
 
