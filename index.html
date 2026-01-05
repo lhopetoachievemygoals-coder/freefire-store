@@ -153,12 +153,21 @@ header{
 }
 
 /* الحفاظ على الأيقونات بحجمها الطبيعي */
+.contact-row {
+  display: flex;
+  flex-direction: row; /* ترتيب الأزرار */
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
 .contact-btn {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  flex: 1 1 0;
+  flex: 1 1 0; /* تحديد المرونة بين الأزرار */
   height: 64px;
   padding: 0 14px;
   color: var(--text);
@@ -170,9 +179,21 @@ header{
   font-size: 16px;
   white-space: nowrap;
   min-width: 0;
-  direction: rtl; /* تأكد من أن النص داخل الأزرار يبقى من اليمين لليسار */
 }
 
+/* تحديد طول زر الإيميل */
+.contact-btn.email {
+  flex-grow: 2; /* زيادة الحجم بشكل أكبر */
+}
+
+/* تحديد طول زر الواتساب */
+.contact-btn.whatsapp {
+  flex-grow: 1; /* تقليص الحجم */
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/* الحفاظ على الأيقونات بحجمها الطبيعي */
 .contact-btn .icon {
   display: inline-flex;
   width: 20px;
@@ -180,7 +201,6 @@ header{
   align-items: center;
   justify-content: center;
   flex: 0 0 auto;
-  margin-inline-start: 8px;
 }
 
 .contact-btn{
