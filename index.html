@@ -107,8 +107,6 @@ header{
   align-items:center;
   justify-content:space-between;
   gap:12px;
-
-  /* مهم: نخلي RTL + row */
   direction: rtl;
   flex-direction: row;
 }
@@ -127,6 +125,15 @@ header{
   box-shadow:0 8px 20px rgba(13,110,253,0.14);
 }
 
+/* ✅✅ إصلاح ظهور الأرقام داخل RTL (مهم للباقات) */
+.pkg-info h2{
+  direction:ltr;
+  unicode-bidi:isolate;
+}
+.pkg-info .price{
+  font-weight:900;
+}
+
 /* Sections */
 .section{
   background:var(--surface);
@@ -140,22 +147,10 @@ header{
 /* =========================
    ✅ تواصل معنا مثل الصورة:
    واتساب يسار + إيميل يمين
-   ونفس الحجم (الإيميل مايكبرش)
    ========================= */
 .contact-row {
   display: flex;
-  flex-direction: row; /* ترتيب الأزرار الطبيعي (إيميل على اليمين و واتساب على اليسار) */
-  gap: 12px;
-  align-items: stretch;
-  justify-content: space-between;
-  margin-top: 8px;
-  flex-wrap: nowrap;
-}
-
-/* الحفاظ على الأيقونات بحجمها الطبيعي */
-.contact-row {
-  display: flex;
-  flex-direction: row; /* ترتيب الأزرار */
+  flex-direction: row;
   gap: 12px;
   align-items: center;
   justify-content: space-between;
@@ -167,7 +162,7 @@ header{
   align-items: center;
   justify-content: center;
   gap: 10px;
-  flex: 1 1 0; /* تحديد المرونة بين الأزرار */
+  flex: 1 1 0;
   height: 64px;
   padding: 0 14px;
   color: var(--text);
@@ -179,40 +174,6 @@ header{
   font-size: 16px;
   white-space: nowrap;
   min-width: 0;
-}
-
-/* تحديد طول زر الإيميل */
-.contact-btn.email {
-  flex-grow: 2; /* زيادة الحجم بشكل أكبر */
-}
-
-/* تحديد طول زر الواتساب */
-.contact-btn.whatsapp {
-  flex-grow: 1; /* تقليص الحجم */
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
-/* الحفاظ على الأيقونات بحجمها الطبيعي */
-.contact-btn .icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex: 0 0 auto;
-}
-
-.contact-btn{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:8px;
-
-  /* نفس العرض ونفس الارتفاع */
-  flex: 1 1 auto;
-  height:64px;
-   min-width:0;
-
-  /* نخلي المحتوى عربي داخل الزر */
   direction:rtl;
 }
 
@@ -315,10 +276,7 @@ button.primary{ background:var(--primary); color:#fff; border:none; }
   .profile-wrapper{ right:12px; width:100px; height:100px; bottom:-40px }
   .profile-name{ right:12px; width:100px; font-size:16px; bottom:-88px }
   .container{ margin:110px 12px 20px }
-
-  /* نخلي الباقة/شراء نفس الصورة فالموبايل */
   .package{ direction:rtl; flex-direction:row; align-items:center; }
-
   .form-popup{ right:12px; left:12px; width:auto }
   .cover-wrapper{ margin:12px }
   .form-popup input[type="text"],
@@ -356,9 +314,10 @@ button.primary{ background:var(--primary); color:#fff; border:none; }
 <!-- Store content -->
 <div class="container">
 
+<!-- ✅ الباقات (تم إصلاح الأرقام) -->
 <div class="package">
   <div class="pkg-info">
-    <h2>110 = <span class="price">11</span></h2>
+    <h2><span dir="ltr">110</span> = <span class="price" dir="ltr">11</span></h2>
     <p>جوهرة / درهم</p>
   </div>
   <button class="primary" onclick="openForm('110 جوهرة','11 درهم')">شراء</button>
@@ -366,7 +325,7 @@ button.primary{ background:var(--primary); color:#fff; border:none; }
 
 <div class="package">
   <div class="pkg-info">
-    <h2>231 = <span class="price">21</span></h2>
+    <h2><span dir="ltr">231</span> = <span class="price" dir="ltr">21</span></h2>
     <p>جوهرة / درهم</p>
   </div>
   <button class="primary" onclick="openForm('231 جوهرة','21 درهم')">شراء</button>
@@ -374,7 +333,7 @@ button.primary{ background:var(--primary); color:#fff; border:none; }
 
 <div class="package">
   <div class="pkg-info">
-    <h2>583 = <span class="price">53</span></h2>
+    <h2><span dir="ltr">583</span> = <span class="price" dir="ltr">53</span></h2>
     <p>جوهرة / درهم</p>
   </div>
   <button class="primary" onclick="openForm('583 جوهرة','53 درهم')">شراء</button>
@@ -382,7 +341,7 @@ button.primary{ background:var(--primary); color:#fff; border:none; }
 
 <div class="package">
   <div class="pkg-info">
-    <h2>1188 = <span class="price">105</span></h2>
+    <h2><span dir="ltr">1188</span> = <span class="price" dir="ltr">105</span></h2>
     <p>جوهرة / درهم</p>
   </div>
   <button class="primary" onclick="openForm('1188 جوهرة','105 درهم')">شراء</button>
@@ -390,7 +349,7 @@ button.primary{ background:var(--primary); color:#fff; border:none; }
 
 <div class="package">
   <div class="pkg-info">
-    <h2>2420 = <span class="price">230</span></h2>
+    <h2><span dir="ltr">2420</span> = <span class="price" dir="ltr">230</span></h2>
     <p>جوهرة / درهم</p>
   </div>
   <button class="primary" onclick="openForm('2420 جوهرة','230 درهم')">شراء</button>
@@ -398,11 +357,12 @@ button.primary{ background:var(--primary); color:#fff; border:none; }
 
 <div class="package">
   <div class="pkg-info">
-    <h2>2585 = <span class="price">250</span></h2>
+    <h2><span dir="ltr">2585</span> = <span class="price" dir="ltr">250</span></h2>
     <p>جوهرة / درهم</p>
   </div>
   <button class="primary" onclick="openForm('2585 جوهرة','250 درهم')">شراء</button>
 </div>
+
   <!-- طرق الدفع -->
   <div class="section">
     <h3>💳 طرق الدفع</h3>
@@ -418,7 +378,6 @@ button.primary{ background:var(--primary); color:#fff; border:none; }
 
     <div class="contact-row">
 
-      <!-- واتساب (يسار مثل الصورة) -->
       <a class="contact-btn whatsapp" id="storeWhatsAppBtn"
          href="https://wa.me/212657482142" target="_blank" rel="noopener">
         <span class="icon" aria-hidden="true">
@@ -430,7 +389,6 @@ button.primary{ background:var(--primary); color:#fff; border:none; }
         <span>واتساب</span>
       </a>
 
-      <!-- إيميل (يمين مثل الصورة) -->
       <a class="contact-btn email" id="storeEmailBtn"
          href="mailto:youremail@example.com">
         <span class="icon" aria-hidden="true">
