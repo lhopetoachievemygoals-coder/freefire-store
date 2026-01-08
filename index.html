@@ -1,121 +1,317 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>متجر جواهر Free Fire</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>متجر جواهر فري فاير</title>
 
 <style>
+:root{
+  --bg: #000;
+  --surface: #0f0f10;
+  --primary: #0d6efd;
+  --accent: #20c997;
+  --text: #ffffff;
+  --subtext: #d0d4da;
+  --shadow: rgba(0,0,0,0.65);
+  --radius: 10px;
+  --wa-green: #25D366;
+  --mail-blue: #0d6efd;
+}
+
+/* Reset */
+*{box-sizing:border-box}
+html,body{height:100%}
 body{
   margin:0;
-  font-family:Arial,Tahoma,sans-serif;
+  font-family: "Arial", "Tahoma", sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  direction: rtl;
+}
+
+/* Header */
+header{
   background:#000;
   color:#fff;
-}
-header{
   text-align:center;
-  padding:18px;
+  padding:18px 15px;
   font-size:20px;
-  background:#000;
-  border-bottom:1px solid #111;
+  position:sticky;
+  top:0;
+  z-index:40;
+  box-shadow:0 2px 6px rgba(255,255,255,0.03);
 }
-.container{
-  max-width:900px;
-  margin:30px auto;
-  padding:15px;
+
+/* Cover */
+.cover-wrapper{ position:relative; margin:15px; }
+.cover-image{
+  width:100%;
+  aspect-ratio:5040 / 2460;
+  border-radius:12px;
+  overflow:hidden;
+  background:linear-gradient(180deg, rgba(13,110,253,0.06), #111);
 }
-.package{
-  background:#0f0f10;
-  padding:15px;
-  border-radius:10px;
-  margin-bottom:15px;
+.cover-image img{ width:100%; height:100%; object-fit:cover; display:block; filter:brightness(0.85); }
+
+/* Profile on the right */
+.profile-wrapper{
+  position:absolute;
+  bottom:-45px;
+  right:20px;
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  background:var(--surface);
+  padding:4px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.7);
   display:flex;
-  justify-content:space-between;
   align-items:center;
+  justify-content:center;
 }
-.package h2{
-  margin:0;
-  color:#0d6efd;
+.profile-wrapper img{ width:100%; height:100%; border-radius:50%; object-fit:cover; }
+
+.profile-name{
+  position:absolute;
+  bottom:-95px;
+  right:20px;
+  width:120px;
+  text-align:center;
+  font-weight:900;
+  letter-spacing:0.8px;
+  color:var(--text);
+  background:transparent;
+  padding-top:8px;
+  pointer-events:none;
+  text-shadow:0 2px 8px rgba(0,0,0,0.7);
+  text-transform:uppercase;
+  font-size:18px;
 }
-.package p{
-  margin:0;
-  color:#ccc;
+
+/* Container */
+.container{ max-width:900px; margin:140px auto 24px; padding:15px; }
+
+/* =========================
+   ✅ الباقات مثل الصورة:
+   الباقة (النص) يمين + زر شراء يسار
+   ========================= */
+.package{
+  background:var(--surface);
+  padding:15px;
+  border-radius:var(--radius);
+  margin-bottom:15px;
+  box-shadow:0 10px 30px var(--shadow);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  direction: rtl;
+  flex-direction: row;
 }
+
+.package h2{ color:var(--primary); margin:0 }
+.package p{ margin:0; font-weight:600; color:var(--subtext) }
+
 .package button{
-  background:#198754;
+  background:var(--primary);
   color:#fff;
   border:none;
   padding:10px 14px;
   border-radius:8px;
   cursor:pointer;
-  font-weight:bold;
-}
-.section{
-  background:#0f0f10;
-  padding:14px;
-  border-radius:10px;
-  margin-top:20px;
-  color:#ccc;
+  transition:transform .12s ease, box-shadow .12s ease;
+  box-shadow:0 8px 20px rgba(13,110,253,0.14);
 }
 
-/* نافذة الدفع */
-.popup{
+/* Sections */
+.section{
+  background:var(--surface);
+  padding:14px;
+  border-radius:var(--radius);
+  box-shadow:0 10px 30px var(--shadow);
+  margin-bottom:12px;
+  color:var(--subtext);
+}
+
+/* =========================
+   ✅ تواصل معنا مثل الصورة:
+   واتساب يسار + إيميل يمين
+   ========================= */
+.contact-row {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.contact-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex: 1 1 0;
+  height: 64px;
+  padding: 0 14px;
+  color: var(--text);
+  border-radius: 10px;
+  text-decoration: none;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  font-weight: 700;
+  font-size: 16px;
+  white-space: nowrap;
+  min-width: 0;
+  direction:rtl;
+}
+
+.contact-btn .icon{
+  display:inline-flex;
+  width:20px;
+  height:20px;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 auto;
+  margin-inline-start:8px;
+}
+
+.contact-btn.whatsapp{ background:var(--wa-green); color:#fff; border:none }
+.contact-btn.email{ background:var(--mail-blue); color:#fff; border:none }
+
+.contact-row svg{
+  width:18px; height:18px;
+  fill:none; stroke:currentColor; stroke-width:1.6;
+  stroke-linecap:round; stroke-linejoin:round;
+}
+
+/* Form popup */
+.form-popup{
   display:none;
   position:fixed;
-  inset:0;
-  background:rgba(0,0,0,0.7);
-  z-index:100;
-}
-.popup-box{
-  background:#111;
-  max-width:360px;
-  margin:100px auto;
-  padding:20px;
+  bottom:20px;
+  right:20px;
+  width:360px;
+  background:var(--surface);
+  padding:18px;
   border-radius:12px;
-  text-align:center;
+  box-shadow:0 18px 60px rgba(0,0,0,0.8);
+  z-index:60;
+  color:var(--text);
 }
-.popup-box h3{margin-top:0;color:#0d6efd}
-.popup-box input{
+.form-popup .form-content{ display:flex; flex-direction:column; align-items:center; gap:10px; text-align:center; }
+
+/* Inputs */
+.form-popup input[type="text"],
+.form-popup input[type="email"],
+.form-popup input[type="tel"]{
   width:100%;
-  padding:10px;
+  max-width:320px;
+  padding:10px 12px;
   border-radius:8px;
-  border:none;
-  margin:8px 0;
+  border:1px solid rgba(255,255,255,0.06);
+  background:#0b0b0c;
+  color:var(--text);
+  font-size:15px;
+  direction:ltr;
 }
-.popup-box button{
-  width:100%;
-  padding:10px;
-  border-radius:8px;
-  border:none;
-  font-weight:bold;
-  margin-top:8px;
+
+/* Method selection */
+.method-selection{ display:flex; gap:10px; align-items:center; justify-content:center; padding:6px; width:100%; }
+.method-selection label{
+  display:inline-flex; gap:8px; align-items:center; padding:6px 10px; border-radius:8px; cursor:pointer; user-select:none;
+  background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.03); font-weight:700; color:var(--subtext);
 }
-.pay{background:#25D366;color:#fff}
-.close{background:#ddd;color:#000}
+.method-selection input[type="radio"]{ accent-color: var(--primary); }
+
+/* Quick icons */
+.quick-icons{ display:flex; gap:14px; align-items:center; justify-content:center; margin-top:8px; width:100%; }
+.icon-btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:54px; height:54px; border-radius:12px; cursor:pointer;
+  border:1px solid rgba(255,255,255,0.04);
+  background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  transition:transform .14s ease, box-shadow .14s ease;
+  box-shadow:0 6px 18px rgba(0,0,0,0.45);
+}
+.icon-btn:active{ transform:translateY(1px) }
+.icon-btn:hover{ transform:translateY(-4px) scale(1.03); box-shadow:0 14px 30px rgba(0,0,0,0.55); }
+.icon-btn.wa{ background:linear-gradient(180deg,var(--wa-green), #1ebc5b); color:#fff; box-shadow:0 10px 30px rgba(37,211,102,0.18) }
+.icon-btn.mail{ background:linear-gradient(180deg,var(--mail-blue), #0a58ca); color:#fff; box-shadow:0 10px 30px rgba(13,110,253,0.12) }
+
+.icon-btn svg{
+  width:28px;
+  height:28px;
+  display:block;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.6;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  shape-rendering:geometricPrecision;
+  vector-effect:non-scaling-stroke;
+}
+
+/* Form buttons */
+.form-popup .form-actions{ display:flex; gap:8px; width:100%; justify-content:center; flex-wrap:wrap; margin-top:6px; }
+.form-popup .form-actions button{ padding:9px 12px; border-radius:8px; border:none; cursor:pointer; font-weight:700; }
+.form-popup .send{ background:var(--accent); color:#000 }
+.form-popup .close{ background:#e9ecef; color:#111 }
+
+button.primary{ background:var(--primary); color:#fff; border:none; }
+
+/* Responsive */
+@media (max-width:480px){
+  .profile-wrapper{ right:12px; width:100px; height:100px; bottom:-40px }
+  .profile-name{ right:12px; width:100px; font-size:16px; bottom:-88px }
+  .container{ margin:110px 12px 20px }
+  .package{ direction:rtl; flex-direction:row; align-items:center; }
+  .form-popup{ right:12px; left:12px; width:auto }
+  .cover-wrapper{ margin:12px }
+  .form-popup input[type="text"],
+  .form-popup input[type="email"],
+  .form-popup input[type="tel"]{ max-width:100% }
+  .icon-btn{ width:48px; height:48px }
+  .icon-btn svg{ width:22px; height:22px }
+
+  .contact-btn{
+    height:62px;
+    font-size:15px;
+    padding:0 12px;
+  }
+}
 </style>
 </head>
 
 <body>
 
-<header>🛒 متجر جواهر Free Fire</header>
+<header>🛒 متجر جواهر فري فاير</header>
+
 <!-- Cover + profile -->
 <div class="cover-wrapper">
   <div class="cover-image">
     <img src="cover.jpg" alt="غلاف المتجر">
   </div>
+
   <div class="profile-wrapper">
     <img src="profile.png" alt="صورة المتجر">
   </div>
     <div class="profile-name">SAD SILENT</div>
+
 </div>
-  
+
+<!-- ===== المتجر ===== -->
+  <div class="container">
+
   <!-- الباقات -->
   <div class="package">
     <div>
       <h2>110 جوهرة</h2>
       <p>السعر: 11 درهم</p>
     </div>
-    <button onclick="openPay('110 جوهرة','11')">💸 Cash Plus</button>
+    <button>💸 Cash Plus</button>
   </div>
 
   <div class="package">
@@ -123,7 +319,7 @@ header{
       <h2>231 جوهرة</h2>
       <p>السعر: 21 درهم</p>
     </div>
-    <button onclick="openPay('231 جوهرة','21')">💸 Cash Plus</button>
+    <button>💸 Cash Plus</button>
   </div>
 
   <div class="package">
@@ -131,7 +327,7 @@ header{
       <h2>583 جوهرة</h2>
       <p>السعر: 53 درهم</p>
     </div>
-    <button onclick="openPay('583 جوهرة','53')">💸 Cash Plus</button>
+    <button>💸 Cash Plus</button>
   </div>
 
   <div class="package">
@@ -139,7 +335,7 @@ header{
       <h2>1188 جوهرة</h2>
       <p>السعر: 105 درهم</p>
     </div>
-    <button onclick="openPay('1188 جوهرة','105')">💸 Cash Plus</button>
+    <button>💸 Cash Plus</button>
   </div>
 
   <div class="package">
@@ -147,7 +343,7 @@ header{
       <h2>2420 جوهرة</h2>
       <p>السعر: 230 درهم</p>
     </div>
-    <button onclick="openPay('2420 جوهرة','230')">💸 Cash Plus</button>
+    <button>💸 Cash Plus</button>
   </div>
 
   <div class="package">
@@ -155,63 +351,198 @@ header{
       <h2>2585 جوهرة</h2>
       <p>السعر: 250 درهم</p>
     </div>
-    <button onclick="openPay('2585 جوهرة','250')">💸 Cash Plus</button>
+    <button>💸 Cash Plus</button>
   </div>
 
-  <!-- طريقة الدفع -->
+  </div>
+  
+<paypal-cart-button data-id="pp-view-cart"></paypal-cart-button>
+<script>
+  cartPaypal.Cart({ id: "pp-view-cart" })
+</script>
+  
+  <script src="https://www.paypalobjects.com/ncp/cart/cart.js" data-merchant-id="9B4CQLAN4DPRW"></script>
+  
   <div class="section">
-    <h3>💳 طريقة الدفع</h3>
-    <ul>
-      <li>الدفع عبر Cash Plus فقط</li>
-      <li>يتم الشحن بعد تأكيد الوصل</li>
-      <li>لا يوجد استرجاع بعد الشحن</li>
+    <h3 style="color:var(--text);margin-top:0">💳 طرق الدفع</h3>
+    <ul style="color:var(--subtext);">
+      <li>Cash Plus</li>
+      <li>تحويل بنكي</li>
     </ul>
+  </div>
+
+  <div class="section">
+  <!-- طرق الدفع -->
+  <div class="section">
+    <h3>💳 طرق الدفع</h3>
+    <ul class="payment-list">
+      <li><span class="pay-emoji">💸</span> Cash Plus</li>
+      <li><span class="pay-emoji">🏦</span> تحويل بنكي</li>
+    </ul>
+  </div>
+  <!-- تواصل معنا -->
+  <div class="section">
+    <h3 style="color:var(--text);margin-top:0">📬 تواصل معنا</h3>
+
+    <div class="contact-row">
+
+      <a class="contact-btn whatsapp" id="storeWhatsAppBtn"
+         href="https://wa.me/212657482142" target="_blank" rel="noopener">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M21 12.05c0 4.97-4.03 9-9 9a8.96 8.96 0 01-4.74-1.35L3 21l1.3-4.25A8.97 8.97 0 013 12.05C3 7.08 7.03 3.05 12 3.05s9 4.03 9 9z"></path>
+            <path d="M16.2 13.1c-.25-.12-1.47-.73-1.7-.82-.23-.09-.4-.12-.57.12-.17.24-.66.82-.81.98-.14.17-.28.19-.53.07-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.71-.14-.24-.01-.37.11-.49.12-.12.27-.31.41-.46.13-.14.17-.24.25-.4.08-.16.04-.3 0-.42-.04-.12-.52-1.26-.71-1.73-.19-.46-.38-.4-.52-.41-.14 0-.3 0-.46 0-.16 0-.41.06-.62.28-.21.22-.79.77-.79 1.88 0 1.11.8 2.33.91 2.52.11.19 1.6 2.62 3.89 3.67z"></path>
+          </svg>
+        </span>
+        <span>واتساب</span>
+      </a>
+
+      <a class="contact-btn email" id="storeEmailBtn"
+         href="mailto:youremail@example.com">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <rect x="2" y="5" width="20" height="14" rx="2"></rect>
+            <path d="M3 7l9 6 9-6"></path>
+          </svg>
+        </span>
+        <span>إرسال إيميل</span>
+      </a>
+
+    </div>
   </div>
 
 </div>
 
-<!-- نافذة الدفع -->
-<div class="popup" id="popup">
-  <div class="popup-box">
-    <h3 id="pkg"></h3>
-    <p id="price"></p>
+<!-- Purchase form popup -->
+<div class="form-popup" id="purchaseForm" aria-hidden="true">
+  <div class="form-content">
+    <strong id="pkgName">-</strong>
+    <div id="pkgPrice" style="color:var(--primary);font-weight:700;"></div>
 
-    <input id="playerId" type="text" placeholder="🆔 معرف اللاعب">
+    <input id="playerId" type="text" placeholder="معرف اللاعب" aria-label="معرف اللاعب">
 
-    <button class="pay" onclick="sendWA()">إرسال الطلب عبر واتساب</button>
-    <button class="close" onclick="closePay()">إغلاق</button>
+    <div class="quick-icons" title="تواصل سريع">
+      <button class="icon-btn wa" onclick="quickWhatsApp()" aria-label="فتح واتساب">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
+          <path d="M21 12.05c0 4.97-4.03 9-9 9a8.96 8.96 0 01-4.74-1.35L3 21l1.3-4.25A8.97 8.97 0 013 12.05C3 7.08 7.03 3.05 12 3.05s9 4.03 9 9z"></path>
+          <path d="M16.2 13.1c-.25-.12-1.47-.73-1.7-.82-.23-.09-.4-.12-.57.12-.17.24-.66.82-.81.98-.14.17-.28.19-.53.07-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.71-.14-.24-.01-.37.11-.49.12-.12.27-.31.41-.46.13-.14.17-.24.25-.4.08-.16.04-.3 0-.42-.04-.12-.52-1.26-.71-1.73-.19-.46-.38-.4-.52-.41-.14 0-.3 0-.46 0-.16 0-.41.06-.62.28-.21.22-.79.77-.79 1.88 0 1.11.8 2.33.91 2.52.11.19 1.6 2.62 3.89 3.67 2.29 1.05 2.29.7 2.63.66.34-.04 1.17-.51 1.35-1.02.18-.51.18-.96.12-1.06-.06-.1-.21-.17-.45-.31z"></path>
+        </svg>
+      </button>
+
+      <button class="icon-btn mail" onclick="quickEmail()" aria-label="فتح الإيميل">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
+          <rect x="2" y="5" width="20" height="14" rx="2" ry="2"></rect>
+          <path d="M3 7l9 6 9-6"></path>
+        </svg>
+      </button>
+    </div>
+
+    <div class="method-selection" aria-label="طريقة التواصل">
+      <label>
+        <input type="radio" name="contactMethod" value="whatsapp" checked> واتساب
+      </label>
+      <label>
+        <input type="radio" name="contactMethod" value="email"> إيميل
+      </label>
+    </div>
+
+    <input id="buyerEmail" type="email" placeholder="البريد الإلكتروني (مطلوب عند اختيار الإيميل)" aria-label="البريد الإلكتروني" style="display:none">
+
+    <div class="form-actions">
+      <button class="send" onclick="sendOrder()">إرسال</button>
+      <button class="close" onclick="closeForm()">إغلاق</button>
+    </div>
   </div>
 </div>
 
 <script>
-const STORE_WA = "212657482142"; // رقمك
-const CASH_NAME = "اسمك الكامل"; // اسم Cash Plus
+/* === ضع بياناتك الحقيقية هنا === */
+const STORE_WA_NUMBER = "212657482142";
+const STORE_EMAIL = "youremail@example.com";
+/* ============================= */
 
-let PKG="", PRICE="";
+let pkg="", price="";
 
-function openPay(p,pr){
-  PKG=p; PRICE=pr;
-  document.getElementById("pkg").textContent="📦 "+p;
-  document.getElementById("price").textContent="💰 السعر: "+pr+" درهم";
-  document.getElementById("popup").style.display="block";
+function openForm(p,pr){
+  pkg=p; price=pr;
+  document.getElementById("pkgName").textContent = `📦 ${pkg}`;
+  document.getElementById("pkgPrice").textContent = `💰 ${price}`;
+  document.getElementById("purchaseForm").style.display="block";
+  document.getElementById("purchaseForm").setAttribute("aria-hidden","false");
+  updateMethodUI();
+  setTimeout(()=> document.getElementById("playerId").focus(), 100);
 }
-function closePay(){
-  document.getElementById("popup").style.display="none";
+
+function closeForm(){
+  document.getElementById("purchaseForm").style.display="none";
+  document.getElementById("purchaseForm").setAttribute("aria-hidden","true");
 }
-function sendWA(){
-  const id=document.getElementById("playerId").value.trim();
+
+function updateMethodUI(){
+  const method = document.querySelector('input[name="contactMethod"]:checked')?.value || 'whatsapp';
+  const emailField = document.getElementById("buyerEmail");
+  if(method === 'email'){
+    emailField.style.display = 'block';
+  } else {
+    emailField.style.display = 'none';
+    emailField.value = '';
+  }
+}
+document.addEventListener('change', function(e){
+  if(e.target && e.target.name === 'contactMethod') updateMethodUI();
+});
+
+function quickWhatsApp(){
+  const id = document.getElementById("playerId").value.trim();
+  if(!id) return alert("أدخل معرف اللاعب قبل فتح واتساب.");
+  const buyerEmail = document.getElementById("buyerEmail").value.trim();
+  const body = [
+    `📦 الباقة: ${pkg || "-"}`,
+    `💰 السعر: ${price || "-"}`,
+    `🆔 معرف اللاعب: ${id}`,
+    buyerEmail ? `✉️ بريد المشتري: ${buyerEmail}` : ''
+  ].filter(Boolean).join("\n");
+  const waUrl = `https://wa.me/${STORE_WA_NUMBER}?text=${encodeURIComponent(body)}`;
+  window.open(waUrl, "_blank", "noopener");
+}
+
+function quickEmail(){
+  const id = document.getElementById("playerId").value.trim();
+  if(!id) return alert("أدخل معرف اللاعب قبل فتح الإيميل.");
+  const buyerEmail = document.getElementById("buyerEmail").value.trim();
+  const subject = `طلب شراء - SAD SILENT - ${pkg || "-"}`;
+  const body = [
+    `📦 الباقة: ${pkg || "-"}`,
+    `💰 السعر: ${price || "-"}`,
+    `🆔 معرف اللاعب: ${id}`,
+    buyerEmail ? `✉️ بريد المشتري: ${buyerEmail}` : ''
+  ].filter(Boolean).join("\n");
+  const mailto = `mailto:${encodeURIComponent(STORE_EMAIL)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  window.open(mailto, "_blank", "noopener");
+}
+
+function sendOrder(){
+  let id = document.getElementById("playerId").value.trim();
   if(!id) return alert("أدخل معرف اللاعب");
-  const msg=
-`طلب شحن جواهر Free Fire
-📦 الباقة: ${PKG}
-💰 السعر: ${PRICE} درهم
-🆔 معرف اللاعب: ${id}
+  let method = document.querySelector('input[name="contactMethod"]:checked')?.value || 'whatsapp';
+  let buyerEmail = document.getElementById("buyerEmail").value.trim();
 
-💸 الدفع عبر Cash Plus
-الاسم: ${CASH_NAME}
+  const body = [
+    `📦 الباقة: ${pkg || "-"}`,
+    `💰 السعر: ${price || "-"}`,
+    `🆔 معرف اللاعب: ${id}`,
+    buyerEmail ? `✉️ بريد المشتري: ${buyerEmail}` : ''
+  ].filter(Boolean).join("\n");
 
-سأرسل رقم الوصل بعد الدفع`;
-  window.open(`https://wa.me/${STORE_WA}?text=${encodeURIComponent(msg)}`,"_blank");
+  if(method === 'whatsapp'){
+    const waUrl = `https://wa.me/${STORE_WA_NUMBER}?text=${encodeURIComponent(body)}`;
+    window.open(waUrl, "_blank", "noopener");
+  } else {
+    if(!buyerEmail) return alert("من فضلك أدخل بريدك الإلكتروني عند اختيار طريقة الإيميل.");
+    const subject = `طلب شراء - SAD SILENT - ${pkg || "-"}`;
+    const mailto = `mailto:${encodeURIComponent(STORE_EMAIL)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.open(mailto, "_blank", "noopener");
+  }
 }
 </script>
 
