@@ -310,7 +310,12 @@ button.primary{ background:var(--primary); color:#fff; border:none; }
   <p>السعر: 11 درهم</p>
   <button onclick="openForm('110 جوهرة','11 درهم')">شراء</button>
 </div>
-
+  
+<paypal-cart-button data-id="pp-view-cart"></paypal-cart-button>
+<script>
+  cartPaypal.Cart({ id: "pp-view-cart" })
+</script>
+  
 <div class="package">
   <h2>231 جوهرة</h2>
   <p>السعر: 21 درهم</p>
@@ -340,8 +345,14 @@ button.primary{ background:var(--primary); color:#fff; border:none; }
   <p>السعر: 250 درهم</p>
   <button onclick="openForm('2585 جوهرة','250 درهم')">شراء</button>
 </div>
-  </div>
-
+  
+<paypal-cart-button data-id="pp-view-cart"></paypal-cart-button>
+<script>
+  cartPaypal.Cart({ id: "pp-view-cart" })
+</script>
+  
+  <script src="https://www.paypalobjects.com/ncp/cart/cart.js" data-merchant-id="9B4CQLAN4DPRW"></script>
+  
   <div class="section">
     <h3 style="color:var(--text);margin-top:0">💳 طرق الدفع</h3>
     <ul style="color:var(--subtext);">
