@@ -93,10 +93,7 @@ header{
 /* Container */
 .container{ max-width:900px; margin:140px auto 24px; padding:15px; }
 
-/* =========================
-   ✅ الباقات مثل الصورة:
-   الباقة (النص) يمين + زر شراء يسار
-   ========================= */
+/* الباقات */
 .package{
   background:var(--surface);
   padding:15px;
@@ -135,10 +132,7 @@ header{
   color:var(--subtext);
 }
 
-/* =========================
-   ✅ تواصل معنا مثل الصورة:
-   واتساب يسار + إيميل يمين
-   ========================= */
+/* تواصل معنا */
 .contact-row {
   display: flex;
   flex-direction: row;
@@ -203,7 +197,6 @@ header{
 }
 .form-popup .form-content{ display:flex; flex-direction:column; align-items:center; gap:10px; text-align:center; }
 
-/* Inputs */
 .form-popup input[type="text"],
 .form-popup input[type="email"],
 .form-popup input[type="tel"]{
@@ -269,7 +262,6 @@ button.primary{ background:var(--primary); color:#fff; border:none; }
   .container{ margin:110px 12px 20px }
   .package{ direction:rtl; flex-direction:row; align-items:center; }
   .form-popup{ right:12px; left:12px; width:auto }
-  .cover-wrapper{ margin:12px }
   .form-popup input[type="text"],
   .form-popup input[type="email"],
   .form-popup input[type="tel"]{ max-width:100% }
@@ -301,126 +293,58 @@ button.primary{ background:var(--primary); color:#fff; border:none; }
     <div class="profile-name">SAD SILENT</div>
 </div>
 
-<!-- ===== المتجر ===== -->
-  <div class="container">
+<!-- المتجر -->
+<div class="container">
 
-  <!-- الباقات -->
   <div class="package">
-    <div>
-      <h2>110 جوهرة</h2>
-      <p>السعر: 11 درهم</p>
-    </div>
-    <button>💸 Cash Plus</button>
+    <h2>110 جوهرة</h2>
+    <p>السعر: 11 درهم</p>
+    <button onclick="openForm('110 جوهرة','11 درهم')">💸 Cash Plus</button>
   </div>
 
   <div class="package">
-    <div>
-      <h2>231 جوهرة</h2>
-      <p>السعر: 21 درهم</p>
-    </div>
-    <button>💸 Cash Plus</button>
+    <h2>231 جوهرة</h2>
+    <p>السعر: 21 درهم</p>
+    <button onclick="openForm('231 جوهرة','21 درهم')">💸 Cash Plus</button>
   </div>
 
   <div class="package">
-    <div>
-      <h2>583 جوهرة</h2>
-      <p>السعر: 53 درهم</p>
-    </div>
-    <button>💸 Cash Plus</button>
+    <h2>583 جوهرة</h2>
+    <p>السعر: 53 درهم</p>
+    <button onclick="openForm('583 جوهرة','53 درهم')">💸 Cash Plus</button>
   </div>
 
-      <div class="package">
-    <div>
-      <h2>583 جوهرة</h2>
-      <p>السعر: 53 درهم</p>
-    </div>
-    <button>💸 Cash Plus</button>
-      </div>
+  <div class="package">
+    <h2>1188 جوهرة</h2>
+    <p>السعر: 105 درهم</p>
+    <button onclick="openForm('1188 جوهرة','105 درهم')">💸 Cash Plus</button>
+  </div>
 
-      <div class="package">
-    <div>
-      <h2>583 جوهرة</h2>
-      <p>السعر: 53 درهم</p>
-    </div>
-    <button>💸 Cash Plus</button>
-      </div>
+  <div class="package">
+    <h2>2420 جوهرة</h2>
+    <p>السعر: 230 درهم</p>
+    <button onclick="openForm('2420 جوهرة','230 درهم')">💸 Cash Plus</button>
+  </div>
 
-      <div class="package">
-    <div>
-      <h2>583 جوهرة</h2>
-      <p>السعر: 53 درهم</p>
-    </div>
-    <button>💸 Cash Plus</button>
-      </div>
-    
-    <!-- طريقة الدفع -->
+  <div class="package">
+    <h2>2585 جوهرة</h2>
+    <p>السعر: 250 درهم</p>
+    <button onclick="openForm('2585 جوهرة','250 درهم')">💸 Cash Plus</button>
+  </div>
+
   <div class="section">
-    <h3>💳 طريقة الدفع</h3>
-    <ul>
-      <li>الدفع عبر Cash Plus فقط</li>
-      <li>يتم الشحن بعد تأكيد الوصل</li>
-      <li>المرجو التأكد من إدخال ID الصحيح</li>
-      <li>لا يوجد استرجاع بعد الشحن</li>
+    <h3 style="color:var(--text);margin-top:0">💳 طريقة الدفع</h3>
+    <ul style="color:var(--subtext);">
+      <li>💸 Cash Plus فقط</li>
     </ul>
-  </div>
-
-</div> <!-- نهاية container -->
-
-<!-- نافذة الطلب -->
-<div class="popup" id="popup">
-  <div class="popup-box">
-    <h3 id="pkg"></h3>
-    <p id="price"></p>
-
-    <input id="playerId" type="text" placeholder="🆔 معرف اللاعب (ID)">
-
-    <p style="font-size:14px;color:#ccc">
-      💸 الدفع عبر <b>Cash Plus</b><br>
-      الاسم: <b>اسمك الكامل</b><br>
-      بعد الدفع أرسل رقم الوصل عبر واتساب
+    <p style="font-size:14px;margin-top:8px">
+      يتم شحن الجواهر بعد إرسال <b>وصل Cash Plus</b> عبر واتساب
     </p>
-
-    <button class="pay" onclick="sendWA()">إرسال الطلب عبر واتساب</button>
-    <button class="close" onclick="closePay()">إغلاق</button>
   </div>
-</div>
 
-<script>
-const STORE_WA = "2126XXXXXXXX"; // رقم واتساب ديالك بدون +
-const CASH_NAME = "اسمك الكامل"; // الاسم المسجل في Cash Plus
-
-let PKG="", PRICE="";
-
-function openPay(p,pr){
-  PKG=p; PRICE=pr;
-  document.getElementById("pkg").textContent="📦 "+p;
-  document.getElementById("price").textContent="💰 السعر: "+pr+" درهم";
-  document.getElementById("popup").style.display="block";
-}
-function closePay(){
-  document.getElementById("popup").style.display="none";
-}
-function sendWA(){
-  const id=document.getElementById("playerId").value.trim();
-  if(!id){
-    alert("المرجو إدخال معرف اللاعب");
-    return;
-  }
-  const msg =
-`طلب شحن جواهر Free Fire
-📦 الباقة: ${PKG}
-💰 السعر: ${PRICE} درهم
-🆔 معرف اللاعب: ${id}
-
-💸 الدفع عبر Cash Plus
-الاسم: ${CASH_NAME}
-
-سأرسل رقم الوصل بعد الدفع`;
-  window
   <!-- تواصل معنا -->
   <div class="section">
     <h3 style="color:var(--text);margin-top:0">📬 تواصل معنا</h3>
-
     <div class="contact-row">
 
       <a class="contact-btn whatsapp" id="storeWhatsAppBtn"
@@ -434,20 +358,8 @@ function sendWA(){
         <span>واتساب</span>
       </a>
 
-      <a class="contact-btn email" id="storeEmailBtn"
-         href="mailto:youremail@example.com">
-        <span class="icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24">
-            <rect x="2" y="5" width="20" height="14" rx="2"></rect>
-            <path d="M3 7l9 6 9-6"></path>
-          </svg>
-        </span>
-        <span>إرسال إيميل</span>
-      </a>
-
     </div>
   </div>
-
 </div>
 
 <!-- Purchase form popup -->
@@ -458,45 +370,15 @@ function sendWA(){
 
     <input id="playerId" type="text" placeholder="معرف اللاعب" aria-label="معرف اللاعب">
 
-    <div class="quick-icons" title="تواصل سريع">
-      <button class="icon-btn wa" onclick="quickWhatsApp()" aria-label="فتح واتساب">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
-          <path d="M21 12.05c0 4.97-4.03 9-9 9a8.96 8.96 0 01-4.74-1.35L3 21l1.3-4.25A8.97 8.97 0 013 12.05C3 7.08 7.03 3.05 12 3.05s9 4.03 9 9z"></path>
-          <path d="M16.2 13.1c-.25-.12-1.47-.73-1.7-.82-.23-.09-.4-.12-.57.12-.17.24-.66.82-.81.98-.14.17-.28.19-.53.07-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.71-.14-.24-.01-.37.11-.49.12-.12.27-.31.41-.46.13-.14.17-.24.25-.4.08-.16.04-.3 0-.42-.04-.12-.52-1.26-.71-1.73-.19-.46-.38-.4-.52-.41-.14 0-.3 0-.46 0-.16 0-.41.06-.62.28-.21.22-.79.77-.79 1.88 0 1.11.8 2.33.91 2.52.11.19 1.6 2.62 3.89 3.67 2.29 1.05 2.29.7 2.63.66.34-.04 1.17-.51 1.35-1.02.18-.51.18-.96.12-1.06-.06-.1-.21-.17-.45-.31z"></path>
-        </svg>
-      </button>
-
-      <button class="icon-btn mail" onclick="quickEmail()" aria-label="فتح الإيميل">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
-          <rect x="2" y="5" width="20" height="14" rx="2" ry="2"></rect>
-          <path d="M3 7l9 6 9-6"></path>
-        </svg>
-      </button>
-    </div>
-
-    <div class="method-selection" aria-label="طريقة التواصل">
-      <label>
-        <input type="radio" name="contactMethod" value="whatsapp" checked> واتساب
-      </label>
-      <label>
-        <input type="radio" name="contactMethod" value="email"> إيميل
-      </label>
-    </div>
-
-    <input id="buyerEmail" type="email" placeholder="البريد الإلكتروني (مطلوب عند اختيار الإيميل)" aria-label="البريد الإلكتروني" style="display:none">
-
     <div class="form-actions">
-      <button class="send" onclick="sendOrder()">إرسال</button>
+      <button class="send" onclick="sendOrder()">إرسال الطلب (Cash Plus)</button>
       <button class="close" onclick="closeForm()">إغلاق</button>
     </div>
   </div>
 </div>
 
 <script>
-/* === ضع بياناتك الحقيقية هنا === */
 const STORE_WA_NUMBER = "212657482142";
-const STORE_EMAIL = "youremail@example.com";
-/* ============================= */
 
 let pkg="", price="";
 
@@ -506,7 +388,6 @@ function openForm(p,pr){
   document.getElementById("pkgPrice").textContent = `💰 ${price}`;
   document.getElementById("purchaseForm").style.display="block";
   document.getElementById("purchaseForm").setAttribute("aria-hidden","false");
-  updateMethodUI();
   setTimeout(()=> document.getElementById("playerId").focus(), 100);
 }
 
@@ -515,71 +396,18 @@ function closeForm(){
   document.getElementById("purchaseForm").setAttribute("aria-hidden","true");
 }
 
-function updateMethodUI(){
-  const method = document.querySelector('input[name="contactMethod"]:checked')?.value || 'whatsapp';
-  const emailField = document.getElementById("buyerEmail");
-  if(method === 'email'){
-    emailField.style.display = 'block';
-  } else {
-    emailField.style.display = 'none';
-    emailField.value = '';
-  }
-}
-document.addEventListener('change', function(e){
-  if(e.target && e.target.name === 'contactMethod') updateMethodUI();
-});
-
-function quickWhatsApp(){
-  const id = document.getElementById("playerId").value.trim();
-  if(!id) return alert("أدخل معرف اللاعب قبل فتح واتساب.");
-  const buyerEmail = document.getElementById("buyerEmail").value.trim();
-  const body = [
-    `📦 الباقة: ${pkg || "-"}`,
-    `💰 السعر: ${price || "-"}`,
-    `🆔 معرف اللاعب: ${id}`,
-    buyerEmail ? `✉️ بريد المشتري: ${buyerEmail}` : ''
-  ].filter(Boolean).join("\n");
-  const waUrl = `https://wa.me/${STORE_WA_NUMBER}?text=${encodeURIComponent(body)}`;
-  window.open(waUrl, "_blank", "noopener");
-}
-
-function quickEmail(){
-  const id = document.getElementById("playerId").value.trim();
-  if(!id) return alert("أدخل معرف اللاعب قبل فتح الإيميل.");
-  const buyerEmail = document.getElementById("buyerEmail").value.trim();
-  const subject = `طلب شراء - SAD SILENT - ${pkg || "-"}`;
-  const body = [
-    `📦 الباقة: ${pkg || "-"}`,
-    `💰 السعر: ${price || "-"}`,
-    `🆔 معرف اللاعب: ${id}`,
-    buyerEmail ? `✉️ بريد المشتري: ${buyerEmail}` : ''
-  ].filter(Boolean).join("\n");
-  const mailto = `mailto:${encodeURIComponent(STORE_EMAIL)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  window.open(mailto, "_blank", "noopener");
-}
-
 function sendOrder(){
   let id = document.getElementById("playerId").value.trim();
   if(!id) return alert("أدخل معرف اللاعب");
-  let method = document.querySelector('input[name="contactMethod"]:checked')?.value || 'whatsapp';
-  let buyerEmail = document.getElementById("buyerEmail").value.trim();
 
   const body = [
     `📦 الباقة: ${pkg || "-"}`,
     `💰 السعر: ${price || "-"}`,
-    `🆔 معرف اللاعب: ${id}`,
-    buyerEmail ? `✉️ بريد المشتري: ${buyerEmail}` : ''
+    `🆔 معرف اللاعب: ${id}`
   ].filter(Boolean).join("\n");
 
-  if(method === 'whatsapp'){
-    const waUrl = `https://wa.me/${STORE_WA_NUMBER}?text=${encodeURIComponent(body)}`;
-    window.open(waUrl, "_blank", "noopener");
-  } else {
-    if(!buyerEmail) return alert("من فضلك أدخل بريدك الإلكتروني عند اختيار طريقة الإيميل.");
-    const subject = `طلب شراء - SAD SILENT - ${pkg || "-"}`;
-    const mailto = `mailto:${encodeURIComponent(STORE_EMAIL)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.open(mailto, "_blank", "noopener");
-  }
+  const waUrl = `https://wa.me/${STORE_WA_NUMBER}?text=${encodeURIComponent(body)}`;
+  window.open(waUrl, "_blank", "noopener");
 }
 </script>
 
