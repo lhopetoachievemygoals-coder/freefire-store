@@ -352,7 +352,71 @@ button.primary{ background:var(--primary); color:#fff; border:none; }
     </div>
     <button>💸 Cash Plus</button>
       </div>
+    
+    <!-- طريقة الدفع -->
+  <div class="section">
+    <h3>💳 طريقة الدفع</h3>
+    <ul>
+      <li>الدفع عبر Cash Plus فقط</li>
+      <li>يتم الشحن بعد تأكيد الوصل</li>
+      <li>المرجو التأكد من إدخال ID الصحيح</li>
+      <li>لا يوجد استرجاع بعد الشحن</li>
+    </ul>
+  </div>
 
+</div> <!-- نهاية container -->
+
+<!-- نافذة الطلب -->
+<div class="popup" id="popup">
+  <div class="popup-box">
+    <h3 id="pkg"></h3>
+    <p id="price"></p>
+
+    <input id="playerId" type="text" placeholder="🆔 معرف اللاعب (ID)">
+
+    <p style="font-size:14px;color:#ccc">
+      💸 الدفع عبر <b>Cash Plus</b><br>
+      الاسم: <b>اسمك الكامل</b><br>
+      بعد الدفع أرسل رقم الوصل عبر واتساب
+    </p>
+
+    <button class="pay" onclick="sendWA()">إرسال الطلب عبر واتساب</button>
+    <button class="close" onclick="closePay()">إغلاق</button>
+  </div>
+</div>
+
+<script>
+const STORE_WA = "2126XXXXXXXX"; // رقم واتساب ديالك بدون +
+const CASH_NAME = "اسمك الكامل"; // الاسم المسجل في Cash Plus
+
+let PKG="", PRICE="";
+
+function openPay(p,pr){
+  PKG=p; PRICE=pr;
+  document.getElementById("pkg").textContent="📦 "+p;
+  document.getElementById("price").textContent="💰 السعر: "+pr+" درهم";
+  document.getElementById("popup").style.display="block";
+}
+function closePay(){
+  document.getElementById("popup").style.display="none";
+}
+function sendWA(){
+  const id=document.getElementById("playerId").value.trim();
+  if(!id){
+    alert("المرجو إدخال معرف اللاعب");
+    return;
+  }
+  const msg =
+`طلب شحن جواهر Free Fire
+📦 الباقة: ${PKG}
+💰 السعر: ${PRICE} درهم
+🆔 معرف اللاعب: ${id}
+
+💸 الدفع عبر Cash Plus
+الاسم: ${CASH_NAME}
+
+سأرسل رقم الوصل بعد الدفع`;
+  window
   <!-- تواصل معنا -->
   <div class="section">
     <h3 style="color:var(--text);margin-top:0">📬 تواصل معنا</h3>
