@@ -297,50 +297,123 @@ button.primary{ background:var(--primary); color:#fff; border:none; }
 <div class="container">
 
   <div class="package">
-    <h2>110 جوهرة</h2>
-    <p>السعر: 11 درهم</p>
-    <button onclick="openForm('110 جوهرة','11 درهم')">💸 Cash Plus</button>
+  <h2>110 جوهرة</h2>
+  <p>السعر: 11 درهم</p>
+  <button onclick="openPayment()">شراء</button>
   </div>
 
   <div class="package">
-    <h2>231 جوهرة</h2>
-    <p>السعر: 21 درهم</p>
-    <button onclick="openForm('231 جوهرة','21 درهم')">💸 Cash Plus</button>
+  <h2>110 جوهرة</h2>
+  <p>السعر: 11 درهم</p>
+  <button onclick="openPayment()">شراء</button>
   </div>
 
   <div class="package">
-    <h2>583 جوهرة</h2>
-    <p>السعر: 53 درهم</p>
-    <button onclick="openForm('583 جوهرة','53 درهم')">💸 Cash Plus</button>
+  <h2>110 جوهرة</h2>
+  <p>السعر: 11 درهم</p>
+  <button onclick="openPayment()">شراء</button>
   </div>
 
   <div class="package">
-    <h2>1188 جوهرة</h2>
-    <p>السعر: 105 درهم</p>
-    <button onclick="openForm('1188 جوهرة','105 درهم')">💸 Cash Plus</button>
+  <h2>110 جوهرة</h2>
+  <p>السعر: 11 درهم</p>
+  <button onclick="openPayment()">شراء</button>
   </div>
 
   <div class="package">
-    <h2>2420 جوهرة</h2>
-    <p>السعر: 230 درهم</p>
-    <button onclick="openForm('2420 جوهرة','230 درهم')">💸 Cash Plus</button>
+  <h2>110 جوهرة</h2>
+  <p>السعر: 11 درهم</p>
+  <button onclick="openPayment()">شراء</button>
   </div>
 
   <div class="package">
-    <h2>2585 جوهرة</h2>
-    <p>السعر: 250 درهم</p>
-    <button onclick="openForm('2585 جوهرة','250 درهم')">💸 Cash Plus</button>
+  <h2>110 جوهرة</h2>
+  <p>السعر: 11 درهم</p>
+  <button onclick="openPayment()">شراء</button>
   </div>
+  
+  <!-- نافذة طرق الدفع -->
+<div id="paymentModal" style="
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.7);
+z-index:999;
+align-items:center;
+justify-content:center;
+">
 
-  <div class="section">
-    <h3 style="color:var(--text);margin-top:0">💳 طريقة الدفع</h3>
-    <ul style="color:var(--subtext);">
-      <li>💸 Cash Plus فقط</li>
-    </ul>
-    <p style="font-size:14px;margin-top:8px">
-      يتم شحن الجواهر بعد إرسال <b>وصل Cash Plus</b> عبر واتساب
-    </p>
+  <div style="
+  background:#0f0f10;
+  color:#fff;
+  width:90%;
+  max-width:420px;
+  padding:20px;
+  border-radius:14px;
+  box-shadow:0 20px 60px rgba(0,0,0,.8);
+  text-align:center;
+  ">
+
+    <h3 style="margin-top:0">💳 اختر طريقة الدفع</h3>
+
+    <!-- PayPal -->
+    <div style="
+    background:#111;
+    padding:14px;
+    border-radius:10px;
+    margin-bottom:12px;
+    ">
+      <strong>PayPal (إرسال أموال)</strong>
+      <p style="font-size:14px;color:#cfd3da;margin:8px 0">
+        • اختر Send Money<br>
+        • Friends & Family<br>
+        • نفس العملة<br>
+      </p>
+      <p style="font-weight:bold;color:#0d6efd">
+        📧 your@email.com
+      </p>
+    </div>
+
+    <!-- Cash Plus -->
+    <div style="
+    background:#111;
+    padding:14px;
+    border-radius:10px;
+    margin-bottom:12px;
+    ">
+      <strong>Cash Plus</strong>
+      <p style="font-size:14px;color:#cfd3da;margin:8px 0">
+        توجّه لأقرب وكالة Cash Plus
+      </p>
+      <p style="font-weight:bold">
+        👤 الاسم: اسمك هنا<br>
+        📞 الهاتف: 06xxxxxxxx
+      </p>
+    </div>
+
+    <button onclick="closePayment()" style="
+    background:#0d6efd;
+    border:none;
+    padding:10px 18px;
+    border-radius:8px;
+    color:#fff;
+    font-weight:bold;
+    cursor:pointer;
+    ">
+      إغلاق
+    </button>
+
   </div>
+</div>
+
+<script>
+function openPayment(){
+  document.getElementById("paymentModal").style.display="flex";
+}
+function closePayment(){
+  document.getElementById("paymentModal").style.display="none";
+}
+</script>
 
   <!-- تواصل معنا -->
   <div class="section">
