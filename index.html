@@ -11,354 +11,112 @@
   --surface: #0f0f10;
   --primary: #0d6efd;
   --accent: #20c997;
-  --text: #ffffff;
+  --text: #fff;
   --subtext: #d0d4da;
-  --shadow: rgba(0,0,0,0.65);
   --radius: 10px;
-  --wa-green: #25D366;
-  --mail-blue: #0d6efd;
 }
 
 /* Reset */
 *{box-sizing:border-box}
-html,body{height:100%}
-body{
-  margin:0;
-  font-family: "Arial", "Tahoma", sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-  direction: rtl;
-}
-
-/* Header */
-header{
-  background:#000;
-  color:#fff;
-  text-align:center;
-  padding:18px 15px;
-  font-size:20px;
-  position:sticky;
-  top:0;
-  z-index:40;
-  box-shadow:0 2px 6px rgba(255,255,255,0.03);
-}
-
-/* Cover */
-.cover-wrapper{ position:relative; margin:15px; }
-.cover-image{
-  width:100%;
-  aspect-ratio:5040 / 2460;
-  border-radius:12px;
-  overflow:hidden;
-  background:linear-gradient(180deg, rgba(13,110,253,0.06), #111);
-}
-.cover-image img{ width:100%; height:100%; object-fit:cover; display:block; filter:brightness(0.85); }
-
-/* Profile on the right */
-.profile-wrapper{
-  position:absolute;
-  bottom:-45px;
-  right:20px;
-  width:120px;
-  height:120px;
-  border-radius:50%;
-  background:var(--surface);
-  padding:4px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.7);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-.profile-wrapper img{ width:100%; height:100%; border-radius:50%; object-fit:cover; }
-
-.profile-name{
-  position:absolute;
-  bottom:-95px;
-  right:20px;
-  width:120px;
-  text-align:center;
-  font-weight:900;
-  letter-spacing:0.8px;
-  color:var(--text);
-  background:transparent;
-  padding-top:8px;
-  pointer-events:none;
-  text-shadow:0 2px 8px rgba(0,0,0,0.7);
-  text-transform:uppercase;
-  font-size:18px;
-}
-
-/* Container */
-.container{ max-width:900px; margin:140px auto 24px; padding:15px; }
-
-/* الباقات */
-.package{
-  background:var(--surface);
-  padding:15px;
-  border-radius:var(--radius);
-  margin-bottom:15px;
-  box-shadow:0 10px 30px var(--shadow);
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  direction: rtl;
-  flex-direction: row;
-}
-
-.package h2{ color:var(--primary); margin:0 }
-.package p{ margin:0; font-weight:600; color:var(--subtext) }
-
-.package button{
-  background:var(--primary);
-  color:#fff;
-  border:none;
-  padding:10px 14px;
-  border-radius:8px;
-  cursor:pointer;
-  transition:transform .12s ease, box-shadow .12s ease;
-  box-shadow:0 8px 20px rgba(13,110,253,0.14);
-}
-
-/* Sections */
-.section{
-  background:var(--surface);
-  padding:14px;
-  border-radius:var(--radius);
-  box-shadow:0 10px 30px var(--shadow);
-  margin-bottom:12px;
-  color:var(--subtext);
-}
-
-/* تواصل معنا */
-.contact-row {
-  display: flex;
-  flex-direction: row;
-  gap: 12px;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 8px;
-}
-
-.contact-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  flex: 1 1 0;
-  height: 64px;
-  padding: 0 14px;
-  color: var(--text);
-  border-radius: 10px;
-  text-decoration: none;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.03);
-  font-weight: 700;
-  font-size: 16px;
-  white-space: nowrap;
-  min-width: 0;
-  direction:rtl;
-}
-
-.contact-btn .icon{
-  display:inline-flex;
-  width:20px;
-  height:20px;
-  align-items:center;
-  justify-content:center;
-  flex:0 0 auto;
-  margin-inline-start:8px;
-}
-
-.contact-btn.whatsapp{ background:var(--wa-green); color:#fff; border:none }
-.contact-btn.email{ background:var(--mail-blue); color:#fff; border:none }
-
-.contact-row svg{
-  width:18px; height:18px;
-  fill:none; stroke:currentColor; stroke-width:1.6;
-  stroke-linecap:round; stroke-linejoin:round;
-}
-
-/* Form popup */
-.form-popup{
-  display:none;
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  width:360px;
-  background:var(--surface);
-  padding:18px;
-  border-radius:12px;
-  box-shadow:0 18px 60px rgba(0,0,0,0.8);
-  z-index:60;
-  color:var(--text);
-}
-.form-popup .form-content{ display:flex; flex-direction:column; align-items:center; gap:10px; text-align:center; }
-
-.form-popup input[type="text"],
-.form-popup input[type="email"],
-.form-popup input[type="tel"]{
-  width:100%;
-  max-width:320px;
-  padding:10px 12px;
-  border-radius:8px;
-  border:1px solid rgba(255,255,255,0.06);
-  background:#0b0b0c;
-  color:var(--text);
-  font-size:15px;
-  direction:ltr;
-}
-
-/* Method selection */
-.method-selection{ display:flex; gap:10px; align-items:center; justify-content:center; padding:6px; width:100%; }
-.method-selection label{
-  display:inline-flex; gap:8px; align-items:center; padding:6px 10px; border-radius:8px; cursor:pointer; user-select:none;
-  background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.03); font-weight:700; color:var(--subtext);
-}
-.method-selection input[type="radio"]{ accent-color: var(--primary); }
-
-/* Quick icons */
-.quick-icons{ display:flex; gap:14px; align-items:center; justify-content:center; margin-top:8px; width:100%; }
-.icon-btn{
-  display:inline-flex; align-items:center; justify-content:center;
-  width:54px; height:54px; border-radius:12px; cursor:pointer;
-  border:1px solid rgba(255,255,255,0.04);
-  background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-  transition:transform .14s ease, box-shadow .14s ease;
-  box-shadow:0 6px 18px rgba(0,0,0,0.45);
-}
-.icon-btn:active{ transform:translateY(1px) }
-.icon-btn:hover{ transform:translateY(-4px) scale(1.03); box-shadow:0 14px 30px rgba(0,0,0,0.55); }
-.icon-btn.wa{ background:linear-gradient(180deg,var(--wa-green), #1ebc5b); color:#fff; box-shadow:0 10px 30px rgba(37,211,102,0.18) }
-.icon-btn.mail{ background:linear-gradient(180deg,var(--mail-blue), #0a58ca); color:#fff; box-shadow:0 10px 30px rgba(13,110,253,0.12) }
-
-.icon-btn svg{
-  width:28px;
-  height:28px;
-  display:block;
-  fill:none;
-  stroke:currentColor;
-  stroke-width:1.6;
-  stroke-linecap:round;
-  stroke-linejoin:round;
-  shape-rendering:geometricPrecision;
-  vector-effect:non-scaling-stroke;
-}
-
-/* Form buttons */
-.form-popup .form-actions{ display:flex; gap:8px; width:100%; justify-content:center; flex-wrap:wrap; margin-top:6px; }
-.form-popup .form-actions button{ padding:9px 12px; border-radius:8px; border:none; cursor:pointer; font-weight:700; }
-.form-popup .send{ background:var(--accent); color:#000 }
-.form-popup .close{ background:#e9ecef; color:#111 }
-
-button.primary{ background:var(--primary); color:#fff; border:none; }
-
-/* Responsive */
-@media (max-width:480px){
-  .profile-wrapper{ right:12px; width:100px; height:100px; bottom:-40px }
-  .profile-name{ right:12px; width:100px; font-size:16px; bottom:-88px }
-  .container{ margin:110px 12px 20px }
-  .package{ direction:rtl; flex-direction:row; align-items:center; }
-  .form-popup{ right:12px; left:12px; width:auto }
-  .form-popup input[type="text"],
-  .form-popup input[type="email"],
-  .form-popup input[type="tel"]{ max-width:100% }
-  .icon-btn{ width:48px; height:48px }
-  .icon-btn svg{ width:22px; height:22px }
-
-  .contact-btn{
-    height:62px;
-    font-size:15px;
-    padding:0 12px;
-  }
-}
+body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:var(--text);}
+header{background:#000;text-align:center;padding:18px 15px;font-size:20px;position:sticky;top:0;z-index:40;}
+.container{max-width:900px;margin:140px auto 24px;padding:15px;}
+.package{background:var(--surface);padding:15px;border-radius:var(--radius);margin-bottom:15px;display:flex;justify-content:space-between;align-items:center;}
+.package h2{margin:0;color:var(--primary);}
+.package p{margin:0;color:var(--subtext);}
+.package button{padding:8px 14px;border:none;border-radius:8px;cursor:pointer;background:var(--primary);color:#fff;}
+.payment-popup{display:none;position:fixed;bottom:20px;right:20px;background:var(--surface);padding:15px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.7);z-index:100;min-width:280px;}
+.payment-popup h3{margin:0 0 10px 0;color:var(--text);}
+.payment-buttons{display:flex;gap:10px;justify-content:space-between;}
+.payment-buttons button{display:flex;align-items:center;gap:6px;padding:8px 12px;border-radius:8px;border:none;cursor:pointer;font-weight:700;}
+.payment-buttons img{width:20px;height:20px;}
+.cashplus{background:#20c997;color:#fff;}
+.paypal{background:#003087;color:#fff;}
+.close-popup{margin-top:10px;background:#e9ecef;color:#111;border:none;padding:6px 10px;border-radius:6px;cursor:pointer;}
 </style>
 </head>
 
 <body>
-
 <header>🛒 متجر جواهر فري فاير</header>
 
-<!-- Cover + profile -->
-<div class="cover-wrapper">
-  <div class="cover-image">
-    <img src="cover.jpg" alt="غلاف المتجر">
+<div class="cover-wrapper" style="position:relative;margin:15px;">
+  <div class="cover-image" style="width:100%;aspect-ratio:5040/2460;border-radius:12px;overflow:hidden;background:#111;">
+    <img src="cover.jpg" alt="غلاف المتجر" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.85);">
   </div>
-
-  <div class="profile-wrapper">
-    <img src="profile.png" alt="صورة المتجر">
+  <div class="profile-wrapper" style="position:absolute;bottom:-45px;right:20px;width:120px;height:120px;border-radius:50%;background:#0f0f10;padding:4px;display:flex;align-items:center;justify-content:center;">
+    <img src="profile.png" alt="صورة المتجر" style="width:100%;height:100%;border-radius:50%;object-fit:cover;">
   </div>
-    <div class="profile-name">SAD SILENT</div>
+  <div class="profile-name" style="position:absolute;bottom:-95px;right:20px;width:120px;text-align:center;font-weight:900;color:#fff;font-size:18px;">SAD SILENT</div>
 </div>
 
-<!-- المتجر -->
 <div class="container">
 
-<div class="package">
-  <h2>110 جوهرة</h2>
-  <p>السعر: 11 درهم</p>
-  <button onclick="openPaymentOptions()">شراء</button>
+  <!-- باقات -->
+  <div class="package">
+    <div>
+      <h2>110 جوهرة</h2>
+      <p>السعر: 11 درهم</p>
+    </div>
+    <button onclick="openPayment('110 جوهرة','11 درهم')">شراء</button>
+  </div>
+
+  <div class="package">
+    <div>
+      <h2>231 جوهرة</h2>
+      <p>السعر: 21 درهم</p>
+    </div>
+    <button onclick="openPayment('231 جوهرة','21 درهم')">شراء</button>
+  </div>
+
+  <div class="package">
+    <div>
+      <h2>583 جوهرة</h2>
+      <p>السعر: 53 درهم</p>
+    </div>
+    <button onclick="openPayment('583 جوهرة','53 درهم')">شراء</button>
+  </div>
+
+  <div class="package">
+    <div>
+      <h2>1188 جوهرة</h2>
+      <p>السعر: 105 درهم</p>
+    </div>
+    <button onclick="openPayment('1188 جوهرة','105 درهم')">شراء</button>
+  </div>
+
 </div>
 
-  <div class="package">
-  <h2>110 جوهرة</h2>
-  <p>السعر: 11 درهم</p>
-  <button onclick="openPayment()">شراء</button>
-  </div>
-
-  <div class="package">
-  <h2>110 جوهرة</h2>
-  <p>السعر: 11 درهم</p>
-  <button onclick="openPayment()">شراء</button>
-  </div>
-
-  <div class="package">
-  <h2>110 جوهرة</h2>
-  <p>السعر: 11 درهم</p>
-  <button onclick="openPayment()">شراء</button>
-  </div>
-
-  <div class="package">
-  <h2>110 جوهرة</h2>
-  <p>السعر: 11 درهم</p>
-  <button onclick="openPayment()">شراء</button>
-  </div>
-
-  <div class="package">
-  <h2>110 جوهرة</h2>
-  <p>السعر: 11 درهم</p>
-  <button onclick="openPayment()">شراء</button>
-  </div>
-  
 <!-- نافذة الدفع -->
-<div id="paymentPopup" style="display:none; position:fixed; bottom:20px; right:20px; background:var(--surface); padding:15px; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,0.7); z-index:100; min-width:260px;">
-  <h3 style="margin:0 0 10px 0; color:var(--text)">اختر طريقة الدفع</h3>
-  <div style="display:flex; gap:10px; justify-content:space-between;">
-    <!-- زر Cash Plus -->
-    <button style="display:flex; align-items:center; gap:6px; background:#20c997; color:#fff; border:none; padding:8px 12px; border-radius:8px; cursor:pointer;"
-      onclick="window.open('https://www.cashplus.com','_blank')">
-      <img src="cashplus-icon.png" alt="Cash Plus" style="width:20px; height:20px;">
-      Cash Plus
+<div id="paymentPopup" class="payment-popup">
+  <h3>💳 اختر طريقة الدفع</h3>
+  <div class="payment-buttons">
+    <button class="cashplus" onclick="window.open('https://cashplus.example.com','_blank')">
+      <img src="cashplus-icon.png" alt="Cash Plus"> Cash Plus
     </button>
-
-    <!-- زر PayPal -->
-    <button style="display:flex; align-items:center; gap:6px; background:#003087; color:#fff; border:none; padding:8px 12px; border-radius:8px; cursor:pointer;"
-      onclick="window.open('https://www.paypal.com','_blank')">
-      <img src="paypal-icon.png" alt="PayPal" style="width:20px; height:20px;">
-      PayPal
+    <button class="paypal" onclick="window.open('https://www.paypal.com','_blank')">
+      <img src="paypal-icon.png" alt="PayPal"> PayPal
     </button>
   </div>
-  <button onclick="closePaymentPopup()" style="margin-top:10px; background:#e9ecef; color:#111; border:none; padding:6px 10px; border-radius:6px; cursor:pointer;">إغلاق</button>
+  <div style="margin-top:10px;text-align:left;font-size:14px;color:#d0d4da;">
+    <p><strong>💸 Cash Plus:</strong> توجه لأقرب وكالة Cash Plus وأرسل المبلغ مع ذكر اسمك ورقم الهاتف.</p>
+    <p><strong>💰 PayPal:</strong> اختر Send Money → Friends & Family → نفس العملة → أرسل المال للبريد: your@email.com</p>
+  </div>
+  <button class="close-popup" onclick="closePayment()">إغلاق</button>
 </div>
 
 <script>
-function openPaymentOptions(){
+let selectedPackage = "", selectedPrice = "";
+
+function openPayment(pkg, price){
+  selectedPackage = pkg;
+  selectedPrice = price;
   document.getElementById("paymentPopup").style.display="block";
 }
 
-function closePaymentPopup(){
+function closePayment(){
   document.getElementById("paymentPopup").style.display="none";
 }
 </script>
+
+</body>
+</html>
