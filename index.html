@@ -4,50 +4,33 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>متجر جواهر فري فاير</title>
-
 <style>
 :root{
   --bg: #000;
   --surface: #0f0f10;
   --primary: #0d6efd;
   --accent: #20c997;
-  --text: #fff;
+  --text: #ffffff;
   --subtext: #d0d4da;
+  --shadow: rgba(0,0,0,0.65);
   --radius: 10px;
 }
 
 /* Reset */
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:var(--text);}
-header{background:#000;text-align:center;padding:18px 15px;font-size:20px;position:sticky;top:0;z-index:40;}
-.container{max-width:900px;margin:140px auto 24px;padding:15px;}
-.package{background:var(--surface);padding:15px;border-radius:var(--radius);margin-bottom:15px;display:flex;justify-content:space-between;align-items:center;}
+html,body{height:100%;margin:0;font-family:Arial,sans-serif;background:var(--bg);color:var(--text);direction:rtl;}
+header{background:#000;color:#fff;text-align:center;padding:18px;font-size:20px;position:sticky;top:0;z-index:40;box-shadow:0 2px 6px rgba(255,255,255,0.03);}
+.container{max-width:900px;margin:20px auto;padding:15px;}
+.package{background:var(--surface);padding:15px;border-radius:var(--radius);margin-bottom:15px;box-shadow:0 10px 30px var(--shadow);display:flex;align-items:center;justify-content:space-between;}
 .package h2{margin:0;color:var(--primary);}
-.package p{margin:0;color:var(--subtext);}
-.package button{padding:8px 14px;border:none;border-radius:8px;cursor:pointer;background:var(--primary);color:#fff;}
-.payment-popup{display:none;position:fixed;bottom:20px;right:20px;background:var(--surface);padding:15px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.7);z-index:100;min-width:280px;}
-.payment-popup h3{margin:0 0 10px 0;color:var(--text);}
-.payment-buttons{display:flex;gap:10px;justify-content:space-between;}
-.payment-buttons button{display:flex;align-items:center;gap:6px;padding:8px 12px;border-radius:8px;border:none;cursor:pointer;font-weight:700;}
-.payment-buttons img{width:20px;height:20px;}
-.cashplus{background:#20c997;color:#fff;}
-.paypal{background:#003087;color:#fff;}
-.close-popup{margin-top:10px;background:#e9ecef;color:#111;border:none;padding:6px 10px;border-radius:6px;cursor:pointer;}
+.package p{margin:0;font-weight:600;color:var(--subtext);}
+.package button{background:var(--primary);color:#fff;border:none;padding:10px 14px;border-radius:8px;cursor:pointer;transition:transform .12s ease, box-shadow .12s ease;box-shadow:0 8px 20px rgba(13,110,253,0.14);}
+.package button:hover{transform:translateY(-2px);}
 </style>
 </head>
-
 <body>
-<header>🛒 متجر جواهر فري فاير</header>
 
-<div class="cover-wrapper" style="position:relative;margin:15px;">
-  <div class="cover-image" style="width:100%;aspect-ratio:5040/2460;border-radius:12px;overflow:hidden;background:#111;">
-    <img src="cover.jpg" alt="غلاف المتجر" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.85);">
-  </div>
-  <div class="profile-wrapper" style="position:absolute;bottom:-45px;right:20px;width:120px;height:120px;border-radius:50%;background:#0f0f10;padding:4px;display:flex;align-items:center;justify-content:center;">
-    <img src="profile.png" alt="صورة المتجر" style="width:100%;height:100%;border-radius:50%;object-fit:cover;">
-  </div>
-  <div class="profile-name" style="position:absolute;bottom:-95px;right:20px;width:120px;text-align:center;font-weight:900;color:#fff;font-size:18px;">SAD SILENT</div>
-</div>
+<header>🛒 متجر جواهر فري فاير - SAD SILENT</header>
 
 <div class="container">
 
@@ -57,7 +40,7 @@ header{background:#000;text-align:center;padding:18px 15px;font-size:20px;positi
       <h2>110 جوهرة</h2>
       <p>السعر: 11 درهم</p>
     </div>
-    <button onclick="openPayment('110 جوهرة','11 درهم')">شراء</button>
+    <button onclick="openPayment()">شراء</button>
   </div>
 
   <div class="package">
@@ -65,7 +48,7 @@ header{background:#000;text-align:center;padding:18px 15px;font-size:20px;positi
       <h2>231 جوهرة</h2>
       <p>السعر: 21 درهم</p>
     </div>
-    <button onclick="openPayment('231 جوهرة','21 درهم')">شراء</button>
+    <button onclick="openPayment()">شراء</button>
   </div>
 
   <div class="package">
@@ -73,7 +56,7 @@ header{background:#000;text-align:center;padding:18px 15px;font-size:20px;positi
       <h2>583 جوهرة</h2>
       <p>السعر: 53 درهم</p>
     </div>
-    <button onclick="openPayment('583 جوهرة','53 درهم')">شراء</button>
+    <button onclick="openPayment()">شراء</button>
   </div>
 
   <div class="package">
@@ -81,40 +64,111 @@ header{background:#000;text-align:center;padding:18px 15px;font-size:20px;positi
       <h2>1188 جوهرة</h2>
       <p>السعر: 105 درهم</p>
     </div>
-    <button onclick="openPayment('1188 جوهرة','105 درهم')">شراء</button>
+    <button onclick="openPayment()">شراء</button>
+  </div>
+
+  <div class="package">
+    <div>
+      <h2>2420 جوهرة</h2>
+      <p>السعر: 230 درهم</p>
+    </div>
+    <button onclick="openPayment()">شراء</button>
+  </div>
+
+  <div class="package">
+    <div>
+      <h2>2585 جوهرة</h2>
+      <p>السعر: 250 درهم</p>
+    </div>
+    <button onclick="openPayment()">شراء</button>
   </div>
 
 </div>
 
 <!-- نافذة الدفع -->
-<div id="paymentPopup" class="payment-popup">
-  <h3>💳 اختر طريقة الدفع</h3>
-  <div class="payment-buttons">
-    <button class="cashplus" onclick="window.open('https://www.cashplus.com','_blank')">
-      <img src="cashplus-icon.png" alt="Cash Plus"> Cash Plus
+<div id="paymentModal" style="
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.7);
+z-index:999;
+align-items:center;
+justify-content:center;
+">
+
+  <div style="
+  background:#0f0f10;
+  color:#fff;
+  width:90%;
+  max-width:420px;
+  padding:20px;
+  border-radius:14px;
+  box-shadow:0 20px 60px rgba(0,0,0,.8);
+  text-align:center;
+  ">
+
+    <h3 style="margin-top:0">💳 اختر طريقة الدفع</h3>
+
+    <!-- PayPal -->
+    <div style="
+    background:#111;
+    padding:14px;
+    border-radius:10px;
+    margin-bottom:12px;
+    ">
+      <strong>PayPal (إرسال أموال)</strong>
+      <p style="font-size:14px;color:#cfd3da;margin:8px 0">
+        • اختر Send Money<br>
+        • Friends & Family<br>
+        • نفس العملة<br>
+      </p>
+      <p style="font-weight:bold;color:#0d6efd">
+        📧 your@email.com
+      </p>
+      <!-- أيقونة PayPal -->
+      <img src="paypal-icon.png" alt="PayPal" style="width:40px;height:40px;margin-top:10px;">
+    </div>
+
+    <!-- Cash Plus -->
+    <div style="
+    background:#111;
+    padding:14px;
+    border-radius:10px;
+    margin-bottom:12px;
+    ">
+      <strong>Cash Plus</strong>
+      <p style="font-size:14px;color:#cfd3da;margin:8px 0">
+        توجّه لأقرب وكالة Cash Plus
+      </p>
+      <p style="font-weight:bold">
+        👤 الاسم: اسمك هنا<br>
+        📞 الهاتف: 06xxxxxxxx
+      </p>
+      <!-- أيقونة Cash Plus -->
+      <img src="cashplus-icon.png" alt="Cash Plus" style="width:40px;height:40px;margin-top:10px;">
+    </div>
+
+    <button onclick="closePayment()" style="
+    background:#0d6efd;
+    border:none;
+    padding:10px 18px;
+    border-radius:8px;
+    color:#fff;
+    font-weight:bold;
+    cursor:pointer;
+    ">
+      إغلاق
     </button>
-    <button class="paypal" onclick="window.open('https://www.paypal.com','_blank')">
-      <img src="paypal-icon.png" alt="PayPal"> PayPal
-    </button>
+
   </div>
-  <div style="margin-top:10px;text-align:left;font-size:14px;color:#d0d4da;">
-    <p><strong>💸 Cash Plus:</strong> توجه لأقرب وكالة Cash Plus وأرسل المبلغ مع ذكر اسمك ورقم الهاتف.</p>
-    <p><strong>💰 PayPal:</strong> اختر Send Money → Friends & Family → نفس العملة → أرسل المال للبريد: your@email.com</p>
-  </div>
-  <button class="close-popup" onclick="closePayment()">إغلاق</button>
 </div>
 
 <script>
-let selectedPackage = "", selectedPrice = "";
-
-function openPayment(pkg, price){
-  selectedPackage = pkg;
-  selectedPrice = price;
-  document.getElementById("paymentPopup").style.display="block";
+function openPayment(){
+  document.getElementById("paymentModal").style.display="flex";
 }
-
 function closePayment(){
-  document.getElementById("paymentPopup").style.display="none";
+  document.getElementById("paymentModal").style.display="none";
 }
 </script>
 
